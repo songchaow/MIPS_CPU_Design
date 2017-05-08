@@ -1,0 +1,139 @@
+Release 12.3 Map M.70d (nt64)
+Xilinx Map Application Log File for Design 'top'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off
+-c 100 -o top_map.ncd top.ngd top.pcf 
+Target Device  : xc3s500e
+Target Package : fg320
+Target Speed   : -5
+Mapper Version : spartan3e -- $Revision: 1.52 $
+Mapped Date    : Sun May 07 21:34:10 2017
+
+vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+INFO:Security:54 - 'xc3s500e' is a WebPack part.
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+----------------------------------------------------------------------
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+Updating timing models...
+WARNING:PhysDesignRules:372 - Gated clock. Clock net FSM/next_state_not0001 is
+   sourced by a combinatorial pin. This is not good design practice. Use the CE
+   pin to control the loading of data into the flip-flop.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB4> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB5> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB6> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB7> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB12> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB13> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB14> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB15> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB20> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB21> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB22> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB23> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB28> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB29> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB30> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOB31> on
+   block:<myMemory/BU2/U0/blk_mem_generator/valid.cstr/ramloop[0].ram.r/s3_init.
+   ram/spram.ram.B>:<RAMB16_RAMB16B>.
+ERROR:Pack:2309 - Too many bonded comps of type "IOB" found to fit this device.
+ERROR:Pack:18 - The design is too large for the given device and package. 
+   Please check the Design Summary section to see which resource requirement for
+   your design exceeds the resources available in the device.
+
+   NOTE: An NCD file will still be generated to allow you to examine the mapped
+   design.  This file is intended for evaluation use only, and will not process
+   successfully through PAR.
+
+   This mapped NCD file can be used to evaluate how the design's logic has been
+   mapped into FPGA logic resources.  It can also be used to analyze
+   preliminary, logic-level (pre-route) timing with one of the Xilinx static
+   timing analysis tools (TRCE or Timing Analyzer).
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      2
+Number of warnings:   17
+Logic Utilization:
+  Total Number Slice Registers:          89 out of   9,312    1%
+    Number used as Flip Flops:           85
+    Number used as Latches:               4
+  Number of 4 input LUTs:               224 out of   9,312    2%
+Logic Distribution:
+  Number of occupied Slices:            134 out of   4,656    2%
+    Number of Slices containing only related logic:     134 out of     134 100%
+    Number of Slices containing unrelated logic:          0 out of     134   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:         224 out of   9,312    2%
+  Number of bonded IOBs:                494 out of     232  212% (OVERMAPPED)
+    IOB Flip Flops:                       4
+    IOB Latches:                          4
+  Number of RAMB16s:                      1 out of      20    5%
+  Number of BUFGMUXs:                     1 out of      24    4%
+
+Average Fanout of Non-Clock Nets:                3.64
+
+Peak Memory Usage:  301 MB
+Total REAL time to MAP completion:  5 secs 
+Total CPU time to MAP completion:   1 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "top_map.mrp" for details.
+Problem encountered during the packing phase.

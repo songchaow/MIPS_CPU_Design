@@ -1,0 +1,2 @@
+SETPROJECT "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ipcore_dir/coregen.cgp"
+LAUNCHXCO "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ipcore_dir/Memory.xco"

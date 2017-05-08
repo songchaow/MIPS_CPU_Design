@@ -1,0 +1,55 @@
+Running: e:\Xilinx\12.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe -prj D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_beh.prj simu work.glbl 
+ISim M.70d (signature 0x16fbe694)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ipcore_dir/Memory.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/State_Reg.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/Reg_Out.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/REG_DIN_MUX.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/RegMux.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/regfile.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/PC_Module.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/PC_Gen.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/control.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_OpB.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_OpA.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_CONTROL.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/AddrMux.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu.v\" into library work
+Analyzing Verilog file \"e:/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
+Starting static elaboration
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v" Line 124: Size mismatch in connection of port <addra>. Formal port size is 8-bit while actual signal size is 32-bit.
+Completed static elaboration
+Compiling module PCModule
+Compiling module PC_Gen
+Compiling module AddrMux
+Compiling module BLK_MEM_GEN_V4_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V4_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V4_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V4_3(C_FAMILY="spart...
+Compiling module Memory
+Compiling module State_Reg
+Compiling module Reg_MUX
+Compiling module REG_DIN_MUX
+Compiling module REG_FILE
+Compiling module REG_OUT
+Compiling module SEXT
+Compiling module ALU_OpA
+Compiling module ALU_OpB
+Compiling module ALU_CONTROL
+Compiling module ALU
+Compiling module ALU_RESULT_REG
+Compiling module CONTROL
+Compiling module PC_ENABLE
+Compiling module top
+Compiling module simu
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 24 Verilog Units
+Built simulation executable D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe
+Fuse Memory Usage: 22536 KB
+Fuse CPU Usage: 296 ms

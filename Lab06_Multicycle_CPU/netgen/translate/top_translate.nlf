@@ -1,0 +1,19 @@
+Release 12.3 - netgen M.70d (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+
+Command Line: netgen -intstyle ise -insert_glbl true -w -dir netgen/translate
+-ofmt verilog -sim top.ngd top_translate.v  
+
+Reading design 'top.ngd' ...
+Flattening design ...
+Processing design ... 
+  Preping design's networks ...
+  Preping design's macros ...
+Writing Verilog netlist file 'D:\ISE
+Project\COD-Labs\Lab06_Multicycle_CPU\netgen\translate\top_translate.v' ...
+INFO:NetListWriters:633 - The generated Verilog netlist contains Xilinx SIMPRIM
+   simulation primitives and has to be used with SIMPRIM simulation library for
+   correct compilation and simulation. 
+Number of warnings: 0
+Number of info messages: 1
+Total memory usage is 158588 kilobytes
