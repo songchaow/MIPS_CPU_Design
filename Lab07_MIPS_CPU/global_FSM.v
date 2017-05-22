@@ -53,11 +53,11 @@ wire en223;
 wire en324;
 //ack: acknowledgement for fetch requests
 wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最高
-assign ack1 = (~BranchSig)&&(~JmpSig)&&fetch_req1;
-assign ack2 = (~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
-assign ack3 = (~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
-assign ack4 = (~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
-assign ack5 = (~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
+assign ack1 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req1;
+assign ack2 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
+assign ack3 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
+assign ack4 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
+assign ack5 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
 //一般的PC_En来自于指令开始时:
 wire PC_En_Start = ack1||ack2||ack3||ack4||ack5;//这条有效时，来自于J/JR/Branch的PC_En请求要抑制。 ...错了。。
 wire PC_En_Conflict1,PC_En_Conflict2,PC_En_Conflict3,PC_En_Conflict4,PC_En_Conflict5;
@@ -96,8 +96,17 @@ begin
 end
 //访存冲突检测：
 //访存冲突只可能是数据访存与取指的冲突。故数据访存对应指令在前，优先级更高
-wire DMemVisit1 = (state1==S3||state1==S5)
-wire DMemVisit = 
+wire DMemVisit1 = (state1==S3||state1==S5);
+wire DMemVisit2 = (state2==S3||state2==S5);
+wire DMemVisit3 = (state3==S3||state3==S5);
+wire DMemVisit4 = (state4==S3||state4==S5);
+wire DMemVisit5 = (state5==S3||state5==S5);
+
+wire DMemVisit = DMemVisit1||DMemVisit2||DMemVisit3||DMemVisit4||DMemVisit5;
+wire IorD =DMemVisit?1:0;
+
+//写回冲突检测：...
+
 
 
 wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
