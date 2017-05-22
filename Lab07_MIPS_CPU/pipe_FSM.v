@@ -22,22 +22,19 @@ module pipe_FSM(
     //FSM signals:
     input               clk,
     input               rst_n,
-    input   [2:0]       STATIC_PRIORITY,//优先级常量
     //instruction info:
     input   [31:0]      instruction,
-    input   en0,//有效时，状态机将无条件地处于IDLE
-    input   bubble,//暂停，冒气泡。所有后来的在运行的指令都要冒气泡
+    input               en0,        //有效时，状态机将无条件地处于IDLE
+    input               bubble,     //暂停，冒气泡。所有后来的在运行的指令都要冒气泡
     input   [2:0]       bubblePri,
-    input   flush,
+    input               flush,
     input   [2:0]       flushPri,
-    input   ack,//permission to start the next instruction
-    input   PC_En_Conflict,
-    output              fetch_req,//取新指令请求
+    input               ack,        //permission to start the next instruction
+    input               PC_En_Conflict,
+    output              fetch_req,  //取新指令请求
     output  reg         next_en0,
     output  reg [2:0]   stage,
-    /*
-    stage: 刚进入时为0
-    */
+    //stage: 刚进入时为0
     output  reg [4:0]   rt_addr,
     output  reg [4:0]   rd_addr,
     //Control signals:

@@ -111,12 +111,11 @@ wire IorD =DMemVisit?1:0;
 wire MemWrite = DMemVisit&&(DMemVisitState==S5);
 //写回冲突检测：...
 //写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑。
-//
+//0
 //但写回结果可在写回前传到下一条指令。
-wire 
-RegWrite
-MemtoReg
-RegDst
+RegWrite = ack1?RegWrite1:(ack2?RegWrite2:(ack3?RegWrite3:(ack4?RegWrite4:(ack5?RegWrite5:0))));
+MemtoReg = ack1?MemtoReg1:(ack2?MemtoReg2:(ack3?MemtoReg3:(ack4?MemtoReg4:(ack5?MemtoReg5:0))));
+RegDst = ack1?RegDst1:(ack2?RegDst2:(ack3?RegDst3:(ack4?RegDst4:(ack5?RegDst5:0))));
 
 wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
 wire Branch1Occur = (state1==S8)&&(Branch1&&ALU_ZERO)|| (Branch_ne1 && !ALU_ZERO)||(Branch_gz1 && ALU_POSITIVE);
@@ -168,45 +167,228 @@ assign IRWrite = ((state1==S0)?IRWrite1:0)||((state2==S0)?IRWrite2:0)||((state3=
 assign ALU_SrcB = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0);
 assign ALUOp = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALUOp1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALUOp2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALUOp3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALUOp4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALUOp5:0);
 
+//global_control actions: 分步启动
+always@(posedge clk or negedge rst_n)
+begin
+    if(~rst_n)
+        en0 <= 0;
+    else en0 <= 1;
+end
+
 
 pipe_FSM FSM1(
     //input:
     .clk(clk),
     .rst_n(rst_n),
-    .STATIC_PRIORITY(3'd0),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
     .en0(en0),
-    .bubble(bubble),
+    .bubble(bubble),        //统一信号
+    .bubblePri(bubblePri),  //统一信号
+    .flush(flush),          //统一信号
+    .flushPri(flushPri),    //统一信号
+    .ack(ack1),              //非统一
+    .PC_En_Conflict(PC_En_Conflict1),
     //output:
-    .next_en0(en021),
-    .priority(priority)
-    .rt_addr(rt_addr),//从之前的instruction提取并保存的
-    .rd_addr(rd_addr),
+    .fetch_req(fetch_req1),
+    .next_en0(en021),       //不规则
+    .stage(stage1)
+    .rt_addr(rt_addr1),//从之前的instruction提取并保存的
+    .rd_addr(rd_addr1),
     //control signals:
-    .PCWrite(PCWrite),
-    .PC_Src(PC_Src),
-    .Branch(Branch),
-    .Branch_ne(Branch_ne),
-    .Branch_gz(Branch_gz),
+    .PCWrite(PCWrite1),
+    .PC_Src(PC_Src1),
+    .Branch(Branch1),
+    .Branch_ne(Branch_ne1),
+    .Branch_gz(Branch_gz1),
 
-    .MemtoReg(MemtoReg),
-    .MemWrite(MemWrite),
-    .IorD(IorD),
+    .MemtoReg(MemtoReg1),
+    .MemWrite(MemWrite1),
+    .IorD(IorD1),
 
-    .RegDst(RegDst),
-    .RegWrite(RegWrite),
+    .RegDst(RegDst1),
+    .RegWrite(RegWrite1),
 
-    .ALUOp(ALUOp),
-    .ALU_SrcA(ALU_SrcA),
-    .ALU_SrcB(ALU_SrcB),
+    .ALUOp(ALUOp1),
+    .ALU_SrcA(ALU_SrcA1),
+    .ALU_SrcB(ALU_SrcB1),
 
-    .IR_Write(IR_Write),
-    .IR_in_Write(IR_in_Write),
-    .state(state),
-    .next_state(next_state)
+    .IR_Write(IR_Write1),
+    .IR_in_Write(IR_in_Write1),
+    .state(state1),
+    .next_state(next_state1)
 );
 
+pipe_FSM FSM2(
+    //input:
+    .clk(clk),
+    .rst_n(rst_n),
+    .instruction(instruction),//每个状态机只在它的取指时取入instruction
+    //FSM control:5
+    .en0(en021),
+    .bubble(bubble),        //统一信号
+    .bubblePri(bubblePri),  //统一信号
+    .flush(flush),          //统一信号
+    .flushPri(flushPri),    //统一信号
+    .ack(ack2),              //非统一
+    .PC_En_Conflict(PC_En_Conflict2),
+    //output:
+    .fetch_req(fetch_req2),
+    .next_en0(en122),       //不规则
+    .stage(stage2)
+    .rt_addr(rt_addr2),//从之前的instruction提取并保存的
+    .rd_addr(rd_addr2),
+    //control signals:
+    .PCWrite(PCWrite2),
+    .PC_Src(PC_Src2),
+    .Branch(Branch2),
+    .Branch_ne(Branch_ne2),
+    .Branch_gz(Branch_gz2),
 
+    .MemtoReg(MemtoReg2),
+    .MemWrite(MemWrite2),
+    .IorD(IorD2),
+
+    .RegDst(RegDst2),
+    .RegWrite(RegWrite2),
+
+    .ALUOp(ALUOp2),
+    .ALU_SrcA(ALU_SrcA2),
+    .ALU_SrcB(ALU_SrcB2),
+
+    .IR_Write(IR_Write2),
+    .IR_in_Write(IR_in_Write2),
+    .state(state2),
+    .next_state(next_state2)
+);
+
+pipe_FSM FSM3(
+    //input:
+    .clk(clk),
+    .rst_n(rst_n),
+    .instruction(instruction),//每个状态机只在它的取指时取入instruction
+    //FSM control:5
+    .en0(en122),
+    .bubble(bubble),        //统一信号
+    .bubblePri(bubblePri),  //统一信号
+    .flush(flush),          //统一信号
+    .flushPri(flushPri),    //统一信号
+    .ack(ack3),              //非统一
+    .PC_En_Conflict(PC_En_Conflict3),
+    //output:
+    .fetch_req(fetch_req3),
+    .next_en0(en223),       //不规则
+    .stage(stage3)
+    .rt_addr(rt_addr3),//从之前的instruction提取并保存的
+    .rd_addr(rd_addr3),
+    //control signals:
+    .PCWrite(PCWrite3),
+    .PC_Src(PC_Src3),
+    .Branch(Branch3),
+    .Branch_ne(Branch_ne3),
+    .Branch_gz(Branch_gz3),
+
+    .MemtoReg(MemtoReg3),
+    .MemWrite(MemWrite3),
+    .IorD(IorD3),
+
+    .RegDst(RegDst3),
+    .RegWrite(RegWrite3),
+
+    .ALUOp(ALUOp3),
+    .ALU_SrcA(ALU_SrcA3),
+    .ALU_SrcB(ALU_SrcB3),
+
+    .IR_Write(IR_Write3),
+    .IR_in_Write(IR_in_Write3),
+    .state(state3),
+    .next_state(next_state3)
+);
+
+pipe_FSM FSM4(
+    //input:
+    .clk(clk),
+    .rst_n(rst_n),
+    .instruction(instruction),//每个状态机只在它的取指时取入instruction
+    //FSM control:5
+    .en0(en223),
+    .bubble(bubble),        //统一信号
+    .bubblePri(bubblePri),  //统一信号
+    .flush(flush),          //统一信号
+    .flushPri(flushPri),    //统一信号
+    .ack(ack4),              //非统一
+    .PC_En_Conflict(PC_En_Conflict4),
+    //output:
+    .fetch_req(fetch_req4),
+    .next_en0(en324),       //不规则
+    .stage(stage4)
+    .rt_addr(rt_addr4),//从之前的instruction提取并保存的
+    .rd_addr(rd_addr4),
+    //control signals:
+    .PCWrite(PCWrite4),
+    .PC_Src(PC_Src4),
+    .Branch(Branch4),
+    .Branch_ne(Branch_ne4),
+    .Branch_gz(Branch_gz4),
+
+    .MemtoReg(MemtoReg4),
+    .MemWrite(MemWrite4),
+    .IorD(IorD4),
+
+    .RegDst(RegDst4),
+    .RegWrite(RegWrite4),
+
+    .ALUOp(ALUOp4),
+    .ALU_SrcA(ALU_SrcA4),
+    .ALU_SrcB(ALU_SrcB4),
+
+    .IR_Write(IR_Write4),
+    .IR_in_Write(IR_in_Write4),
+    .state(state4),
+    .next_state(next_state4)
+);
+
+pipe_FSM FSM5(
+    //input:
+    .clk(clk),
+    .rst_n(rst_n),
+    .instruction(instruction),//每个状态机只在它的取指时取入instruction
+    //FSM control:5
+    .en0(en324),
+    .bubble(bubble),        //统一信号
+    .bubblePri(bubblePri),  //统一信号
+    .flush(flush),          //统一信号
+    .flushPri(flushPri),    //统一信号
+    .ack(ack5),              //非统一
+    .PC_En_Conflict(PC_En_Conflict5),
+    //output:
+    .fetch_req(fetch_req5),
+    //.next_en0(en425),       //不规则
+    .stage(stage5)
+    .rt_addr(rt_addr5),//从之前的instruction提取并保存的
+    .rd_addr(rd_addr5),
+    //control signals:
+    .PCWrite(PCWrite5),
+    .PC_Src(PC_Src5),
+    .Branch(Branch5),
+    .Branch_ne(Branch_ne5),
+    .Branch_gz(Branch_gz5),
+
+    .MemtoReg(MemtoReg5),
+    .MemWrite(MemWrite5),
+    .IorD(IorD5),
+
+    .RegDst(RegDst5),
+    .RegWrite(RegWrite5),
+
+    .ALUOp(ALUOp5),
+    .ALU_SrcA(ALU_SrcA5),
+    .ALU_SrcB(ALU_SrcB5),
+
+    .IR_Write(IR_Write5),
+    .IR_in_Write(IR_in_Write5),
+    .state(state5),
+    .next_state(next_state5)
+);
 
 endmodule
