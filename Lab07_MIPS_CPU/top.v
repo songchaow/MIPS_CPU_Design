@@ -74,6 +74,10 @@ output  [6:0]   next_state
 assign Jump_addr = instruction[25:0];
 assign opcode = instruction[31:26];
 assign Immed = instruction[15:0];
+wire [4:0]  rt_addr,[4:0]   rd_addr;
+
+wire    [31:0]  ForwardA;
+wire    [31:0]  ForwardB;
 //Instruction Memory
 //wire [8:0] I_addra;
 //wire I_wea;
@@ -199,7 +203,7 @@ SEXT mySEXT(
 );
 ALU_OpA ALU_OPA_MUX(
     .ALU_SrcA(ALU_SrcA),//control signal
-    .curr_PC(PC),
+    .ForwardA(ForwardA),
     .r1_dout(r1_dout),
     .alu_opa(alu_a)
 );
@@ -207,7 +211,8 @@ ALU_OpB ALU_OPB_MUX(
     .ALU_SrcB(ALU_SrcB),//control signal
     .sext_Immed(sext_Immed),
     .r2_dout(r2_dout),
-    .alu_opb(alu_b)
+    .alu_opb(alu_b),
+    .ForwardB(ForwardB)
 );
 
 ALU_CONTROL AluControl(

@@ -224,9 +224,10 @@ begin
         Branch_gz <= 0;
         Branch_ne <= 0;
         RegDst <= 1;
-        ALU_SrcA <= 0;//impossible now
+        //ALU_SrcA <= 0;//impossible now
         ALU_SrcA <= 1;
-        ALU_SrcB <= 2'b01;
+        //ALU_SrcB <= 2'b01;//impossible now
+        ALU_SrcB <= 2'b00;
         ALUOp <= 0;
         PC_Src <= 0;
         IorD <= 0;

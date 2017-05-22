@@ -26,24 +26,26 @@ module global_FSM(
     input               ALU_POSITIVE,
     //Control signals:
     //PC:
-    output           PCWrite,
-    output   [1:0]   PC_Src,
+    output          PCWrite,
+    output  [1:0]   PC_Src,
     //PC_En
-    output           Branch,
-    output           Branch_ne,
-    output           Branch_gz,
+    output          Branch,
+    output          Branch_ne,
+    output          Branch_gz,
 
     //MEM:
-    output           MemtoReg,    
-    output           MemWrite,
-    output           IorD,
+    output          MemtoReg,    
+    output          MemWrite,
+    output          IorD,
     //RegFile
-    output           RegDst,
-    output           RegWrite,
+    output  [4:0]   rt_addr,
+    output  [4:0]   rd_addr,
+    output          RegDst,
+    output          RegWrite,
     //ALU
-    output   [1:0]   ALUOp,
-    output           ALU_SrcA,
-    output   [1:0]   ALU_SrcB,
+    output  [1:0]   ALUOp,
+    output          ALU_SrcA,
+    output  [1:0]   ALU_SrcB,
     //Instruction Reg
     output           IR_Write
     );
@@ -109,13 +111,15 @@ wire DMemVisit = DMemVisit1||DMemVisit2||DMemVisit3||DMemVisit4||DMemVisit5;
 wire DMemVisitState = DMemVisit1?state1:(DMemVisit2?state2:(DMemVisit3?state3:(DMemVisit4?state4:(DMemVisit5?state5:state1))));
 wire IorD =DMemVisit?1:0;
 wire MemWrite = DMemVisit&&(DMemVisitState==S5);
-//写回冲突检测：...
+//写回信号
 //写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑。
-//0
 //但写回结果可在写回前传到下一条指令。
 RegWrite = ack1?RegWrite1:(ack2?RegWrite2:(ack3?RegWrite3:(ack4?RegWrite4:(ack5?RegWrite5:0))));
 MemtoReg = ack1?MemtoReg1:(ack2?MemtoReg2:(ack3?MemtoReg3:(ack4?MemtoReg4:(ack5?MemtoReg5:0))));
 RegDst = ack1?RegDst1:(ack2?RegDst2:(ack3?RegDst3:(ack4?RegDst4:(ack5?RegDst5:0))));
+
+wire rt_addr = ack1?rt_addr1:(ack2?rt_addr2:(ack3?rt_addr3:(ack4?rt_addr4:(ack5?rt_addr5:0))));
+wire rd_addr = ack1?rd_addr1:(ack2?rd_addr2:(ack3?rd_addr3:(ack4?rd_addr4:(ack5?rd_addr5:0))));
 
 wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
 wire Branch1Occur = (state1==S8)&&(Branch1&&ALU_ZERO)|| (Branch_ne1 && !ALU_ZERO)||(Branch_gz1 && ALU_POSITIVE);

@@ -20,11 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 module ALU_OpA(
     input                   ALU_SrcA,
-    input           [31:0]  curr_PC,
+    input           [31:0]  ForwardA,
     input           [31:0]  r1_dout,
     output  signed  [31:0]  alu_opa
     );
 
-assign alu_opa = ALU_SrcA? r1_dout:curr_PC;
+assign alu_opa = ALU_SrcA? r1_dout:ForwardA;
+//ForwardA再由新的多选器和选择信号来控制
 
 endmodule
