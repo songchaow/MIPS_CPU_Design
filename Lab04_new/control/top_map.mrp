@@ -1,0 +1,1085 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Mapping Report File for Design 'top'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off
+-c 100 -o top_map.ncd top.ngd top.pcf 
+Target Device  : xc3s500e
+Target Package : fg320
+Target Speed   : -5
+Mapper Version : spartan3e -- $Revision: 1.55 $
+Mapped Date    : Sat Apr 08 20:45:50 2017
+
+Design Summary
+--------------
+Number of errors   :   1
+Number of warnings :   2
+
+Section 1 - Errors
+------------------
+ERROR:Pack:198 - NCD was not produced.  All logic was removed from the design. 
+   This is usually due to having no input or output PAD connections in the
+   design and no nets or symbols marked as 'SAVE'.  You can either add PADs or
+   'SAVE' attributes to the design, or run 'map -u' to disable logic trimming in
+   the mapper.  For more information on trimming issues search the Xilinx
+   Answers database for "ERROR:Pack:198" and read the Master Answer Record for
+   MAP Trimming Issues.
+
+Section 2 - Warnings
+--------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current
+version of Xilinx tools will continue to function, but you no longer qualify for
+Xilinx software updates or new releases.
+WARNING:MapLib:701 - Signal rst_n connected to top level port rst_n has been
+   removed.
+WARNING:MapLib:701 - Signal clk connected to top level port clk has been
+   removed.
+
+Section 3 - Informational
+-------------------------
+INFO:Security:54 - 'xc3s500e' is a WebPack part.
+INFO:MapLib:562 - No environment variables are currently set.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+ 458 block(s) removed
+ 489 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+The signal "clk_BUFGP/IBUFG" is sourceless and has been removed.
+ Sourceless block "clk_BUFGP/BUFG" (CKBUF) removed.
+  The signal "clk_BUFGP" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_0" (FF) removed.
+    The signal "u_regfile_32x32/file_0_0" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_0" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<0>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<0>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<0>" is sourceless and has been
+removed.
+         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<0>" (MUX) removed.
+          The signal "u_alu/Maddsub_alu_out_addsub0000_cy<0>" is sourceless and has been
+removed.
+           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<1>" (MUX) removed.
+            The signal "u_alu/Maddsub_alu_out_addsub0000_cy<1>" is sourceless and has been
+removed.
+             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<2>" (MUX) removed.
+              The signal "u_alu/Maddsub_alu_out_addsub0000_cy<2>" is sourceless and has been
+removed.
+               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<3>" (MUX) removed.
+                The signal "u_alu/Maddsub_alu_out_addsub0000_cy<3>" is sourceless and has been
+removed.
+                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<4>" (MUX) removed.
+                  The signal "u_alu/Maddsub_alu_out_addsub0000_cy<4>" is sourceless and has been
+removed.
+                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<5>" (MUX) removed.
+                    The signal "u_alu/Maddsub_alu_out_addsub0000_cy<5>" is sourceless and has been
+removed.
+                     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<6>" (MUX) removed.
+                      The signal "u_alu/Maddsub_alu_out_addsub0000_cy<6>" is sourceless and has been
+removed.
+                       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<7>" (MUX) removed.
+                        The signal "u_alu/Maddsub_alu_out_addsub0000_cy<7>" is sourceless and has been
+removed.
+                         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<8>" (MUX) removed.
+                          The signal "u_alu/Maddsub_alu_out_addsub0000_cy<8>" is sourceless and has been
+removed.
+                           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<9>" (MUX) removed.
+                            The signal "u_alu/Maddsub_alu_out_addsub0000_cy<9>" is sourceless and has been
+removed.
+                             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<10>" (MUX) removed.
+                              The signal "u_alu/Maddsub_alu_out_addsub0000_cy<10>" is sourceless and has been
+removed.
+                               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<11>" (MUX) removed.
+                                The signal "u_alu/Maddsub_alu_out_addsub0000_cy<11>" is sourceless and has been
+removed.
+                                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<12>" (MUX) removed.
+                                  The signal "u_alu/Maddsub_alu_out_addsub0000_cy<12>" is sourceless and has been
+removed.
+                                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<13>" (MUX) removed.
+                                    The signal "u_alu/Maddsub_alu_out_addsub0000_cy<13>" is sourceless and has been
+removed.
+                                     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<14>" (MUX) removed.
+                                      The signal "u_alu/Maddsub_alu_out_addsub0000_cy<14>" is sourceless and has been
+removed.
+                                       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<15>" (MUX) removed.
+                                        The signal "u_alu/Maddsub_alu_out_addsub0000_cy<15>" is sourceless and has been
+removed.
+                                         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<16>" (MUX) removed.
+                                          The signal "u_alu/Maddsub_alu_out_addsub0000_cy<16>" is sourceless and has been
+removed.
+                                           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<17>" (MUX) removed.
+                                            The signal "u_alu/Maddsub_alu_out_addsub0000_cy<17>" is sourceless and has been
+removed.
+                                             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<18>" (MUX) removed.
+                                              The signal "u_alu/Maddsub_alu_out_addsub0000_cy<18>" is sourceless and has been
+removed.
+                                               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<19>" (MUX) removed.
+                                                The signal "u_alu/Maddsub_alu_out_addsub0000_cy<19>" is sourceless and has been
+removed.
+                                                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<20>" (MUX) removed.
+*The signal "u_alu/Maddsub_alu_out_addsub0000_cy<20>" is sourceless and has been
+removed.
+* Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<21>" (MUX) removed.
+*  The signal "u_alu/Maddsub_alu_out_addsub0000_cy<21>" is sourceless and has been
+removed.
+*   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<22>" (MUX) removed.
+*    The signal "u_alu/Maddsub_alu_out_addsub0000_cy<22>" is sourceless and has been
+removed.
+*     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<23>" (MUX) removed.
+*      The signal "u_alu/Maddsub_alu_out_addsub0000_cy<23>" is sourceless and has been
+removed.
+*       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<24>" (MUX) removed.
+*        The signal "u_alu/Maddsub_alu_out_addsub0000_cy<24>" is sourceless and has been
+removed.
+*         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<25>" (MUX) removed.
+*          The signal "u_alu/Maddsub_alu_out_addsub0000_cy<25>" is sourceless and has been
+removed.
+*           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<26>" (MUX) removed.
+*            The signal "u_alu/Maddsub_alu_out_addsub0000_cy<26>" is sourceless and has been
+removed.
+*             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<27>" (MUX) removed.
+*              The signal "u_alu/Maddsub_alu_out_addsub0000_cy<27>" is sourceless and has been
+removed.
+*               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<28>" (MUX) removed.
+*                The signal "u_alu/Maddsub_alu_out_addsub0000_cy<28>" is sourceless and has been
+removed.
+*                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<29>" (MUX) removed.
+*                  The signal "u_alu/Maddsub_alu_out_addsub0000_cy<29>" is sourceless and has been
+removed.
+*                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_cy<30>" (MUX) removed.
+*                    The signal "u_alu/Maddsub_alu_out_addsub0000_cy<30>" is sourceless and has been
+removed.
+*                     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<31>" (XOR) removed.
+*                      The signal "u_alu/alu_out_addsub0000<31>" is sourceless and has been removed.
+*                       Sourceless block "u_alu/alu_out_mux0001<31>35" (ROM) removed.
+*                        The signal "u_alu/alu_out_mux0001<31>35" is sourceless and has been removed.
+*                         Sourceless block "u_alu/alu_out_mux0001<31>56" (ROM) removed.
+*                          The signal "u_alu/alu_out_mux0001<31>" is sourceless and has been removed.
+*                           Sourceless block "u_alu/alu_out_31" (LATCH) removed.
+*                            The signal "u_alu/alu_out<31>" is sourceless and has been removed.
+*                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<30>" (XOR) removed.
+*                    The signal "u_alu/alu_out_addsub0000<30>" is sourceless and has been removed.
+*                     Sourceless block "u_alu/alu_out_mux0001<30>35" (ROM) removed.
+*                      The signal "u_alu/alu_out_mux0001<30>35" is sourceless and has been removed.
+*                       Sourceless block "u_alu/alu_out_mux0001<30>56" (ROM) removed.
+*                        The signal "u_alu/alu_out_mux0001<30>" is sourceless and has been removed.
+*                         Sourceless block "u_alu/alu_out_30" (LATCH) removed.
+*                          The signal "u_alu/alu_out<30>" is sourceless and has been removed.
+*                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<29>" (XOR) removed.
+*                  The signal "u_alu/alu_out_addsub0000<29>" is sourceless and has been removed.
+*                   Sourceless block "u_alu/alu_out_mux0001<29>35" (ROM) removed.
+*                    The signal "u_alu/alu_out_mux0001<29>35" is sourceless and has been removed.
+*                     Sourceless block "u_alu/alu_out_mux0001<29>56" (ROM) removed.
+*                      The signal "u_alu/alu_out_mux0001<29>" is sourceless and has been removed.
+*                       Sourceless block "u_alu/alu_out_29" (LATCH) removed.
+*                        The signal "u_alu/alu_out<29>" is sourceless and has been removed.
+*               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<28>" (XOR) removed.
+*                The signal "u_alu/alu_out_addsub0000<28>" is sourceless and has been removed.
+*                 Sourceless block "u_alu/alu_out_mux0001<28>35" (ROM) removed.
+*                  The signal "u_alu/alu_out_mux0001<28>35" is sourceless and has been removed.
+*                   Sourceless block "u_alu/alu_out_mux0001<28>56" (ROM) removed.
+*                    The signal "u_alu/alu_out_mux0001<28>" is sourceless and has been removed.
+*                     Sourceless block "u_alu/alu_out_28" (LATCH) removed.
+*                      The signal "u_alu/alu_out<28>" is sourceless and has been removed.
+*             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<27>" (XOR) removed.
+*              The signal "u_alu/alu_out_addsub0000<27>" is sourceless and has been removed.
+*               Sourceless block "u_alu/alu_out_mux0001<27>35" (ROM) removed.
+*                The signal "u_alu/alu_out_mux0001<27>35" is sourceless and has been removed.
+*                 Sourceless block "u_alu/alu_out_mux0001<27>56" (ROM) removed.
+*                  The signal "u_alu/alu_out_mux0001<27>" is sourceless and has been removed.
+*                   Sourceless block "u_alu/alu_out_27" (LATCH) removed.
+*                    The signal "u_alu/alu_out<27>" is sourceless and has been removed.
+*           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<26>" (XOR) removed.
+*            The signal "u_alu/alu_out_addsub0000<26>" is sourceless and has been removed.
+*             Sourceless block "u_alu/alu_out_mux0001<26>35" (ROM) removed.
+*              The signal "u_alu/alu_out_mux0001<26>35" is sourceless and has been removed.
+*               Sourceless block "u_alu/alu_out_mux0001<26>56" (ROM) removed.
+*                The signal "u_alu/alu_out_mux0001<26>" is sourceless and has been removed.
+*                 Sourceless block "u_alu/alu_out_26" (LATCH) removed.
+*                  The signal "u_alu/alu_out<26>" is sourceless and has been removed.
+*         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<25>" (XOR) removed.
+*          The signal "u_alu/alu_out_addsub0000<25>" is sourceless and has been removed.
+*           Sourceless block "u_alu/alu_out_mux0001<25>35" (ROM) removed.
+*            The signal "u_alu/alu_out_mux0001<25>35" is sourceless and has been removed.
+*             Sourceless block "u_alu/alu_out_mux0001<25>56" (ROM) removed.
+*              The signal "u_alu/alu_out_mux0001<25>" is sourceless and has been removed.
+*               Sourceless block "u_alu/alu_out_25" (LATCH) removed.
+*                The signal "u_alu/alu_out<25>" is sourceless and has been removed.
+*       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<24>" (XOR) removed.
+*        The signal "u_alu/alu_out_addsub0000<24>" is sourceless and has been removed.
+*         Sourceless block "u_alu/alu_out_mux0001<24>35" (ROM) removed.
+*          The signal "u_alu/alu_out_mux0001<24>35" is sourceless and has been removed.
+*           Sourceless block "u_alu/alu_out_mux0001<24>56" (ROM) removed.
+*            The signal "u_alu/alu_out_mux0001<24>" is sourceless and has been removed.
+*             Sourceless block "u_alu/alu_out_24" (LATCH) removed.
+*              The signal "u_alu/alu_out<24>" is sourceless and has been removed.
+*     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<23>" (XOR) removed.
+*      The signal "u_alu/alu_out_addsub0000<23>" is sourceless and has been removed.
+*       Sourceless block "u_alu/alu_out_mux0001<23>35" (ROM) removed.
+*        The signal "u_alu/alu_out_mux0001<23>35" is sourceless and has been removed.
+*         Sourceless block "u_alu/alu_out_mux0001<23>56" (ROM) removed.
+*          The signal "u_alu/alu_out_mux0001<23>" is sourceless and has been removed.
+*           Sourceless block "u_alu/alu_out_23" (LATCH) removed.
+*            The signal "u_alu/alu_out<23>" is sourceless and has been removed.
+*   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<22>" (XOR) removed.
+*    The signal "u_alu/alu_out_addsub0000<22>" is sourceless and has been removed.
+*     Sourceless block "u_alu/alu_out_mux0001<22>35" (ROM) removed.
+*      The signal "u_alu/alu_out_mux0001<22>35" is sourceless and has been removed.
+*       Sourceless block "u_alu/alu_out_mux0001<22>56" (ROM) removed.
+*        The signal "u_alu/alu_out_mux0001<22>" is sourceless and has been removed.
+*         Sourceless block "u_alu/alu_out_22" (LATCH) removed.
+*          The signal "u_alu/alu_out<22>" is sourceless and has been removed.
+* Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<21>" (XOR) removed.
+*  The signal "u_alu/alu_out_addsub0000<21>" is sourceless and has been removed.
+*   Sourceless block "u_alu/alu_out_mux0001<21>35" (ROM) removed.
+*    The signal "u_alu/alu_out_mux0001<21>35" is sourceless and has been removed.
+*     Sourceless block "u_alu/alu_out_mux0001<21>56" (ROM) removed.
+*      The signal "u_alu/alu_out_mux0001<21>" is sourceless and has been removed.
+*       Sourceless block "u_alu/alu_out_21" (LATCH) removed.
+*        The signal "u_alu/alu_out<21>" is sourceless and has been removed.
+                                                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<20>" (XOR) removed.
+*The signal "u_alu/alu_out_addsub0000<20>" is sourceless and has been removed.
+* Sourceless block "u_alu/alu_out_mux0001<20>35" (ROM) removed.
+*  The signal "u_alu/alu_out_mux0001<20>35" is sourceless and has been removed.
+*   Sourceless block "u_alu/alu_out_mux0001<20>56" (ROM) removed.
+*    The signal "u_alu/alu_out_mux0001<20>" is sourceless and has been removed.
+*     Sourceless block "u_alu/alu_out_20" (LATCH) removed.
+*      The signal "u_alu/alu_out<20>" is sourceless and has been removed.
+                                               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<19>" (XOR) removed.
+                                                The signal "u_alu/alu_out_addsub0000<19>" is sourceless and has been removed.
+                                                 Sourceless block "u_alu/alu_out_mux0001<19>35" (ROM) removed.
+*The signal "u_alu/alu_out_mux0001<19>35" is sourceless and has been removed.
+* Sourceless block "u_alu/alu_out_mux0001<19>56" (ROM) removed.
+*  The signal "u_alu/alu_out_mux0001<19>" is sourceless and has been removed.
+*   Sourceless block "u_alu/alu_out_19" (LATCH) removed.
+*    The signal "u_alu/alu_out<19>" is sourceless and has been removed.
+                                             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<18>" (XOR) removed.
+                                              The signal "u_alu/alu_out_addsub0000<18>" is sourceless and has been removed.
+                                               Sourceless block "u_alu/alu_out_mux0001<18>35" (ROM) removed.
+                                                The signal "u_alu/alu_out_mux0001<18>35" is sourceless and has been removed.
+                                                 Sourceless block "u_alu/alu_out_mux0001<18>56" (ROM) removed.
+*The signal "u_alu/alu_out_mux0001<18>" is sourceless and has been removed.
+* Sourceless block "u_alu/alu_out_18" (LATCH) removed.
+*  The signal "u_alu/alu_out<18>" is sourceless and has been removed.
+                                           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<17>" (XOR) removed.
+                                            The signal "u_alu/alu_out_addsub0000<17>" is sourceless and has been removed.
+                                             Sourceless block "u_alu/alu_out_mux0001<17>35" (ROM) removed.
+                                              The signal "u_alu/alu_out_mux0001<17>35" is sourceless and has been removed.
+                                               Sourceless block "u_alu/alu_out_mux0001<17>56" (ROM) removed.
+                                                The signal "u_alu/alu_out_mux0001<17>" is sourceless and has been removed.
+                                                 Sourceless block "u_alu/alu_out_17" (LATCH) removed.
+*The signal "u_alu/alu_out<17>" is sourceless and has been removed.
+                                         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<16>" (XOR) removed.
+                                          The signal "u_alu/alu_out_addsub0000<16>" is sourceless and has been removed.
+                                           Sourceless block "u_alu/alu_out_mux0001<16>58_SW0" (ROM) removed.
+                                            The signal "N60" is sourceless and has been removed.
+                                             Sourceless block "u_alu/alu_out_mux0001<16>58" (ROM) removed.
+                                              The signal "u_alu/alu_out_mux0001<16>" is sourceless and has been removed.
+                                               Sourceless block "u_alu/alu_out_16" (LATCH) removed.
+                                                The signal "u_alu/alu_out<16>" is sourceless and has been removed.
+                                       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<15>" (XOR) removed.
+                                        The signal "u_alu/alu_out_addsub0000<15>" is sourceless and has been removed.
+                                         Sourceless block "u_alu/alu_out_mux0001<15>58_SW0" (ROM) removed.
+                                          The signal "N62" is sourceless and has been removed.
+                                           Sourceless block "u_alu/alu_out_mux0001<15>58" (ROM) removed.
+                                            The signal "u_alu/alu_out_mux0001<15>" is sourceless and has been removed.
+                                             Sourceless block "u_alu/alu_out_15" (LATCH) removed.
+                                              The signal "u_alu/alu_out<15>" is sourceless and has been removed.
+                                     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<14>" (XOR) removed.
+                                      The signal "u_alu/alu_out_addsub0000<14>" is sourceless and has been removed.
+                                       Sourceless block "u_alu/alu_out_mux0001<14>58_SW0" (ROM) removed.
+                                        The signal "N64" is sourceless and has been removed.
+                                         Sourceless block "u_alu/alu_out_mux0001<14>58" (ROM) removed.
+                                          The signal "u_alu/alu_out_mux0001<14>" is sourceless and has been removed.
+                                           Sourceless block "u_alu/alu_out_14" (LATCH) removed.
+                                            The signal "u_alu/alu_out<14>" is sourceless and has been removed.
+                                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<13>" (XOR) removed.
+                                    The signal "u_alu/alu_out_addsub0000<13>" is sourceless and has been removed.
+                                     Sourceless block "u_alu/alu_out_mux0001<13>58_SW0" (ROM) removed.
+                                      The signal "N66" is sourceless and has been removed.
+                                       Sourceless block "u_alu/alu_out_mux0001<13>58" (ROM) removed.
+                                        The signal "u_alu/alu_out_mux0001<13>" is sourceless and has been removed.
+                                         Sourceless block "u_alu/alu_out_13" (LATCH) removed.
+                                          The signal "u_alu/alu_out<13>" is sourceless and has been removed.
+                                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<12>" (XOR) removed.
+                                  The signal "u_alu/alu_out_addsub0000<12>" is sourceless and has been removed.
+                                   Sourceless block "u_alu/alu_out_mux0001<12>58_SW0" (ROM) removed.
+                                    The signal "N68" is sourceless and has been removed.
+                                     Sourceless block "u_alu/alu_out_mux0001<12>58" (ROM) removed.
+                                      The signal "u_alu/alu_out_mux0001<12>" is sourceless and has been removed.
+                                       Sourceless block "u_alu/alu_out_12" (LATCH) removed.
+                                        The signal "u_alu/alu_out<12>" is sourceless and has been removed.
+                               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<11>" (XOR) removed.
+                                The signal "u_alu/alu_out_addsub0000<11>" is sourceless and has been removed.
+                                 Sourceless block "u_alu/alu_out_mux0001<11>58_SW0" (ROM) removed.
+                                  The signal "N70" is sourceless and has been removed.
+                                   Sourceless block "u_alu/alu_out_mux0001<11>58" (ROM) removed.
+                                    The signal "u_alu/alu_out_mux0001<11>" is sourceless and has been removed.
+                                     Sourceless block "u_alu/alu_out_11" (LATCH) removed.
+                                      The signal "u_alu/alu_out<11>" is sourceless and has been removed.
+                             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<10>" (XOR) removed.
+                              The signal "u_alu/alu_out_addsub0000<10>" is sourceless and has been removed.
+                               Sourceless block "u_alu/alu_out_mux0001<10>58_SW0" (ROM) removed.
+                                The signal "N72" is sourceless and has been removed.
+                                 Sourceless block "u_alu/alu_out_mux0001<10>58" (ROM) removed.
+                                  The signal "u_alu/alu_out_mux0001<10>" is sourceless and has been removed.
+                                   Sourceless block "u_alu/alu_out_10" (LATCH) removed.
+                                    The signal "u_alu/alu_out<10>" is sourceless and has been removed.
+                           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<9>" (XOR) removed.
+                            The signal "u_alu/alu_out_addsub0000<9>" is sourceless and has been removed.
+                             Sourceless block "u_alu/alu_out_mux0001<9>35" (ROM) removed.
+                              The signal "u_alu/alu_out_mux0001<9>35" is sourceless and has been removed.
+                               Sourceless block "u_alu/alu_out_mux0001<9>56" (ROM) removed.
+                                The signal "u_alu/alu_out_mux0001<9>" is sourceless and has been removed.
+                                 Sourceless block "u_alu/alu_out_9" (LATCH) removed.
+                                  The signal "u_alu/alu_out<9>" is sourceless and has been removed.
+                         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<8>" (XOR) removed.
+                          The signal "u_alu/alu_out_addsub0000<8>" is sourceless and has been removed.
+                           Sourceless block "u_alu/alu_out_mux0001<8>35" (ROM) removed.
+                            The signal "u_alu/alu_out_mux0001<8>35" is sourceless and has been removed.
+                             Sourceless block "u_alu/alu_out_mux0001<8>56" (ROM) removed.
+                              The signal "u_alu/alu_out_mux0001<8>" is sourceless and has been removed.
+                               Sourceless block "u_alu/alu_out_8" (LATCH) removed.
+                                The signal "u_alu/alu_out<8>" is sourceless and has been removed.
+                       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<7>" (XOR) removed.
+                        The signal "u_alu/alu_out_addsub0000<7>" is sourceless and has been removed.
+                         Sourceless block "u_alu/alu_out_mux0001<7>35" (ROM) removed.
+                          The signal "u_alu/alu_out_mux0001<7>35" is sourceless and has been removed.
+                           Sourceless block "u_alu/alu_out_mux0001<7>56" (ROM) removed.
+                            The signal "u_alu/alu_out_mux0001<7>" is sourceless and has been removed.
+                             Sourceless block "u_alu/alu_out_7" (LATCH) removed.
+                              The signal "u_alu/alu_out<7>" is sourceless and has been removed.
+                     Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<6>" (XOR) removed.
+                      The signal "u_alu/alu_out_addsub0000<6>" is sourceless and has been removed.
+                       Sourceless block "u_alu/alu_out_mux0001<6>35" (ROM) removed.
+                        The signal "u_alu/alu_out_mux0001<6>35" is sourceless and has been removed.
+                         Sourceless block "u_alu/alu_out_mux0001<6>56" (ROM) removed.
+                          The signal "u_alu/alu_out_mux0001<6>" is sourceless and has been removed.
+                           Sourceless block "u_alu/alu_out_6" (LATCH) removed.
+                            The signal "u_alu/alu_out<6>" is sourceless and has been removed.
+                   Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<5>" (XOR) removed.
+                    The signal "u_alu/alu_out_addsub0000<5>" is sourceless and has been removed.
+                     Sourceless block "u_alu/alu_out_mux0001<5>35" (ROM) removed.
+                      The signal "u_alu/alu_out_mux0001<5>35" is sourceless and has been removed.
+                       Sourceless block "u_alu/alu_out_mux0001<5>56" (ROM) removed.
+                        The signal "u_alu/alu_out_mux0001<5>" is sourceless and has been removed.
+                         Sourceless block "u_alu/alu_out_5" (LATCH) removed.
+                          The signal "u_alu/alu_out<5>" is sourceless and has been removed.
+                 Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<4>" (XOR) removed.
+                  The signal "u_alu/alu_out_addsub0000<4>" is sourceless and has been removed.
+                   Sourceless block "u_alu/alu_out_mux0001<4>35" (ROM) removed.
+                    The signal "u_alu/alu_out_mux0001<4>35" is sourceless and has been removed.
+                     Sourceless block "u_alu/alu_out_mux0001<4>56" (ROM) removed.
+                      The signal "u_alu/alu_out_mux0001<4>" is sourceless and has been removed.
+                       Sourceless block "u_alu/alu_out_4" (LATCH) removed.
+                        The signal "u_alu/alu_out<4>" is sourceless and has been removed.
+               Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<3>" (XOR) removed.
+                The signal "u_alu/alu_out_addsub0000<3>" is sourceless and has been removed.
+                 Sourceless block "u_alu/alu_out_mux0001<3>35" (ROM) removed.
+                  The signal "u_alu/alu_out_mux0001<3>35" is sourceless and has been removed.
+                   Sourceless block "u_alu/alu_out_mux0001<3>56" (ROM) removed.
+                    The signal "u_alu/alu_out_mux0001<3>" is sourceless and has been removed.
+                     Sourceless block "u_alu/alu_out_3" (LATCH) removed.
+                      The signal "u_alu/alu_out<3>" is sourceless and has been removed.
+             Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<2>" (XOR) removed.
+              The signal "u_alu/alu_out_addsub0000<2>" is sourceless and has been removed.
+               Sourceless block "u_alu/alu_out_mux0001<2>35" (ROM) removed.
+                The signal "u_alu/alu_out_mux0001<2>35" is sourceless and has been removed.
+                 Sourceless block "u_alu/alu_out_mux0001<2>56" (ROM) removed.
+                  The signal "u_alu/alu_out_mux0001<2>" is sourceless and has been removed.
+                   Sourceless block "u_alu/alu_out_2" (LATCH) removed.
+                    The signal "u_alu/alu_out<2>" is sourceless and has been removed.
+           Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<1>" (XOR) removed.
+            The signal "u_alu/alu_out_addsub0000<1>" is sourceless and has been removed.
+             Sourceless block "u_alu/alu_out_mux0001<1>35" (ROM) removed.
+              The signal "u_alu/alu_out_mux0001<1>35" is sourceless and has been removed.
+               Sourceless block "u_alu/alu_out_mux0001<1>56" (ROM) removed.
+                The signal "u_alu/alu_out_mux0001<1>" is sourceless and has been removed.
+                 Sourceless block "u_alu/alu_out_1" (LATCH) removed.
+                  The signal "u_alu/alu_out<1>" is sourceless and has been removed.
+         Sourceless block "u_alu/Maddsub_alu_out_addsub0000_xor<0>" (XOR) removed.
+          The signal "u_alu/alu_out_addsub0000<0>" is sourceless and has been removed.
+           Sourceless block "u_alu/alu_out_mux0001<0>58_SW0" (ROM) removed.
+            The signal "N74" is sourceless and has been removed.
+             Sourceless block "u_alu/alu_out_mux0001<0>58" (ROM) removed.
+              The signal "u_alu/alu_out_mux0001<0>" is sourceless and has been removed.
+               Sourceless block "u_alu/alu_out_0" (LATCH) removed.
+                The signal "u_alu/alu_out<0>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<0>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<0>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_1" (FF) removed.
+    The signal "u_regfile_32x32/file_0_1" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_1" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<1>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<1>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<1>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<1>56_SW0" (ROM) removed.
+        The signal "N52" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_2" (FF) removed.
+    The signal "u_regfile_32x32/file_0_2" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_2" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<2>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<2>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<2>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<2>56_SW0" (ROM) removed.
+        The signal "N30" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_3" (FF) removed.
+    The signal "u_regfile_32x32/file_0_3" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_3" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<3>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<3>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<3>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<3>56_SW0" (ROM) removed.
+        The signal "N24" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_4" (FF) removed.
+    The signal "u_regfile_32x32/file_0_4" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_4" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<4>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<4>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<4>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<4>56_SW0" (ROM) removed.
+        The signal "N22" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_5" (FF) removed.
+    The signal "u_regfile_32x32/file_0_5" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_5" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<5>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<5>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<5>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<5>56_SW0" (ROM) removed.
+        The signal "N20" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_6" (FF) removed.
+    The signal "u_regfile_32x32/file_0_6" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_6" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<6>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<6>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<6>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<6>56_SW0" (ROM) removed.
+        The signal "N18" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_7" (FF) removed.
+    The signal "u_regfile_32x32/file_0_7" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_7" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<7>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<7>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<7>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<7>56_SW0" (ROM) removed.
+        The signal "N16" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_8" (FF) removed.
+    The signal "u_regfile_32x32/file_0_8" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_8" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<8>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<8>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<8>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<8>56_SW0" (ROM) removed.
+        The signal "N14" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_9" (FF) removed.
+    The signal "u_regfile_32x32/file_0_9" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_9" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<9>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<9>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<9>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<9>56_SW0" (ROM) removed.
+        The signal "N12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_10" (FF) removed.
+    The signal "u_regfile_32x32/file_0_10" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_10" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<10>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<10>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<10>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<10>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<10>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_11" (FF) removed.
+    The signal "u_regfile_32x32/file_0_11" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_11" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<11>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<11>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<11>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<11>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<11>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_12" (FF) removed.
+    The signal "u_regfile_32x32/file_0_12" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_12" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<12>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<12>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<12>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<12>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<12>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_13" (FF) removed.
+    The signal "u_regfile_32x32/file_0_13" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_13" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<13>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<13>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<13>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<13>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<13>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_14" (FF) removed.
+    The signal "u_regfile_32x32/file_0_14" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_14" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<14>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<14>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<14>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<14>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<14>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_15" (FF) removed.
+    The signal "u_regfile_32x32/file_0_15" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_15" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<15>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<15>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<15>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<15>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<15>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_16" (FF) removed.
+    The signal "u_regfile_32x32/file_0_16" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_16" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<16>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<16>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<16>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<16>34" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<16>34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_17" (FF) removed.
+    The signal "u_regfile_32x32/file_0_17" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_17" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<17>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<17>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<17>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<17>56_SW0" (ROM) removed.
+        The signal "N58" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_18" (FF) removed.
+    The signal "u_regfile_32x32/file_0_18" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_18" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<18>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<18>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<18>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<18>56_SW0" (ROM) removed.
+        The signal "N56" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_19" (FF) removed.
+    The signal "u_regfile_32x32/file_0_19" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_19" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<19>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<19>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<19>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<19>56_SW0" (ROM) removed.
+        The signal "N54" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_20" (FF) removed.
+    The signal "u_regfile_32x32/file_0_20" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_20" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<20>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<20>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<20>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<20>56_SW0" (ROM) removed.
+        The signal "N50" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_21" (FF) removed.
+    The signal "u_regfile_32x32/file_0_21" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_21" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<21>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<21>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<21>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<21>56_SW0" (ROM) removed.
+        The signal "N48" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_22" (FF) removed.
+    The signal "u_regfile_32x32/file_0_22" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_22" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<22>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<22>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<22>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<22>56_SW0" (ROM) removed.
+        The signal "N46" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_23" (FF) removed.
+    The signal "u_regfile_32x32/file_0_23" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_23" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<23>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<23>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<23>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<23>56_SW0" (ROM) removed.
+        The signal "N44" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_24" (FF) removed.
+    The signal "u_regfile_32x32/file_0_24" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_24" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<24>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<24>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<24>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<24>56_SW0" (ROM) removed.
+        The signal "N42" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_25" (FF) removed.
+    The signal "u_regfile_32x32/file_0_25" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_25" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<25>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<25>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<25>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<25>56_SW0" (ROM) removed.
+        The signal "N40" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_26" (FF) removed.
+    The signal "u_regfile_32x32/file_0_26" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_26" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<26>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<26>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<26>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<26>56_SW0" (ROM) removed.
+        The signal "N38" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_27" (FF) removed.
+    The signal "u_regfile_32x32/file_0_27" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_27" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<27>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<27>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<27>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<27>56_SW0" (ROM) removed.
+        The signal "N36" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_28" (FF) removed.
+    The signal "u_regfile_32x32/file_0_28" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_28" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<28>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<28>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<28>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<28>56_SW0" (ROM) removed.
+        The signal "N34" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_29" (FF) removed.
+    The signal "u_regfile_32x32/file_0_29" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_29" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<29>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<29>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<29>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<29>56_SW0" (ROM) removed.
+        The signal "N32" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_30" (FF) removed.
+    The signal "u_regfile_32x32/file_0_30" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_30" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<30>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<30>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<30>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<30>56_SW0" (ROM) removed.
+        The signal "N28" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_0_31" (FF) removed.
+    The signal "u_regfile_32x32/file_0_31" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r1_dout_31" (FF) removed.
+      The signal "u_regfile_32x32/r1_dout<31>" is sourceless and has been removed.
+       Sourceless block "u_alu/Maddsub_alu_out_addsub0000_lut<31>" (ROM) removed.
+        The signal "u_alu/Maddsub_alu_out_addsub0000_lut<31>" is sourceless and has been
+removed.
+       Sourceless block "u_alu/alu_out_mux0001<31>56_SW0" (ROM) removed.
+        The signal "N26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_0" (FF) removed.
+    The signal "u_regfile_32x32/file_1_0" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_0" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<0>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<0>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<0>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_1" (FF) removed.
+    The signal "u_regfile_32x32/file_1_1" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_1" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<1>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<1>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<1>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_2" (FF) removed.
+    The signal "u_regfile_32x32/file_1_2" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_2" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<2>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<2>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<2>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_3" (FF) removed.
+    The signal "u_regfile_32x32/file_1_3" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_3" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<3>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<3>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<3>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_4" (FF) removed.
+    The signal "u_regfile_32x32/file_1_4" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_4" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<4>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<4>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<4>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_5" (FF) removed.
+    The signal "u_regfile_32x32/file_1_5" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_5" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<5>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<5>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<5>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_6" (FF) removed.
+    The signal "u_regfile_32x32/file_1_6" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_6" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<6>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<6>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<6>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_7" (FF) removed.
+    The signal "u_regfile_32x32/file_1_7" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_7" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<7>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<7>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<7>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_8" (FF) removed.
+    The signal "u_regfile_32x32/file_1_8" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_8" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<8>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<8>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<8>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_9" (FF) removed.
+    The signal "u_regfile_32x32/file_1_9" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_9" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<9>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<9>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<9>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_10" (FF) removed.
+    The signal "u_regfile_32x32/file_1_10" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_10" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<10>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<10>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<10>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_11" (FF) removed.
+    The signal "u_regfile_32x32/file_1_11" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_11" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<11>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<11>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<11>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_12" (FF) removed.
+    The signal "u_regfile_32x32/file_1_12" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_12" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<12>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<12>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<12>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_13" (FF) removed.
+    The signal "u_regfile_32x32/file_1_13" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_13" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<13>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<13>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<13>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_14" (FF) removed.
+    The signal "u_regfile_32x32/file_1_14" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_14" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<14>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<14>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<14>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_15" (FF) removed.
+    The signal "u_regfile_32x32/file_1_15" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_15" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<15>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<15>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<15>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_16" (FF) removed.
+    The signal "u_regfile_32x32/file_1_16" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_16" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<16>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<16>12" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<16>12" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_17" (FF) removed.
+    The signal "u_regfile_32x32/file_1_17" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_17" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<17>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<17>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<17>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_18" (FF) removed.
+    The signal "u_regfile_32x32/file_1_18" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_18" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<18>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<18>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<18>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_19" (FF) removed.
+    The signal "u_regfile_32x32/file_1_19" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_19" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<19>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<19>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<19>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_20" (FF) removed.
+    The signal "u_regfile_32x32/file_1_20" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_20" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<20>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<20>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<20>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_21" (FF) removed.
+    The signal "u_regfile_32x32/file_1_21" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_21" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<21>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<21>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<21>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_22" (FF) removed.
+    The signal "u_regfile_32x32/file_1_22" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_22" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<22>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<22>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<22>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_23" (FF) removed.
+    The signal "u_regfile_32x32/file_1_23" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_23" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<23>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<23>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<23>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_24" (FF) removed.
+    The signal "u_regfile_32x32/file_1_24" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_24" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<24>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<24>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<24>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_25" (FF) removed.
+    The signal "u_regfile_32x32/file_1_25" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_25" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<25>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<25>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<25>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_26" (FF) removed.
+    The signal "u_regfile_32x32/file_1_26" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_26" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<26>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<26>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<26>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_27" (FF) removed.
+    The signal "u_regfile_32x32/file_1_27" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_27" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<27>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<27>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<27>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_28" (FF) removed.
+    The signal "u_regfile_32x32/file_1_28" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_28" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<28>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<28>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<28>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_29" (FF) removed.
+    The signal "u_regfile_32x32/file_1_29" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_29" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<29>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<29>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<29>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_30" (FF) removed.
+    The signal "u_regfile_32x32/file_1_30" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_30" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<30>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<30>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<30>26" is sourceless and has been removed.
+   Sourceless block "u_regfile_32x32/file_1_31" (FF) removed.
+    The signal "u_regfile_32x32/file_1_31" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/r2_dout_31" (FF) removed.
+      The signal "u_regfile_32x32/r2_dout<31>" is sourceless and has been removed.
+       Sourceless block "u_alu/alu_out_mux0001<31>26" (ROM) removed.
+        The signal "u_alu/alu_out_mux0001<31>26" is sourceless and has been removed.
+   Sourceless block "u_control/wea" (FF) removed.
+    The signal "u_control/wea" is sourceless and has been removed.
+     Sourceless block "u_control/wea_mux00001" (ROM) removed.
+      The signal "u_control/wea_mux0000" is sourceless and has been removed.
+   Sourceless block "u_control/r3_wr" (FF) removed.
+    The signal "u_control/r3_wr" is sourceless and has been removed.
+     Sourceless block "u_control/r3_wr_mux00001" (ROM) removed.
+      The signal "u_control/r3_wr_mux0000" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/file_1_not000111" (ROM) removed.
+      The signal "u_regfile_32x32/file_1_not0001" is sourceless and has been removed.
+     Sourceless block "u_regfile_32x32/file_0_not000131" (ROM) removed.
+      The signal "u_regfile_32x32/file_0_not0001" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_0" (FF) removed.
+    The signal "u_control/addrb<0>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<0>1" (ROM) removed.
+      The signal "u_control/addrb_mux0000<0>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_1" (FF) removed.
+    The signal "u_control/addrb<1>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<1>" (ROM) removed.
+      The signal "u_control/addrb_mux0000<1>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_2" (FF) removed.
+    The signal "u_control/addrb<2>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<2>2" (ROM) removed.
+      The signal "u_control/addrb_mux0000<2>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_3" (FF) removed.
+    The signal "u_control/addrb<3>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<3>_F" (ROM) removed.
+      The signal "N80" is sourceless and has been removed.
+       Sourceless block "u_control/addrb_mux0000<3>" (MUX) removed.
+        The signal "u_control/addrb_mux0000<3>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_4" (FF) removed.
+    The signal "u_control/addrb<4>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<4>40_F" (ROM) removed.
+      The signal "N82" is sourceless and has been removed.
+       Sourceless block "u_control/addrb_mux0000<4>40" (MUX) removed.
+        The signal "u_control/addrb_mux0000<4>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_5" (FF) removed.
+    The signal "u_control/addrb<5>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<5>1" (ROM) removed.
+      The signal "u_control/addrb_mux0000<5>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_6" (FF) removed.
+    The signal "u_control/addrb<6>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<6>1" (ROM) removed.
+      The signal "u_control/addrb_mux0000<6>" is sourceless and has been removed.
+   Sourceless block "u_control/addrb_7" (FF) removed.
+    The signal "u_control/addrb<7>" is sourceless and has been removed.
+     Sourceless block "u_control/addrb_mux0000<7>1" (ROM) removed.
+      The signal "u_control/addrb_mux0000<7>" is sourceless and has been removed.
+   Sourceless block "u_control/r3_addr_0" (FF) removed.
+    The signal "u_control/r3_addr<0>" is sourceless and has been removed.
+     Sourceless block "u_control/r3_addr_mux0000<0>1" (ROM) removed.
+      The signal "u_control/r3_addr_mux0000<0>" is sourceless and has been removed.
+   Sourceless block "u_control/addra_1" (FF) removed.
+    The signal "u_control/addra<1>" is sourceless and has been removed.
+   Sourceless block "u_control/addra_2" (FF) removed.
+    The signal "u_control/addra<2>" is sourceless and has been removed.
+   Sourceless block "u_control/addra_3" (FF) removed.
+    The signal "u_control/addra<3>" is sourceless and has been removed.
+   Sourceless block "u_control/addra_4" (FF) removed.
+    The signal "u_control/addra<4>" is sourceless and has been removed.
+   Sourceless block "u_control/addra_5" (FF) removed.
+    The signal "u_control/addra<5>" is sourceless and has been removed.
+   Sourceless block "u_control/status_FSM_FFd3" (FF) removed.
+    The signal "u_control/status_FSM_FFd3" is sourceless and has been removed.
+     Sourceless block "u_control/status_FSM_FFd2" (FF) removed.
+      The signal "u_control/status_FSM_FFd2" is sourceless and has been removed.
+       Sourceless block "u_control/status_FSM_FFd1" (FF) removed.
+        The signal "u_control/status_FSM_FFd1" is sourceless and has been removed.
+         Sourceless block "u_control/status_FSM_FFd3-In1" (ROM) removed.
+          The signal "u_control/status_cmp_eq0000" is sourceless and has been removed.
+         Sourceless block "u_control/addra_and00001" (ROM) removed.
+          The signal "u_control/addra_and0000" is sourceless and has been removed.
+         Sourceless block "u_control/addrb_mux0000<4>13" (ROM) removed.
+          The signal "u_control/addrb_mux0000<4>13" is sourceless and has been removed.
+           Sourceless block "u_control/addrb_mux0000<4>40_G" (ROM) removed.
+            The signal "N83" is sourceless and has been removed.
+         Sourceless block "u_control/addrb_mux0000<2>11" (ROM) removed.
+          The signal "u_control/N3" is sourceless and has been removed.
+       Sourceless block "u_control/cur_1" (FF) removed.
+        The signal "u_control/cur<1>" is sourceless and has been removed.
+         Sourceless block "u_control/Madd_addra_add0000_xor<3>11" (ROM) removed.
+          The signal "u_control/addra_add0000<3>" is sourceless and has been removed.
+         Sourceless block "u_control/Maccum_cur_xor<3>11" (ROM) removed.
+          The signal "u_control/Result<3>" is sourceless and has been removed.
+           Sourceless block "u_control/cur_3" (FF) removed.
+            The signal "u_control/cur<3>" is sourceless and has been removed.
+             Sourceless block "u_control/Madd_addra_add0000_cy<4>11" (ROM) removed.
+              The signal "u_control/Madd_addra_add0000_cy<4>" is sourceless and has been
+removed.
+             Sourceless block "u_control/Madd_addra_add0000_xor<4>11" (ROM) removed.
+              The signal "u_control/addra_add0000<4>" is sourceless and has been removed.
+             Sourceless block "u_control/Maccum_cur_xor<4>11" (ROM) removed.
+              The signal "u_control/Result<4>" is sourceless and has been removed.
+               Sourceless block "u_control/cur_4" (FF) removed.
+                The signal "u_control/cur<4>" is sourceless and has been removed.
+                 Sourceless block "u_control/Madd_addrb_addsub0000_cy<4>11" (ROM) removed.
+                  The signal "u_control/Madd_addrb_addsub0000_cy<4>" is sourceless and has been
+removed.
+             Sourceless block "u_control/addrb_mux0000<3>_G" (ROM) removed.
+              The signal "N81" is sourceless and has been removed.
+             Sourceless block "u_control/addrb_mux0000<4>13_SW1" (ROM) removed.
+              The signal "u_control/addrb_mux0000<4>13_SW1/O" is sourceless and has been
+removed.
+         Sourceless block "u_control/Madd_addra_add0000_xor<2>11" (ROM) removed.
+          The signal "u_control/addra_add0000<2>" is sourceless and has been removed.
+         Sourceless block "u_control/Maccum_cur_xor<2>11" (ROM) removed.
+          The signal "u_control/Result<2>" is sourceless and has been removed.
+           Sourceless block "u_control/cur_2" (FF) removed.
+            The signal "u_control/cur<2>" is sourceless and has been removed.
+         Sourceless block "u_control/Result<1>1_INV_0" (BUF) removed.
+          The signal "u_control/Result<1>" is sourceless and has been removed.
+       Sourceless block "u_control/addrb_mux0000<1>_SW0" (ROM) removed.
+        The signal "N78" is sourceless and has been removed.
+   Sourceless block "u_control/status_FSM_FFd4" (FF) removed.
+    The signal "u_control/status_FSM_FFd4" is sourceless and has been removed.
+The signal "u_ram_32x512/N0" is sourceless and has been removed.
+The signal "u_ram_32x512/N1" is sourceless and has been removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "N0" is unused and has been removed.
+ Unused block "XST_GND" (ZERO) removed.
+The signal "N1" is unused and has been removed.
+ Unused block "XST_VCC" (ONE) removed.
+The signal "N2" is unused and has been removed.
+ Unused block "u_alu/alu_out_mux0000_SW0" (ROM) removed.
+  The signal "doutb<0>" is unused and has been removed.
+  The signal "doutb<1>" is unused and has been removed.
+The signal "clk" is unused and has been removed.
+ Unused block "clk" (PAD) removed.
+The signal "doutb<10>" is unused and has been removed.
+The signal "doutb<11>" is unused and has been removed.
+The signal "doutb<12>" is unused and has been removed.
+The signal "doutb<13>" is unused and has been removed.
+The signal "doutb<14>" is unused and has been removed.
+The signal "doutb<15>" is unused and has been removed.
+The signal "doutb<16>" is unused and has been removed.
+The signal "doutb<17>" is unused and has been removed.
+The signal "doutb<18>" is unused and has been removed.
+The signal "doutb<19>" is unused and has been removed.
+The signal "doutb<20>" is unused and has been removed.
+The signal "doutb<21>" is unused and has been removed.
+The signal "doutb<22>" is unused and has been removed.
+The signal "doutb<23>" is unused and has been removed.
+The signal "doutb<24>" is unused and has been removed.
+The signal "doutb<25>" is unused and has been removed.
+The signal "doutb<26>" is unused and has been removed.
+The signal "doutb<27>" is unused and has been removed.
+The signal "doutb<28>" is unused and has been removed.
+The signal "doutb<29>" is unused and has been removed.
+The signal "doutb<2>" is unused and has been removed.
+The signal "doutb<30>" is unused and has been removed.
+The signal "doutb<31>" is unused and has been removed.
+The signal "doutb<3>" is unused and has been removed.
+The signal "doutb<4>" is unused and has been removed.
+The signal "doutb<5>" is unused and has been removed.
+The signal "doutb<6>" is unused and has been removed.
+The signal "doutb<7>" is unused and has been removed.
+The signal "doutb<8>" is unused and has been removed.
+The signal "doutb<9>" is unused and has been removed.
+The signal "rst_n" is unused and has been removed.
+ Unused block "rst_n" (PAD) removed.
+The signal "rst_n_IBUF" is unused and has been removed.
+ Unused block "rst_n_IBUF" (BUF) removed.
+The signal "u_alu/N34" is unused and has been removed.
+ Unused block "u_alu/alu_out_mux0001<0>221" (ROM) removed.
+The signal "u_alu/N36" is unused and has been removed.
+ Unused block "u_alu/alu_out_mux0001<0>241" (ROM) removed.
+The signal "u_alu/N37" is unused and has been removed.
+ Unused block "u_alu/alu_out_mux0001<0>251" (ROM) removed.
+The signal "u_alu/alu_out_mux0000" is unused and has been removed.
+ Unused block "u_alu/alu_out_mux0000" (ROM) removed.
+The signal "u_alu/alu_out_not0001" is unused and has been removed.
+ Unused block "u_alu/alu_out_not0001_BUFG" (CKBUF) removed.
+  The signal "u_alu/alu_out_not00011" is unused and has been removed.
+   Unused block "u_alu/alu_out_not0001_f5" (MUX) removed.
+    The signal "u_alu/alu_out_not00012" is unused and has been removed.
+     Unused block "u_alu/alu_out_not00011" (ROM) removed.
+The signal "u_control/rst_n_inv" is unused and has been removed.
+ Unused block "u_regfile_32x32/rst_n_inv321_INV_0" (BUF) removed.
+Unused block
+"u_ram_32x512/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/
+ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram" (RAMB16_S36_S36) removed.
+Unused block "u_ram_32x512/XST_GND" (ZERO) removed.
+Unused block "u_ram_32x512/XST_VCC" (ONE) removed.
+Unused block "clk_BUFGP/IBUFG" (CKBUF) removed.
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.

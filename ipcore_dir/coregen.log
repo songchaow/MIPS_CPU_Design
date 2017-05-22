@@ -1,0 +1,17 @@
+Project, 'coregen', initialised from file 'D:\ISE
+Project\COD\Lab05_CPU\ipcore_dir\coregen.cgp'.
+Customizing IP...
+Qt: Untested Windows version 6.2 detected!
+Release 12.3 - Xilinx CORE Generator IP GUI Launcher M.70d (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+Initializing IP model...
+Finished initialising IP model.
+ERROR:coreutil - ERROR:sim - Invalid hexadecimal value detected in COE file:
+   20080000.
+ERROR:coreutil - ERROR:sim - Invalid hexadecimal value detected in COE file:
+   20080000.
+ERROR:coreutil - ERROR:sim - Invalid hexadecimal value detected in COE file:
+   20080000.
+ERROR:coreutil - ERROR:sim - Invalid hexadecimal value detected in COE file:
+   20080000.
+Cancelled Customization.

@@ -1,0 +1,12 @@
+WARNING:sim:48 - Unrecognised command: "MISC pkg_timestamp=2012-11-19T16:22:25Z"
+WARNING:sim:48 - Unrecognised command: "MISC pkg_timestamp=2012-11-19T16:22:25Z"
+ERROR:sim:434 - Invalid command "select Block_Memory_Generator
+   xilinx.com:ip:blk_mem_gen:7.3
+   " in file D:\ISE Project\COD\Lab04_new\control\ipcore_dir\ram.xco
+WARNING:sim:565 - Failed to create component instance for XCO file 'D:\ISE
+   Project\COD\Lab04_new\control\ipcore_dir\ram.xco' during project migration
+Project, 'coregen', initialised from file 'D:\ISE
+Project\COD\Lab04_new\control\ipcore_dir\coregen.cgp'.
+ERROR:sim:434 - Invalid command "select Block_Memory_Generator
+   xilinx.com:ip:blk_mem_gen:7.3
+   " in file D:/ISE Project/COD/Lab04_new/control/ipcore_dir/ram.xco

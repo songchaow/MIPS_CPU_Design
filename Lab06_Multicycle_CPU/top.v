@@ -21,7 +21,7 @@
 module top(
 input clk,
 input rst_n,
-output  [31:0]      instruction,
+/*output  [31:0]      instruction,
 output  [5:0]       opcode,
 output  [5:0]       funct,
 output              PC_en,
@@ -67,10 +67,11 @@ output          ALU_SrcA,
 output  [1:0]   ALU_SrcB,
 output          IorD,
 output          IR_Write,
+*/
 output  [6:0]   state,
 output  [6:0]   next_state
     );
-
+wire [31:0]      instruction;
 assign Jump_addr = instruction[25:0];
 assign opcode = instruction[31:26];
 assign Immed = instruction[15:0];

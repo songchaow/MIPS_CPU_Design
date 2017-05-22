@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "D:/learn/ise/lab04_control/control/top.xst" -ofn "D:/learn/ise/lab04_control/control/top.syr" 
+ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc3s500e-fg320-5 top.ngc top.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o top_map.ncd top.ngd top.pcf 

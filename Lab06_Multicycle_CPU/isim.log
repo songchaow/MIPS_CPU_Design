@@ -17,14 +17,16 @@ Simulator is doing circuit initialization process.
  Block Memory Generator data initialization complete.
 Block Memory Generator CORE Generator module simu.uut.myMemory.inst.blk_mem_gen_v4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
 Finished circuit initialization process.
-# run 200ns
-# run 200ns
-# run 200ns
-# run 200ns
-# run 200ns
-# run 2000ns
-# run 2000ns
-# run 2000ns
-# run 2000ns
-# run 2000ns
-# run 2000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns
+# run 1000ns

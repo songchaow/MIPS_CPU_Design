@@ -8,7 +8,46 @@
 <!-- Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_CONTROL.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_OpA.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_OpB.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/AddrMux.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/PC_Gen.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/PC_Module.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/REG_DIN_MUX.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/RegMux.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/Reg_Out.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/State_Reg.v\&quot; into library work</arg>
+</msg>
+
 <msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/control.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/regfile.v\&quot; into library work</arg>
+</msg>
+
+<msg type="info" file="ProjectMgmt" num="1648" ><arg fmt="%s" index="1">Analyzing Verilog file \&quot;D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v\&quot; into library work</arg>
 </msg>
 
 </messages>

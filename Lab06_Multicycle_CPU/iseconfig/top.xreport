@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-05-08T12:40:29</DateModified>
+  <DateModified>2017-05-20T20:42:05</DateModified>
   <ModuleName>top</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-05-20T10:05:13</SummaryTimeStamp>
   <SavedFilePath>D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/iseconfig/top.xreport</SavedFilePath>
   <ImplementationReportsDirectory>D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU\</ImplementationReportsDirectory>
   <DateInitialized>2017-05-07T23:18:21</DateInitialized>

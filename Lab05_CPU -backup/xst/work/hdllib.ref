@@ -1,0 +1,11 @@
+MO I_MEM NULL ipcore_dir/I_MEM.v vlg47/_i___m_e_m.bin 1492439456
+MO PCModule NULL PC_Module.v vlg1D/_p_c_module.bin 1492439456
+MO ALU_OP_MUX NULL ALU_OP_MUX.v vlg4D/_a_l_u___o_p___m_u_x.bin 1492439456
+MO top NULL top.v vlg6F/top.bin 1492439456
+MO REG_FILE NULL regfile.v vlg09/_r_e_g___f_i_l_e.bin 1492439456
+MO DECODER NULL decoder.v vlg22/_d_e_c_o_d_e_r.bin 1492439456
+MO Reg_MUX NULL RegMux.v vlg2B/_reg___m_u_x.bin 1492439456
+MO REG_DIN_MUX NULL REG_DIN_MUX.v vlg6D/_r_e_g___d_i_n___m_u_x.bin 1492439456
+MO ALU NULL ALU.v vlg2A/_a_l_u.bin 1492439456
+MO D_MEM NULL ipcore_dir/D_MEM.v vlg12/_d___m_e_m.bin 1492439456
+MO ALU_CONTROL NULL ALU_CONTROL.v vlg1E/_a_l_u___c_o_n_t_r_o_l.bin 1492439456

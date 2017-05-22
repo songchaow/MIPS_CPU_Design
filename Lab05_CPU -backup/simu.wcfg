@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/ISE Project/COD/Lab05_CPU/simu_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="simu" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="29" />
+   <wvobject fp_name="/simu/instruction" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/post_PC" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">post_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">post_PC[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/PC_Src" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_Src[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Src[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/PC_Branch" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">PC_Branch[31:0]</obj_property>
+      <obj_property name="ObjectShortName">PC_Branch[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/r1_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r1_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">r1_addr[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/r2_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r2_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">r2_addr[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/r3_addr_mux" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r3_addr_mux[4:0]</obj_property>
+      <obj_property name="ObjectShortName">r3_addr_mux[4:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/reg_datain" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">reg_datain[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_datain[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/r1_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r1_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r1_dout[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/r2_dout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">r2_dout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">r2_dout[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/alu_a" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">alu_a[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_a[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/alu_b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">alu_b[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_b[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/alu_op" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">alu_op[3:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/alu_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/ALU_ZERO" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ALU_ZERO</obj_property>
+      <obj_property name="ObjectShortName">ALU_ZERO</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/MemtoReg" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MemtoReg</obj_property>
+      <obj_property name="ObjectShortName">MemtoReg</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/MemWrite" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MemWrite</obj_property>
+      <obj_property name="ObjectShortName">MemWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/MemRead" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">MemRead</obj_property>
+      <obj_property name="ObjectShortName">MemRead</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/Branch" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Branch</obj_property>
+      <obj_property name="ObjectShortName">Branch</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/Branch_ne" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Branch_ne</obj_property>
+      <obj_property name="ObjectShortName">Branch_ne</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/ALUSrc" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ALUSrc</obj_property>
+      <obj_property name="ObjectShortName">ALUSrc</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/RegDst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RegDst</obj_property>
+      <obj_property name="ObjectShortName">RegDst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/RegWrite" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">RegWrite</obj_property>
+      <obj_property name="ObjectShortName">RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/ALUOp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ALUOp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ALUOp[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/Jump" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">Jump</obj_property>
+      <obj_property name="ObjectShortName">Jump</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/Jump_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">Jump_addr[25:0]</obj_property>
+      <obj_property name="ObjectShortName">Jump_addr[25:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/simu/rst_n" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_n</obj_property>
+      <obj_property name="ObjectShortName">rst_n</obj_property>
+   </wvobject>
+</wave_config>

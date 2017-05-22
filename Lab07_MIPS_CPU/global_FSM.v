@@ -60,6 +60,7 @@ assign ack4 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2
 assign ack5 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
 //一般的PC_En来自于指令开始时:
 wire PC_En_Start = ack1||ack2||ack3||ack4||ack5;//这条有效时，来自于J/JR/Branch的PC_En请求要抑制。 ...错了。。
+//PC_En_Start有效：意味着没有访存请求、没有跳转、无条件跳转
 wire PC_En_Conflict1,PC_En_Conflict2,PC_En_Conflict3,PC_En_Conflict4,PC_En_Conflict5;
 
 wire   [5:0]       opcode;
@@ -103,11 +104,17 @@ wire DMemVisit4 = (state4==S3||state4==S5);
 wire DMemVisit5 = (state5==S3||state5==S5);
 
 wire DMemVisit = DMemVisit1||DMemVisit2||DMemVisit3||DMemVisit4||DMemVisit5;
+wire DMemVisitState = DMemVisit1?state1:(DMemVisit2?state2:(DMemVisit3?state3:(DMemVisit4?state4:(DMemVisit5?state5:state1))));
 wire IorD =DMemVisit?1:0;
-
+wire MemWrite = DMemVisit&&(DMemVisitState==S5);
 //写回冲突检测：...
-
-
+//写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑。
+//
+//但写回结果可在写回前传到下一条指令。
+wire 
+RegWrite
+MemtoReg
+RegDst
 
 wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
 wire Branch1Occur = (state1==S8)&&(Branch1&&ALU_ZERO)|| (Branch_ne1 && !ALU_ZERO)||(Branch_gz1 && ALU_POSITIVE);
@@ -127,7 +134,7 @@ wire [6:0] PC_En_Conflictstate = PC_En_Conflict1?state1:(PC_En_Conflict2?state2:
 //冒泡信号：
     //冒泡优先级。所有小于该优先级的状态机（后来进入的）都要停滞 一般冒泡也包括引起冒泡的指令
     wire    [2:0]   bubblePri = PC_En_Conflict?2:0;
-    wire            bubble=PC_En_Conflict&&PC_En_Start;
+    wire            bubble=PC_En_Conflict&&PC_En_Start;//examine!!
 
 //排空信号：
     //排空优先级。所有小于该优先级的状态机（后来进入的）都要排空 一般排空不包括引起排空的指令

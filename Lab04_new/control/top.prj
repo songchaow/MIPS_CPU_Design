@@ -1,0 +1,6 @@
+verilog work "regfile_32x32.v"
+verilog work "mux.v"
+verilog work "ipcore_dir/ram.v"
+verilog work "control.v"
+verilog work "alu.v"
+verilog work "top.v"

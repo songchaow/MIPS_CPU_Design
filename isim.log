@@ -1,0 +1,27 @@
+ISim log file
+Running: D:\ISE Project\COD\Lab05_CPU\simu_isim_beh.exe -gui -tclbatch isim.cmd -wdb D:/ISE Project/COD/Lab05_CPU/simu_isim_beh.wdb 
+ISim M.70d (signature 0x16fbe694)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+WARNING:  For instance uut/IMemory/, width 1 of formal port wea is not equal to width 32 of actual constant.
+WARNING: File "D:/ISE Project/COD/Lab05_CPU/top.v" Line 27.  For instance uut/IMemory/, width 9 of formal port addra is not equal to width 32 of actual signal PC.
+WARNING: File "D:/ISE Project/COD/Lab05_CPU/top.v" Line 43.  For instance uut/AluControl/, width 4 of formal port post_ALUOp is not equal to width 5 of actual signal alu_op.
+WARNING: File "D:/ISE Project/COD/Lab05_CPU/top.v" Line 43.  For instance uut/myALU/, width 4 of formal port alu_op is not equal to width 5 of actual signal alu_op.
+WARNING: File "D:/ISE Project/COD/Lab05_CPU/simu.v" Line 49.  For instance simu/uut/, width 5 of formal port alu_op is not equal to width 4 of actual signal alu_op.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+ Block Memory Generator CORE Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator CORE Generator module simu.uut.IMemory.inst.blk_mem_gen_v4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+ Block Memory Generator CORE Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator CORE Generator module simu.uut.DMemory.inst.blk_mem_gen_v4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Finished circuit initialization process.
+blk_mem_gen_v4_3 collision detected at time: 280000, A write address: 1, B  read address: 1

@@ -1,4 +1,4 @@
-Running: e:\Xilinx\12.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe -prj D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_beh.prj simu work.glbl 
+Running: e:\Xilinx\12.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe -prj D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_beh.prj work.simu work.glbl 
 ISim M.70d (signature 0x16fbe694)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
@@ -48,8 +48,8 @@ Compiling module top
 Compiling module simu
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
+Waiting for 9 sub-compilation(s) to finish...
 Compiled 24 Verilog Units
 Built simulation executable D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe
-Fuse Memory Usage: 22536 KB
-Fuse CPU Usage: 296 ms
+Fuse Memory Usage: 22548 KB
+Fuse CPU Usage: 358 ms

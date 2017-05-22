@@ -1,0 +1,56 @@
+Running: e:\Xilinx\12.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o D:/ISE Project/COD/Lab05_CPU/simu_isim_beh.exe -prj D:/ISE Project/COD/Lab05_CPU/simu_beh.prj work.simu work.glbl 
+ISim M.70d (signature 0x16fbe694)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/ipcore_dir/I_MEM.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/REG_DIN_MUX.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/RegMux.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/regfile.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/PC_Module.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/ipcore_dir/D_MEM.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/decoder.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/ALU_OP_MUX.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v\" into library work
+WARNING:HDLCompiler:568 - "D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v" Line 32: Constant value is truncated to fit in <2> bits.
+WARNING:HDLCompiler:568 - "D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v" Line 39: Constant value is truncated to fit in <2> bits.
+WARNING:HDLCompiler:568 - "D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v" Line 45: Constant value is truncated to fit in <2> bits.
+WARNING:HDLCompiler:568 - "D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v" Line 47: Constant value is truncated to fit in <2> bits.
+WARNING:HDLCompiler:568 - "D:/ISE Project/COD/Lab05_CPU/ALU_CONTROL.v" Line 51: Constant value is truncated to fit in <2> bits.
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/ALU.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/top.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab05_CPU/simu.v\" into library work
+Analyzing Verilog file \"e:/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
+Starting static elaboration
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/simu.v" Line 86: Size mismatch in connection of port <alu_op>. Formal port size is 5-bit while actual signal size is 4-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/top.v" Line 124: Size mismatch in connection of port <wea>. Formal port size is 1-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/top.v" Line 125: Size mismatch in connection of port <addra>. Formal port size is 9-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/top.v" Line 172: Size mismatch in connection of port <funct>. Formal port size is 6-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/top.v" Line 173: Size mismatch in connection of port <post_ALUOp>. Formal port size is 4-bit while actual signal size is 5-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD/Lab05_CPU/top.v" Line 178: Size mismatch in connection of port <alu_op>. Formal port size is 4-bit while actual signal size is 5-bit.
+Completed static elaboration
+Compiling module PCModule
+Compiling module DECODER
+Compiling module BLK_MEM_GEN_V4_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V4_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V4_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V4_3(C_FAMILY="spart...
+Compiling module I_MEM
+Compiling module BLK_MEM_GEN_V4_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V4_3(C_FAMILY="spart...
+Compiling module D_MEM
+Compiling module Reg_MUX
+Compiling module REG_DIN_MUX
+Compiling module REG_FILE
+Compiling module ALU_OP_MUX
+Compiling module ALU_CONTROL
+Compiling module ALU
+Compiling module top
+Compiling module simu
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 19 Verilog Units
+Built simulation executable D:/ISE Project/COD/Lab05_CPU/simu_isim_beh.exe
+Fuse Memory Usage: 22936 KB
+Fuse CPU Usage: 280 ms

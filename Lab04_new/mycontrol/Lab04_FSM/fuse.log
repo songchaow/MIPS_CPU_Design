@@ -1,0 +1,31 @@
+Running: e:\Xilinx\12.3\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/top_test_isim_beh.exe -prj D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/top_test_beh.prj work.top_test work.glbl 
+ISim M.70d (signature 0x16fbe694)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+Determining compilation order of HDL files
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/ipcore_dir/ram.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/regfile_32x32.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/control.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/alu.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/top.v\" into library work
+Analyzing Verilog file \"D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/top_test.v\" into library work
+Analyzing Verilog file \"e:/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module BLK_MEM_GEN_V4_3_output_stage(C_...
+Compiling module BLK_MEM_GEN_V4_3_softecc_output_...
+Compiling module BLK_MEM_GEN_V4_3_mem_module(C_CO...
+Compiling module BLK_MEM_GEN_V4_3(C_FAMILY="spart...
+Compiling module ram
+Compiling module regfile_32x32
+Compiling module alu
+Compiling module control
+Compiling module top
+Compiling module top_test
+Compiling module glbl
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 11 Verilog Units
+Built simulation executable D:/ISE Project/COD/Lab04_new/mycontrol/Lab04_FSM/top_test_isim_beh.exe
+Fuse Memory Usage: 21532 KB
+Fuse CPU Usage: 218 ms

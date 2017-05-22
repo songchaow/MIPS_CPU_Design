@@ -1,0 +1,2 @@
+SETPROJECT "D:/ISE Project/COD/Lab05_CPU/ipcore_dir/coregen.cgp"
+LAUNCHXCO "D:/ISE Project/COD/Lab05_CPU/ipcore_dir/D_MEM.xco"

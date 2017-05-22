@@ -1,0 +1,6 @@
+MO top_test NULL top_test.v vlg1E/top__test.bin 1492529567
+MO top NULL top.v vlg6F/top.bin 1492529567
+MO regfile_32x32 NULL regfile_32x32.v vlg03/regfile__32x32.bin 1492529567
+MO control NULL control.v vlg61/control.bin 1492529567
+MO ram NULL ipcore_dir/ram.v vlg74/ram.bin 1492529567
+MO alu NULL alu.v vlg0A/alu.bin 1492529567

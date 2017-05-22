@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-05-20T20:47:21</DateModified>
+  <DateModified>2017-05-22T16:35:37</DateModified>
   <ModuleName>pipe_FSM</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
   <SavedFilePath>D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/iseconfig/pipe_FSM.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/ISE Project/COD-Labs/Lab07_MIPS_CPU</ImplementationReportsDirectory>
+  <ImplementationReportsDirectory>D:/ISE Project/COD-Labs/Lab07_MIPS_CPU\</ImplementationReportsDirectory>
   <DateInitialized>2017-05-20T20:47:21</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
