@@ -58,6 +58,8 @@ assign ack2 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
 assign ack3 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
 assign ack4 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
 assign ack5 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
+wire    [6:0]   ackstate;
+assign ackstate = ack1?state1:(ack2?state2:(ack3?state3:(ack4?state4:(ack5?state5:state1))));
 //一般的PC_En来自于指令开始时:
 wire PC_En_Start = ack1||ack2||ack3||ack4||ack5;//这条有效时，来自于J/JR/Branch的PC_En请求要抑制。 ...错了。。
 //PC_En_Start有效：意味着没有访存请求、没有跳转、无条件跳转
