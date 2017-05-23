@@ -141,7 +141,8 @@ wire [6:0] PC_En_Conflictstate = PC_En_Conflict1?state1:(PC_En_Conflict2?state2:
 //冒泡信号：
     //冒泡优先级。所有小于该优先级的状态机（后来进入的）都要停滞 一般冒泡也包括引起冒泡的指令
     wire    [2:0]   bubblePri = PC_En_Conflict?2:0;
-    wire            bubble=PC_En_Conflict&&PC_En_Start;//examine!!
+    //wire            bubble=PC_En_Conflict&&PC_En_Start;//examine!!
+    wire            bubble=WaitForMem1;
 
 //排空信号：
     //排空优先级。所有小于该优先级的状态机（后来进入的）都要排空 一般排空不包括引起排空的指令
@@ -217,12 +218,18 @@ SelectB3=(stateofALU==S6||stateofALU==S12)&&(stateofFOUR==S4)&&(rtofALU==rtofFOU
 SelectB=SelectB1||SelectB2;//SelectA3 for memory forwarding!
 
 ALU_SrcB=(SelectB1||SelectB2||SelectB3)?2'b01:ALU_SrcB0;
+
 //R->R==4
 /*检测第二类：因访存而要延后
-stage=2 I(限定为LW,SW)
+stage=2 R: |rs| |rt| -> rd (运算类指令和JR)
+stage=2 I: |rs|      -> rt ()
 
-stage=4
+stage=3 (限定为LW, SW无影响)
 */
+wire WaitForMem1 = (stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S3)&&(rsofALU==rtofTHREE||rtofALU==rtofTHREE);// IorR(new) stage4 LW(priv)
+
+//control code ends here, hope not too many bugs...
+
 
 pipe_FSM FSM1(
     //input:
