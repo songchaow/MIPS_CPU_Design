@@ -146,7 +146,7 @@ wire [6:0] PC_En_Conflictstate = PC_En_Conflict1?state1:(PC_En_Conflict2?state2:
 //排空信号：
     //排空优先级。所有小于该优先级的状态机（后来进入的）都要排空 一般排空不包括引起排空的指令
     //推论：若JmpOccur和BranchOccur同时发生，一定是Branch指令在前。故优先判断Branch
-    wire    [2:0]   flushPri = (Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)?2:(JmpOccur?1:0);
+    wire    [2:0]   flushPri = (Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)?3:(JmpOccur?2:0);
     wire    [2:0]   flush =(Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)||JmpOccur;
 /*PC相关
 可证明：PC_En_Start的指令总在PC_En_Conflict的指令之前，故优先级更高 (错了...)
@@ -170,7 +170,7 @@ assign IRWrite = ((state1==S0)?IRWrite1:0)||((state2==S0)?IRWrite2:0)||((state3=
 //state=2
     //PC_En
     //ALU
-assign ALU_SrcB = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0);
+assign ALU_SrcB0 = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0);
 assign ALUOp = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALUOp1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALUOp2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALUOp3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALUOp4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALUOp5:0);
 
 //global_control actions: 分步启动
@@ -186,23 +186,42 @@ stage=2(进入时会跳至3) R: |rs| |rt| -> rd (运算类指令和JR)
 stage=2 I: |rs|      -> rt ()
 
 stage=3 R: rs rt -> |rd|    (限制为运算类指令 因为其他R型如JR，不需要把rd写回，不造成影响)
-stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不写回)
+stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不在stage=3写回。它们的写回在第二类讨论)
+stage=4 LW M[]   ->  rt
 */
-wire    [6:0]   stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:state1))));
+wire    [6:0]   stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:0))));
 wire    [4:0]   rsofALU = (stage1==3)?rs_addr1:((stage2==3)?rs_addr2:((stage3==3)?rs_addr3:((stage4==3)?rs_addr4:((stage5==3)?rs_addr5:rs_addr1))));
 wire    [4:0]   rtofALU = (stage1==3)?rt_addr1:((stage2==3)?rt_addr2:((stage3==3)?rt_addr3:((stage4==3)?rt_addr4:((stage5==3)?rt_addr5:rt_addr1))));
-wire    [6:0]   stateofTHREE = (stage1==4)?state1:((stage2==4)?state2:((stage3==4)?state3:((stage4==4)?state4:((stage5==4)?state5:state1))));
+wire    [6:0]   stateofTHREE = (stage1==4)?state1:((stage2==4)?state2:((stage3==4)?state3:((stage4==4)?state4:((stage5==4)?state5:0))));
 wire    [4:0]   rdofTHREE = (stage1==4)?rd_addr1:((stage2==4)?rd_addr2:((stage3==4)?rd_addr3:((stage4==4)?rd_addr4:((stage5==4)?rd_addr5:rd_addr1))));//for R
 wire    [4:0]   rtofTHREE = (stage1==4)?rt_addr1:((stage2==4)?rt_addr2:((stage3==4)?rt_addr3:((stage4==4)?rt_addr4:((stage5==4)?rt_addr5:rt_addr1))));//for I
-(stateofALU==S6||stateofALU==S12) //R prev
-(stateofALU==S2||stateofALU==S8||stateofALU==S9) //I prev
-SelectA=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);
-ALU_SrcA=((stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE))?0:1;
-(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE)
 
-//R->R
+wire    [6:0]   stateofFOUR = (stage1==5)?state1:((stage2==5)?state2:((stage3==5)?state3:((stage4==5)?state4:((stage5==5)?state5:0))));
+wire    [4:0]   rtofFOUR = (stage1==5)?rt_addr1:((stage2==5)?rt_addr2:((stage3==5)?rt_addr3:((stage4==5)?rt_addr4:((stage5==5)?rt_addr5:rt_addr1))));//for LW
+
+//(stateofALU==S6||stateofALU==S12) //R prev
+//(stateofALU==S2||stateofALU==S8||stateofALU==S9) //I prev
+SelectA1=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);//R(new) R(priv)
+SelectA2=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S10)&&(rsofALU==rtofTHREE);//R(new) I(priv)
+SelectA3=(stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);//I(new) R(priv)
+SelectA4=(stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S10)&&(rsofALU==rtofTHREE);//I(new) I(priv)
+SelectA5=(stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofFOUR==S4)&&(rsofALU==rtofFOUR);// IorR(new) stage4 LW(priv)
+SelectA=SelectA1||SelectA2||SelectA3||SelectA4;//SelectA5 for memory forwarding!
+
+ALU_SrcA=(SelectA1||SelectA2||SelectA3||SelectA4||SelectA5)?0:1;
+
+(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE)
+SelectB1=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE);
+SelectB2=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S10)&&(rtofALU==rtofTHREE);
+SelectB3=(stateofALU==S6||stateofALU==S12)&&(stateofFOUR==S4)&&(rtofALU==rtofFOUR);//R(new) stage4 LW(priv)
+SelectB=SelectB1||SelectB2;//SelectA3 for memory forwarding!
+
+ALU_SrcB=(SelectB1||SelectB2||SelectB3)?2'b01:ALU_SrcB0;
+//R->R==4
 /*检测第二类：因访存而要延后
-stage= I(限定为LW,SW)
+stage=2 I(限定为LW,SW)
+
+stage=4
 */
 
 pipe_FSM FSM1(

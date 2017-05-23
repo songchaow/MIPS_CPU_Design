@@ -181,8 +181,8 @@ assign r2_addr = instruction[20:16];
 REG_FILE RegFile(//use addr as always parameter in dout
 .clk(clk),
 .rst_n(rst_n),
-.r1_addr(instruction[25:21]),
-.r2_addr(instruction[20:16]),
+.r1_addr(instruction[25:21]),//rs
+.r2_addr(instruction[20:16]),//rt
 .r3_addr(r3_addr_mux),
 .r3_din(reg_datain),
 .r3_wr(RegWrite),

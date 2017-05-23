@@ -192,6 +192,8 @@ begin
     begin
         if(bubble_en)
             stage <= stage;
+        else if(ack)
+            stage <= 1;
         else stage <= stage+1;
     end
 end
