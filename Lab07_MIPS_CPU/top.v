@@ -78,6 +78,7 @@ wire [4:0]  rt_addr,[4:0]   rd_addr;
 
 wire    [31:0]  ForwardA;
 wire    [31:0]  ForwardB;
+wire            SelectA,SelectB;
 //Instruction Memory
 //wire [8:0] I_addra;
 //wire I_wea;
@@ -200,6 +201,18 @@ REG_OUT reg_out(
 SEXT mySEXT(
     .Immed(Immed),
     .sext_Immed(sext_Immed)
+);
+ForwardMux ForwardAMux(
+    .alu_out(alu_out),
+    .M_doutb(M_doutb),
+    .Select(SelectA),
+    .Forward(ForwardA)
+);
+ForwardMux ForwardBMux(
+    .alu_out(alu_out),
+    .M_doutb(M_doutb),
+    .Select(SelectB),
+    .Forward(ForwardB)
 );
 ALU_OpA ALU_OPA_MUX(
     .ALU_SrcA(ALU_SrcA),//control signal

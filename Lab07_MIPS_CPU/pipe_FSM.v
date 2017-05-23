@@ -33,8 +33,10 @@ module pipe_FSM(
     input               PC_En_Conflict,
     output              fetch_req,  //取新指令请求
     output  reg         next_en0,
-    output  reg [2:0]   stage,
     //stage: 刚进入时为0
+    output  reg [2:0]   stage,
+    //reg numbers
+    output  reg [4:0]   rs_addr,
     output  reg [4:0]   rt_addr,
     output  reg [4:0]   rd_addr,
     //Control signals:
@@ -198,11 +200,13 @@ always@(posedge clk or negedge rst_n)
 begin
     if(~rst_n)
     begin
+        rs_addr <= 0;
         rd_addr <= 0;
         rt_addr <= 0;
     end
-    else
+    else if(stage==2)//只有在instruction是当前指令时才更新
     begin
+        rs_addr <= instruction[25:21];
         rd_addr <= instruction[15:11];
         rt_addr <= instruction[20:16];
     end

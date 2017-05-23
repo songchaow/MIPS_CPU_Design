@@ -46,6 +46,8 @@ module global_FSM(
     output  [1:0]   ALUOp,
     output          ALU_SrcA,
     output  [1:0]   ALU_SrcB,
+    output          SelectA,
+    output          SelectB,
     //Instruction Reg
     output           IR_Write
     );
@@ -178,7 +180,19 @@ begin
         en0 <= 0;
     else en0 <= 1;
 end
+//Forwarding
+/*检测第一类： 
+stage=2 R: |rs| |rt| -> rd (运算类指令和JR)
+stage=2 I: |rs|      -> rt ()
 
+stage=3 R: rs rt -> |rd|    (限制为运算类指令 因为其他R型如JR，不需要把rd写回，不造成影响)
+stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不写回)
+*/
+wire    [6:0]   stateofALU = 
+
+/*检测第二类：因访存而要延后
+stage= I(限定为LW,SW)
+*/
 
 pipe_FSM FSM1(
     //input:
@@ -196,7 +210,8 @@ pipe_FSM FSM1(
     //output:
     .fetch_req(fetch_req1),
     .next_en0(en021),       //不规则
-    .stage(stage1)
+    .stage(stage1),
+    .rs_addr(rs_addr1),
     .rt_addr(rt_addr1),//从之前的instruction提取并保存的
     .rd_addr(rd_addr1),
     //control signals:
@@ -239,7 +254,8 @@ pipe_FSM FSM2(
     //output:
     .fetch_req(fetch_req2),
     .next_en0(en122),       //不规则
-    .stage(stage2)
+    .stage(stage2),
+    .rs_addr(rs_addr2),
     .rt_addr(rt_addr2),//从之前的instruction提取并保存的
     .rd_addr(rd_addr2),
     //control signals:
@@ -282,7 +298,8 @@ pipe_FSM FSM3(
     //output:
     .fetch_req(fetch_req3),
     .next_en0(en223),       //不规则
-    .stage(stage3)
+    .stage(stage3),
+    .rs_addr(rs_addr3),
     .rt_addr(rt_addr3),//从之前的instruction提取并保存的
     .rd_addr(rd_addr3),
     //control signals:
@@ -326,6 +343,7 @@ pipe_FSM FSM4(
     .fetch_req(fetch_req4),
     .next_en0(en324),       //不规则
     .stage(stage4)
+    .rs_addr(rs_addr4),
     .rt_addr(rt_addr4),//从之前的instruction提取并保存的
     .rd_addr(rd_addr4),
     //control signals:
@@ -369,6 +387,7 @@ pipe_FSM FSM5(
     .fetch_req(fetch_req5),
     //.next_en0(en425),       //不规则
     .stage(stage5)
+    .rs_addr(rs_addr5),
     .rt_addr(rt_addr5),//从之前的instruction提取并保存的
     .rd_addr(rd_addr5),
     //control signals:

@@ -29,3 +29,13 @@ assign alu_opa = ALU_SrcA? r1_dout:ForwardA;
 //ForwardA再由新的多选器和选择信号来控制
 
 endmodule
+
+module ForwardMux(
+    input   [31:0]  alu_out,//reg
+    input   [31:0]  M_doutb,
+    input           Select,
+    output  [31:0]  Forward
+);
+assign ForwardA = ASelect? alu_out:M_doutb;
+
+endmodule
