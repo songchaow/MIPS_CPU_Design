@@ -182,14 +182,25 @@ begin
 end
 //Forwarding
 /*检测第一类： 
-stage=2 R: |rs| |rt| -> rd (运算类指令和JR)
+stage=2(进入时会跳至3) R: |rs| |rt| -> rd (运算类指令和JR)
 stage=2 I: |rs|      -> rt ()
 
 stage=3 R: rs rt -> |rd|    (限制为运算类指令 因为其他R型如JR，不需要把rd写回，不造成影响)
 stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不写回)
 */
-wire    [6:0]   stateofALU = 
+wire    [6:0]   stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:state1))));
+wire    [4:0]   rsofALU = (stage1==3)?rs_addr1:((stage2==3)?rs_addr2:((stage3==3)?rs_addr3:((stage4==3)?rs_addr4:((stage5==3)?rs_addr5:rs_addr1))));
+wire    [4:0]   rtofALU = (stage1==3)?rt_addr1:((stage2==3)?rt_addr2:((stage3==3)?rt_addr3:((stage4==3)?rt_addr4:((stage5==3)?rt_addr5:rt_addr1))));
+wire    [6:0]   stateofTHREE = (stage1==4)?state1:((stage2==4)?state2:((stage3==4)?state3:((stage4==4)?state4:((stage5==4)?state5:state1))));
+wire    [4:0]   rdofTHREE = (stage1==4)?rd_addr1:((stage2==4)?rd_addr2:((stage3==4)?rd_addr3:((stage4==4)?rd_addr4:((stage5==4)?rd_addr5:rd_addr1))));//for R
+wire    [4:0]   rtofTHREE = (stage1==4)?rt_addr1:((stage2==4)?rt_addr2:((stage3==4)?rt_addr3:((stage4==4)?rt_addr4:((stage5==4)?rt_addr5:rt_addr1))));//for I
+(stateofALU==S6||stateofALU==S12) //R prev
+(stateofALU==S2||stateofALU==S8||stateofALU==S9) //I prev
+SelectA=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);
+ALU_SrcA=((stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE))?0:1;
+(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE)
 
+//R->R
 /*检测第二类：因访存而要延后
 stage= I(限定为LW,SW)
 */
