@@ -29,7 +29,7 @@ module PC_Gen(
         01: increase by the previous ALU result branch
         10: jmp
     */
-    input   [31:0]  sext_Immed，
+    input   [31:0]  sext_Immed,
     input   [31:0]  PC,
     output  reg [31:0] next_PC//变化后的PC
     );

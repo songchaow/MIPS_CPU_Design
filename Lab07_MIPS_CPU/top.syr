@@ -1,0 +1,169 @@
+Release 12.3 - xst M.70d (nt64)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.09 secs
+ 
+--> Reading design: top.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "top.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "top"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : top
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 500
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling verilog file "pipe_FSM.v" in library work
+Module <pipe_FSM> compiled
+Compiling verilog file "State_Reg.v" in library work
+Module <PC_ENABLE> compiled
+Compiling verilog file "Reg_Out.v" in library work
+Module <State_Reg> compiled
+Compiling verilog file "PC_Gen.v" in library work
+Module <REG_OUT> compiled
+Compiling verilog file "global_FSM.v" in library work
+Module <PC_Gen> compiled
+ERROR:HDLCompilers:27 - "global_FSM.v" line 188 Illegal redeclaration of 'PC_En_Conflict'
+ERROR:HDLCompilers:27 - "global_FSM.v" line 192 Illegal redeclaration of 'bubblePri'
+ERROR:HDLCompilers:27 - "global_FSM.v" line 194 Illegal redeclaration of 'bubble'
+ERROR:HDLCompilers:28 - "global_FSM.v" line 194 'WaitForMem' has not been declared
+ERROR:HDLCompilers:27 - "global_FSM.v" line 199 Illegal redeclaration of 'flushPri'
+ERROR:HDLCompilers:27 - "global_FSM.v" line 200 Illegal redeclaration of 'flush'
+ERROR:HDLCompilers:26 - "global_FSM.v" line 211 unexpected token: '='
+ERROR:HDLCompilers:26 - "global_FSM.v" line 211 unexpected token: '?'
+Module <global_FSM> compiled
+ERROR:HDLCompilers:26 - "global_FSM.v" line 211 expecting 'endmodule', found '('
+Compiling verilog file "ALU_OpB.v" in library work
+Compiling verilog file "ALU_OpA.v" in library work
+Module <ALU_OpB> compiled
+Module <ALU_OpA> compiled
+ERROR:HDLCompilers:28 - "ALU_OpA.v" line 39 'ASelect' has not been declared
+Compiling verilog file "ALU_CONTROL.v" in library work
+Module <ForwardMux> compiled
+Compiling verilog file "ALU.v" in library work
+Module <ALU_CONTROL> compiled
+Module <ALU> compiled
+Module <SEXT> compiled
+Compiling verilog file "AddrMux.v" in library work
+Module <ALU_RESULT_REG> compiled
+Compiling verilog file "../Lab06_Multicycle_CPU/REG_DIN_MUX.v" in library work
+Module <AddrMux> compiled
+Compiling verilog file "../Lab06_Multicycle_CPU/RegMux.v" in library work
+Module <REG_DIN_MUX> compiled
+Compiling verilog file "../Lab06_Multicycle_CPU/regfile.v" in library work
+Module <Reg_MUX> compiled
+Compiling verilog file "../Lab06_Multicycle_CPU/PC_Module.v" in library work
+Module <REG_FILE> compiled
+Compiling verilog file "../Lab06_Multicycle_CPU/ipcore_dir/Memory.v" in library work
+Module <PCModule> compiled
+Compiling verilog file "top.v" in library work
+Module <Memory> compiled
+ERROR:HDLCompilers:26 - "top.v" line 90 expecting 'IDENTIFIER', found '['
+ERROR:HDLCompilers:26 - "top.v" line 316 expecting '.', found ')'
+ERROR:HDLCompilers:26 - "top.v" line 320 unexpected token: '.'
+ERROR:HDLCompilers:26 - "top.v" line 321 unexpected token: '.'
+ERROR:HDLCompilers:26 - "top.v" line 322 unexpected token: '.'
+ERROR:HDLCompilers:26 - "top.v" line 323 unexpected token: '.'
+ERROR:HDLCompilers:26 - "top.v" line 324 unexpected token: '.'
+ERROR:HDLCompilers:26 - "top.v" line 325 unexpected token: '.'
+Module <top> compiled
+Analysis of file <"top.prj"> failed.
+--> 
+
+Total memory usage is 278372 kilobytes
+
+Number of errors   :   18 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

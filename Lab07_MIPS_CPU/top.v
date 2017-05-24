@@ -68,7 +68,20 @@ output  [1:0]   ALU_SrcB,
 output          IorD,
 output          IR_Write,
 output  [6:0]   state,
-output  [6:0]   next_state
+output  [6:0]   next_state,
+//FSM Information:
+output          DMemVisit,
+output          BranchSig,
+output  reg [1:0]   BrSigEn,
+output          JmpSig,
+output  reg [1:0]   JmpSigEn,
+output  [6:0]   ackstate,
+output          PC_En_Start,
+output          PC_En_Conflict,
+output  [2:0]   bubblePri,
+output          bubble,
+output  [2:0]   flushPri,
+output          flush
     );
 
 assign Jump_addr = instruction[25:0];
@@ -140,7 +153,7 @@ State_Reg InstrData(
 /*
 Reg_Addr_Judge Reg_inaddr_Judger(
     //used to judge which needs to write back
-    //本时钟设为有效的RegWrite的状态机，在下一时钟一定有写请求。
+    //本时钟设为有效的RegWrite的状态机，在下一时钟一定有写请求�
     .RegWrite1,
     .RegWrite2,
     .RegWrite3,
@@ -249,7 +262,7 @@ ALU_RESULT_REG ALURESULT(
     .alu_out(alu_out)
 );
 
-CONTROL FSM(
+/*CONTROL FSM(
     //input:
     .clk(clk),
     .rst_n(rst_n),
@@ -272,7 +285,36 @@ CONTROL FSM(
     .IR_Write(IR_Write),
     .state(state),
     .next_state(next_state)
+);*/
+
+global_FSM CONTROL(
+    .clk(clk),
+    .rst_n(rst_n),
+    .instruction(instruction),
+    .ALU_ZERO(ALU_ZERO),
+    .ALU_POSITIVE(ALU_POSITIVE),
+    .PCWrite(PCWrite),
+    .PC_Src(PC_Src),
+    .Branch(Branch),
+    .Branch_ne(Branch_ne),
+    .Branch_gz(Branch_gz),
+    .MemtoReg(MemtoReg),
+    .MemWrite(MemWrite),
+    .IorD(IorD),
+    .rt_addr(rt_addr),
+    .rd_addr(rd_addr),
+    .rs_addr(rs_addr),//this output is not of real use
+    .RegDst(RegDst),
+    .RegWrite(RegWrite),
+    .ALUOp(ALUOp),
+    .ALU_SrcA(ALU_SrcA),
+    .ALU_SrcB(ALU_SrcB),
+    .SelectA(SelectA),
+    .SelectB(SelectB),
+    .IR_Write(IR_Write),
+    
 );
+
 PC_ENABLE   PC_Enable(
     .ALU_ZERO(ALU_ZERO),
     .ALU_POSITIVE(ALU_POSITIVE),

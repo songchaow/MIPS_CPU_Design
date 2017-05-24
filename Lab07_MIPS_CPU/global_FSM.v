@@ -10,7 +10,7 @@
 // Target Devices: 
 // Tool versions: 
 // Description: 
-// 全局状态机，用来控制5个状态机的协同工作。
+// 全局状态机，用来控�个状态机的协同工作�
 // Dependencies: 
 //
 // Revision: 
@@ -40,6 +40,7 @@ module global_FSM(
     //RegFile
     output  [4:0]   rt_addr,
     output  [4:0]   rd_addr,
+    output  [4:0]   rs_addr,
     output          RegDst,
     output          RegWrite,
     //ALU
@@ -49,33 +50,87 @@ module global_FSM(
     output          SelectA,
     output          SelectB,
     //Instruction Reg
-    output           IR_Write
+    output          IR_Write,
+    //FSM information:
+    output          DMemVisit,
+    output  reg     BranchSig,
+    output  reg [1:0]   BrSigEn,
+    output  reg     JmpSig,
+    output  reg [1:0]   JmpSigEn,
+    output  [6:0]   ackstate,
+    output          PC_En_Start,
+    output          PC_En_Conflict,
+    output  [2:0]   bubblePri,
+    output          bubble,
+    output  [2:0]   flushPri,
+    output          flush
     );
+
+parameter SIDLE = 15;
+parameter SWAIT = 17;
+parameter S0 = 0;
+parameter S1 = 1;
+parameter S2 = 2;
+parameter S3 = 3;
+parameter S4 = 4;
+parameter S5 = 5;
+parameter S5plus = 14;
+parameter S6 = 6;
+parameter S7 = 7;
+parameter S8 = 8;
+parameter S8plus = 12;
+parameter S9 = 9;
+parameter S10 = 10;
+parameter S11 = 11;
+parameter S11plus = 13;
+parameter S12 = 16;
+parameter S12plus = 18;
+
 wire en021;
 wire en122;
 wire en223;
 wire en324;
 //ack: acknowledgement for fetch requests
-wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最高
+wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最�
+wire fetch_req1,fetch_req2,fetch_req3,fetch_req4,fetch_req5;
+wire state1,state2,state3,state4,state5;
+wire next_state1,next_state2,next_state3,next_state4,next_state5;
+wire Branch1,Branch2,Branch3,Branch4,Branch5;
+wire Branch_gz1,Branch_gz2,Branch_gz3,Branch_gz4,Branch_gz5;
+wire Branch_ne1,Branch_ne2,Branch_ne3,Branch_ne4,Branch_ne5;
+wire RegWrite1,RegWrite2,RegWrite3,RegWrite4,RegWrite5;
+wire MemtoReg1,MemtoReg2,MemtoReg3,MemtoReg4,MemtoReg5;
+wire RegDst1,RegDst2,RegDst3,RegDst4,RegDst5;
+wire [4:0]  rt_addr1,  rt_addr2,  rt_addr3,  rt_addr4,  rt_addr5;
+wire [4:0]  rd_addr1,  rd_addr2,  rd_addr3,  rd_addr4,  rd_addr5;
+wire [4:0]  rs_addr1,  rs_addr2,  rs_addr3,  rs_addr4,  rs_addr5;
 assign ack1 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req1;
 assign ack2 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
 assign ack3 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
 assign ack4 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
 assign ack5 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
-wire    [6:0]   ackstate;
+
 assign ackstate = ack1?state1:(ack2?state2:(ack3?state3:(ack4?state4:(ack5?state5:state1))));
 //一般的PC_En来自于指令开始时:
-wire PC_En_Start = ack1||ack2||ack3||ack4||ack5;//这条有效时，来自于J/JR/Branch的PC_En请求要抑制。 ...错了。。
+assign PC_En_Start = ack1||ack2||ack3||ack4||ack5;//这条有效时，来自于J/JR/Branch的PC_En请求要抑制�...错了。�
 //PC_En_Start有效：意味着没有访存请求、没有跳转、无条件跳转
 wire PC_En_Conflict1,PC_En_Conflict2,PC_En_Conflict3,PC_En_Conflict4,PC_En_Conflict5;
 
 wire   [5:0]       opcode;
 assign  opcode = instruction[31:26];
-reg JmpSig,BranchSig;
-reg [1:0] JmpSigEn,BrSigEn;
+//reg JmpSig,BranchSig;
+//reg [1:0] JmpSigEn,BrSigEn;
+
+wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
+wire Branch1Occur = (state1==S8)&&(Branch1&&ALU_ZERO)|| (Branch_ne1 && !ALU_ZERO)||(Branch_gz1 && ALU_POSITIVE);
+wire Branch2Occur = (state2==S8)&&(Branch2&&ALU_ZERO)|| (Branch_ne2 && !ALU_ZERO)||(Branch_gz2 && ALU_POSITIVE);
+wire Branch3Occur = (state3==S8)&&(Branch3&&ALU_ZERO)|| (Branch_ne3 && !ALU_ZERO)||(Branch_gz3 && ALU_POSITIVE);
+wire Branch4Occur = (state4==S8)&&(Branch4&&ALU_ZERO)|| (Branch_ne4 && !ALU_ZERO)||(Branch_gz4 && ALU_POSITIVE);
+wire Branch5Occur = (state5==S8)&&(Branch5&&ALU_ZERO)|| (Branch_ne5 && !ALU_ZERO)||(Branch_gz5 && ALU_POSITIVE);
+
 always@(posedge clk or negedge rst_n)//J/JR
 begin
-    if(JmpOccur)//无条件跳转 state==1
+    if(JmpOccur)//无条件跳�state==1
     begin
         //begin counting
         JmpSig <= 1;
@@ -109,28 +164,22 @@ wire DMemVisit3 = (state3==S3||state3==S5);
 wire DMemVisit4 = (state4==S3||state4==S5);
 wire DMemVisit5 = (state5==S3||state5==S5);
 
-wire DMemVisit = DMemVisit1||DMemVisit2||DMemVisit3||DMemVisit4||DMemVisit5;
+assign DMemVisit = DMemVisit1||DMemVisit2||DMemVisit3||DMemVisit4||DMemVisit5;
 wire DMemVisitState = DMemVisit1?state1:(DMemVisit2?state2:(DMemVisit3?state3:(DMemVisit4?state4:(DMemVisit5?state5:state1))));
-wire IorD =DMemVisit?1:0;
-wire MemWrite = DMemVisit&&(DMemVisitState==S5);
+assign IorD =DMemVisit?1:0;
+assign MemWrite = DMemVisit&&(DMemVisitState==S5);
 //写回信号
-//写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑。
-//但写回结果可在写回前传到下一条指令。
-RegWrite = ack1?RegWrite1:(ack2?RegWrite2:(ack3?RegWrite3:(ack4?RegWrite4:(ack5?RegWrite5:0))));
-MemtoReg = ack1?MemtoReg1:(ack2?MemtoReg2:(ack3?MemtoReg3:(ack4?MemtoReg4:(ack5?MemtoReg5:0))));
-RegDst = ack1?RegDst1:(ack2?RegDst2:(ack3?RegDst3:(ack4?RegDst4:(ack5?RegDst5:0))));
+//写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑�
+//但写回结果可在写回前传到下一条指令�
+assign RegWrite = ack1?RegWrite1:(ack2?RegWrite2:(ack3?RegWrite3:(ack4?RegWrite4:(ack5?RegWrite5:0))));
+assign MemtoReg = ack1?MemtoReg1:(ack2?MemtoReg2:(ack3?MemtoReg3:(ack4?MemtoReg4:(ack5?MemtoReg5:0))));
+assign RegDst = ack1?RegDst1:(ack2?RegDst2:(ack3?RegDst3:(ack4?RegDst4:(ack5?RegDst5:0))));
 
-wire rt_addr = ack1?rt_addr1:(ack2?rt_addr2:(ack3?rt_addr3:(ack4?rt_addr4:(ack5?rt_addr5:0))));
-wire rd_addr = ack1?rd_addr1:(ack2?rd_addr2:(ack3?rd_addr3:(ack4?rd_addr4:(ack5?rd_addr5:0))));
+assign rt_addr = ack1?rt_addr1:(ack2?rt_addr2:(ack3?rt_addr3:(ack4?rt_addr4:(ack5?rt_addr5:0))));
+assign rd_addr = ack1?rd_addr1:(ack2?rd_addr2:(ack3?rd_addr3:(ack4?rd_addr4:(ack5?rd_addr5:0))));
 
-wire JmpOccur = (next_state1 == S11||next_state1==S12)||(next_state2 == S11||next_state2==S12)||(next_state3 == S11||next_state3==S12)||(next_state4 == S11||next_state4==S12)||(next_state5 == S11||next_state5==S12);
-wire Branch1Occur = (state1==S8)&&(Branch1&&ALU_ZERO)|| (Branch_ne1 && !ALU_ZERO)||(Branch_gz1 && ALU_POSITIVE);
-wire Branch2Occur = (state2==S8)&&(Branch2&&ALU_ZERO)|| (Branch_ne2 && !ALU_ZERO)||(Branch_gz2 && ALU_POSITIVE);
-wire Branch3Occur = (state3==S8)&&(Branch3&&ALU_ZERO)|| (Branch_ne3 && !ALU_ZERO)||(Branch_gz3 && ALU_POSITIVE);
-wire Branch4Occur = (state4==S8)&&(Branch4&&ALU_ZERO)|| (Branch_ne4 && !ALU_ZERO)||(Branch_gz4 && ALU_POSITIVE);
-wire Branch5Occur = (state5==S8)&&(Branch5&&ALU_ZERO)|| (Branch_ne5 && !ALU_ZERO)||(Branch_gz5 && ALU_POSITIVE);
 
-//额外的PC_En检测信号 冲突来自于J/JR/Branch
+//额外的PC_En检测信�冲突来自于J/JR/Branch
 assign PC_En_Conflict1 = ( Branch1Occur)||(state1 == S11||state1 == S12);
 assign PC_En_Conflict2 = ( Branch2Occur)||(state2 == S11||state2 == S12);
 assign PC_En_Conflict3 = ( Branch3Occur)||(state3 == S11||state3 == S12);
@@ -138,20 +187,20 @@ assign PC_En_Conflict4 = ( Branch4Occur)||(state4 == S11||state4 == S12);
 assign PC_En_Conflict5 = ( Branch5Occur)||(state5 == S11||state5 == S12);
 wire PC_En_Conflict =PC_En_Conflict1||PC_En_Conflict2||PC_En_Conflict3||PC_En_Conflict4||PC_En_Conflict5;
 wire [6:0] PC_En_Conflictstate = PC_En_Conflict1?state1:(PC_En_Conflict2?state2:(PC_En_Conflict3?state3:(PC_En_Conflict4?state4:(PC_En_Conflict5?state5:1))));
-//冒泡信号：
-    //冒泡优先级。所有小于该优先级的状态机（后来进入的）都要停滞 一般冒泡也包括引起冒泡的指令
+//冒泡信号�
+    //冒泡优先级。所有小于该优先级的状态机（后来进入的）都要停�一般冒泡也包括引起冒泡的指�
     wire    [2:0]   bubblePri = PC_En_Conflict?2:0;
     //wire            bubble=PC_En_Conflict&&PC_En_Start;//examine!!
-    wire            bubble=WaitForMem1;
+    wire            bubble=WaitForMem;
 
-//排空信号：
-    //排空优先级。所有小于该优先级的状态机（后来进入的）都要排空 一般排空不包括引起排空的指令
+//排空信号�
+    //排空优先级。所有小于该优先级的状态机（后来进入的）都要排�一般排空不包括引起排空的指�
     //推论：若JmpOccur和BranchOccur同时发生，一定是Branch指令在前。故优先判断Branch
     wire    [2:0]   flushPri = (Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)?3:(JmpOccur?2:0);
     wire    [2:0]   flush =(Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)||JmpOccur;
 /*PC相关
 可证明：PC_En_Start的指令总在PC_En_Conflict的指令之前，故优先级更高 (错了...)
-如果PC_En_Conflict发生的话，之前的新指令是无效的
+如果PC_En_Conflict发生的话，之前的新指令是无效�
 各对PC的赋值方式：
 New:        PCWrite = 1 PC_Src = 2'b00 （PC_En_Start)
 Branch:     Branchxx= 1 PC_Src = 2'b01
@@ -224,9 +273,9 @@ ALU_SrcB=(SelectB1||SelectB2||SelectB3)?2'b01:ALU_SrcB0;
 stage=2 R: |rs| |rt| -> rd (运算类指令和JR)
 stage=2 I: |rs|      -> rt ()
 
-stage=3 (限定为LW, SW无影响)
+stage=3 (限定为LW, SW无影�
 */
-wire WaitForMem1 = (stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S3)&&(rsofALU==rtofTHREE||rtofALU==rtofTHREE);// IorR(new) stage4 LW(priv)
+wire WaitForMem = (stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S3)&&(rsofALU==rtofTHREE||rtofALU==rtofTHREE);// IorR(new) stage4 LW(priv)
 
 //control code ends here, hope not too many bugs...
 
@@ -237,7 +286,7 @@ pipe_FSM FSM1(
     .rst_n(rst_n),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
-    .en0(en0),
+    .en(en0),
     .bubble(bubble),        //统一信号
     .bubblePri(bubblePri),  //统一信号
     .flush(flush),          //统一信号
@@ -246,7 +295,7 @@ pipe_FSM FSM1(
     .PC_En_Conflict(PC_En_Conflict1),
     //output:
     .fetch_req(fetch_req1),
-    .next_en0(en021),       //不规则
+    .next_en(en021),       //不规�
     .stage(stage1),
     .rs_addr(rs_addr1),
     .rt_addr(rt_addr1),//从之前的instruction提取并保存的
@@ -281,7 +330,7 @@ pipe_FSM FSM2(
     .rst_n(rst_n),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
-    .en0(en021),
+    .en(en021),
     .bubble(bubble),        //统一信号
     .bubblePri(bubblePri),  //统一信号
     .flush(flush),          //统一信号
@@ -290,7 +339,7 @@ pipe_FSM FSM2(
     .PC_En_Conflict(PC_En_Conflict2),
     //output:
     .fetch_req(fetch_req2),
-    .next_en0(en122),       //不规则
+    .next_en(en122),       //不规�
     .stage(stage2),
     .rs_addr(rs_addr2),
     .rt_addr(rt_addr2),//从之前的instruction提取并保存的
@@ -325,7 +374,7 @@ pipe_FSM FSM3(
     .rst_n(rst_n),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
-    .en0(en122),
+    .en(en122),
     .bubble(bubble),        //统一信号
     .bubblePri(bubblePri),  //统一信号
     .flush(flush),          //统一信号
@@ -334,7 +383,7 @@ pipe_FSM FSM3(
     .PC_En_Conflict(PC_En_Conflict3),
     //output:
     .fetch_req(fetch_req3),
-    .next_en0(en223),       //不规则
+    .next_en(en223),       //不规�
     .stage(stage3),
     .rs_addr(rs_addr3),
     .rt_addr(rt_addr3),//从之前的instruction提取并保存的
@@ -369,7 +418,7 @@ pipe_FSM FSM4(
     .rst_n(rst_n),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
-    .en0(en223),
+    .en(en223),
     .bubble(bubble),        //统一信号
     .bubblePri(bubblePri),  //统一信号
     .flush(flush),          //统一信号
@@ -378,7 +427,7 @@ pipe_FSM FSM4(
     .PC_En_Conflict(PC_En_Conflict4),
     //output:
     .fetch_req(fetch_req4),
-    .next_en0(en324),       //不规则
+    .next_en(en324),       //不规�
     .stage(stage4)
     .rs_addr(rs_addr4),
     .rt_addr(rt_addr4),//从之前的instruction提取并保存的
@@ -413,7 +462,7 @@ pipe_FSM FSM5(
     .rst_n(rst_n),
     .instruction(instruction),//每个状态机只在它的取指时取入instruction
     //FSM control:5
-    .en0(en324),
+    .en(en324),
     .bubble(bubble),        //统一信号
     .bubblePri(bubblePri),  //统一信号
     .flush(flush),          //统一信号
@@ -422,7 +471,7 @@ pipe_FSM FSM5(
     .PC_En_Conflict(PC_En_Conflict5),
     //output:
     .fetch_req(fetch_req5),
-    //.next_en0(en425),       //不规则
+    //.next_en0(en425),       //不规�
     .stage(stage5)
     .rs_addr(rs_addr5),
     .rt_addr(rt_addr5),//从之前的instruction提取并保存的

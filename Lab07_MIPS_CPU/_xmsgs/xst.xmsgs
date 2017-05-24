@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="error" file="HDLCompilers" num="27" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 188 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">PC_En_Conflict</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 192 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">bubblePri</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 194 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">bubble</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 194 </arg>&apos;<arg fmt="%s" index="2">WaitForMem</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 199 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">flushPri</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="27" delta="old" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 200 </arg>Illegal redeclaration of &apos;<arg fmt="%s" index="2">flush</arg>&apos;
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">global_FSM.v</arg>&quot; line <arg fmt="%d" index="2">211</arg> <arg fmt="%s" index="3">unexpected token: &apos;=&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">global_FSM.v</arg>&quot; line <arg fmt="%d" index="2">211</arg> <arg fmt="%s" index="3">unexpected token: &apos;?&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">global_FSM.v</arg>&quot; line <arg fmt="%d" index="2">211</arg> <arg fmt="%s" index="3">expecting &apos;endmodule&apos;, found &apos;(&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="28" delta="old" ><arg fmt="%s" index="1">&quot;ALU_OpA.v&quot; line 39 </arg>&apos;<arg fmt="%s" index="2">ASelect</arg>&apos; has not been declared
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">90</arg> <arg fmt="%s" index="3">expecting &apos;IDENTIFIER&apos;, found &apos;[&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">316</arg> <arg fmt="%s" index="3">expecting &apos;.&apos;, found &apos;)&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">320</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">321</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">322</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">323</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">324</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+<msg type="error" file="HDLCompilers" num="26" delta="old" >&quot;<arg fmt="%s" index="1">top.v</arg>&quot; line <arg fmt="%d" index="2">325</arg> <arg fmt="%s" index="3">unexpected token: &apos;.&apos;</arg>
+</msg>
+
+</messages>
+

@@ -24,16 +24,16 @@ module pipe_FSM(
     input               rst_n,
     //instruction info:
     input   [31:0]      instruction,
-    input               en0,        //有效时，状态机将无条件地处于IDLE
-    input               bubble,     //暂停，冒气泡。所有后来的在运行的指令都要冒气泡
+    input               en,        //有效时，状态机将无条件地处于IDLE
+    input               bubble,     //暂停，冒气泡。所有后来的在运行的指令都要冒气�
     input   [2:0]       bubblePri,
     input               flush,
     input   [2:0]       flushPri,
     input               ack,        //permission to start the next instruction
     input               PC_En_Conflict,
     output              fetch_req,  //取新指令请求
-    output  reg         next_en0,
-    //stage: 刚进入时为0
+    output  reg         next_en,
+    //stage: 刚进入时�
     output  reg [2:0]   stage,
     //reg numbers
     output  reg [4:0]   rs_addr,
@@ -66,6 +66,7 @@ module pipe_FSM(
     output  reg [6:0]   next_state
     );
 parameter SIDLE = 15;
+parameter SWAIT = 17;
 parameter S0 = 0;
 parameter S1 = 1;
 parameter S2 = 2;
@@ -82,6 +83,7 @@ parameter S10 = 10;
 parameter S11 = 11;
 parameter S11plus = 13;
 parameter S12 = 16;
+parameter S12plus = 18;
 
 wire   [5:0]       opcode;
 wire   [5:0]       funct;
@@ -90,14 +92,14 @@ wire                flush_en;
 assign  opcode = instruction[31:26];
 assign  funct = instruction[5:0];
 assign  bubble_en = bubble&&(bubblePri>=stage);
-assign  flush_en = flush&&(flushPri>stage);//不包括自身(=的情况)
+assign  flush_en = flush&&(flushPri>stage);//不包括自�=的情�
 
 always@(posedge clk or negedge rst_n)
 begin
     if(~rst_n||~en)
     begin
         next_en <= 0;
-        state <= IDLE;
+        state <= SIDLE;
     end
     else
     begin
@@ -184,7 +186,7 @@ begin
     end
 end
 //stage
-always@posedge clk or negedge rst_n)
+always@(posedge clk or negedge rst_n)
 begin
     if(~rst_n||flush_en||state==SWAIT)
         stage <= 0;
@@ -206,7 +208,7 @@ begin
         rd_addr <= 0;
         rt_addr <= 0;
     end
-    else if(stage==2)//只有在instruction是当前指令时才更新
+    else if(stage==2)//只有在instruction是当前指令时才更�
     begin
         rs_addr <= instruction[25:21];
         rd_addr <= instruction[15:11];
@@ -214,7 +216,7 @@ begin
     end
 end
 
-//fetch_req 执行新指令请求
+//fetch_req 执行新指令请�
 
 assign fetch_req = (state == S4)||(state == S5plus)||(state == S7)||(state == S8plus)||(state == S10)||(state == S11plus)||(state == SIDLE);
 
@@ -247,10 +249,7 @@ begin
     begin
 
         case (next_state)//复位信号消失后，next_state将变为S1，即不会从S0开�
-        SIDLE:
-        begin
-            ;
-        end
+
         S0:
             begin
             //cancel all possible signals in previous clock cycles:
