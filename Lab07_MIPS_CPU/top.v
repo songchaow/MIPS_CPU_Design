@@ -70,11 +70,12 @@ output          IR_Write,
 output  [6:0]   state,
 output  [6:0]   next_state,
 //FSM Information:
+output          en0,
 output          DMemVisit,
 output          BranchSig,
-output  reg [1:0]   BrSigEn,
+output  [1:0]   BrSigEn,
 output          JmpSig,
-output  reg [1:0]   JmpSigEn,
+output  [1:0]   JmpSigEn,
 output  [6:0]   ackstate,
 output          PC_En_Start,
 output          PC_En_Conflict,
@@ -87,11 +88,14 @@ output          flush
 assign Jump_addr = instruction[25:0];
 assign opcode = instruction[31:26];
 assign Immed = instruction[15:0];
-wire [4:0]  rt_addr,[4:0]   rd_addr;
+wire [4:0]  rt_addr,  rd_addr;
 
 wire    [31:0]  ForwardA;
 wire    [31:0]  ForwardB;
 wire            SelectA,SelectB;
+wire            fromWB;
+wire            WB_value;
+wire            reg_realdatain;
 //Instruction Memory
 //wire [8:0] I_addra;
 //wire I_wea;
@@ -124,6 +128,7 @@ PC_Gen PC_Generator(
     .alu_out_reg(alu_out),
     .PC_Src(PC_Src),
     .Jump_addr(instruction[25:0]),
+    .sext_Immed(sext_Immed),
     .PC(PC),
     .next_PC(next_PC)
 );
@@ -153,7 +158,7 @@ State_Reg InstrData(
 /*
 Reg_Addr_Judge Reg_inaddr_Judger(
     //used to judge which needs to write back
-    //本时钟设为有效的RegWrite的状态机，在下一时钟一定有写请求�
+    //本时钟设为有效的RegWrite的状态机，在下一时钟一定有写请求�
     .RegWrite1,
     .RegWrite2,
     .RegWrite3,
@@ -184,10 +189,13 @@ Reg_MUX RegMux(//regfile data in
     .r3_addr_mux(r3_addr_mux)
 );
 REG_DIN_MUX RegDatainMux(
+    .fromWB(fromWB),
+    .WB_value(WB_value),
     .alu_out(alu_out),
     .DMEM_out(M_doutb),
     .MemtoReg(MemtoReg),
-    .reg_datain(reg_datain)
+    .reg_datain(reg_datain),
+    .reg_realdatain(reg_realdatain)
 );
 assign r1_addr = instruction[25:21];
 assign r2_addr = instruction[20:16];
@@ -197,7 +205,7 @@ REG_FILE RegFile(//use addr as always parameter in dout
 .r1_addr(instruction[25:21]),//rs
 .r2_addr(instruction[20:16]),//rt
 .r3_addr(r3_addr_mux),
-.r3_din(reg_datain),
+.r3_din(reg_realdatain),
 .r3_wr(RegWrite),
 .r1_dout(r1_data),
 .r2_dout(r2_data)
@@ -291,6 +299,7 @@ global_FSM CONTROL(
     .clk(clk),
     .rst_n(rst_n),
     .instruction(instruction),
+    .reg_din(reg_datain),
     .ALU_ZERO(ALU_ZERO),
     .ALU_POSITIVE(ALU_POSITIVE),
     .PCWrite(PCWrite),
@@ -306,6 +315,8 @@ global_FSM CONTROL(
     .rs_addr(rs_addr),//this output is not of real use
     .RegDst(RegDst),
     .RegWrite(RegWrite),
+    .fromWB(fromWB),
+    .WB_value(WB_value),
     .ALUOp(ALUOp),
     .ALU_SrcA(ALU_SrcA),
     .ALU_SrcB(ALU_SrcB),
@@ -313,6 +324,19 @@ global_FSM CONTROL(
     .SelectB(SelectB),
     .IR_Write(IR_Write),
     
+    .en0(en0),
+    .DMemVisit(DMemVisit),
+    .BranchSig(BranchSig),
+    .BrSigEn(BrSigEn),
+    .JmpSig(JmpSig),
+    .JmpSigEn(JmpSigEn),
+    .ackstate(ackstate),
+    .PC_En_Start(PC_En_Start),
+    .PC_En_Conflict(PC_En_Conflict),
+    .bubblePri(bubblePri),
+    .bubble(bubble),
+    .flushPri(flushPri),
+    .flush(flush)
 );
 
 PC_ENABLE   PC_Enable(

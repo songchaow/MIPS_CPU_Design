@@ -19,11 +19,14 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module REG_DIN_MUX(
+    input       fromWB,
+    input   [31:0]  WB_value,
     input [31:0] alu_out,
     input [31:0] DMEM_out,
     input MemtoReg,
-    output [31:0] reg_datain
+    output [31:0] reg_datain,
+    output  [31:0]  reg_realdatain
     );
 assign reg_datain = MemtoReg? DMEM_out:alu_out;
-
+assign reg_realdatain = fromWB?WB_value:reg_datain;
 endmodule

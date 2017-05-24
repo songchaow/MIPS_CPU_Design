@@ -31,6 +31,7 @@ module pipe_FSM(
     input   [2:0]       flushPri,
     input               ack,        //permission to start the next instruction
     input               PC_En_Conflict,
+    input   [31:0]      WB_data,
     output              fetch_req,  //取新指令请求
     output  reg         next_en,
     //stage: 刚进入时�
@@ -55,6 +56,8 @@ module pipe_FSM(
     //RegFile
     output  reg         RegDst,
     output  reg         RegWrite,
+    output  reg         fromWB,
+    output  reg [31:0]  WB_value,
     //ALU
     output  reg [1:0]   ALUOp,
     output  reg         ALU_SrcA,
@@ -96,7 +99,12 @@ assign  flush_en = flush&&(flushPri>stage);//不包括自�=的情�
 
 always@(posedge clk or negedge rst_n)
 begin
-    if(~rst_n||~en)
+    if(~rst_n)//||~en
+    begin
+        next_en <= 0;
+        state <= SIDLE;
+    end
+    else if(~en)
     begin
         next_en <= 0;
         state <= SIDLE;
@@ -188,9 +196,13 @@ end
 //stage
 always@(posedge clk or negedge rst_n)
 begin
-    if(~rst_n||flush_en||state==SWAIT)
+    if(~rst_n)
         stage <= 0;
-    else
+    else if(flush_en)
+        stage <= 0;
+    else if(state==SWAIT)
+        stage <= 0;
+    else 
     begin
         if(bubble_en)
             stage <= stage;
@@ -219,7 +231,28 @@ end
 //fetch_req 执行新指令请�
 
 assign fetch_req = (state == S4)||(state == S5plus)||(state == S7)||(state == S8plus)||(state == S10)||(state == S11plus)||(state == SIDLE);
-
+//WB store signal:
+wire SaveWB;
+assign SaveWB = (state!=SWAIT)&&(next_state==SWAIT)&&RegWrite;
+//store WB value if delayed
+always@(posedge clk or negedge rst_n)
+begin
+    if(~rst_n)
+    begin
+        WB_value <= 0;
+        fromWB <= 0;
+    end
+    else
+    begin
+        if(SaveWB)//now it's SWAIT
+        begin
+            WB_value <= WB_data;
+            fromWB <= 1;
+        end
+        if(next_state==S0)
+            fromWB <= 0;
+    end
+end
 //actions:
 always@(posedge clk or negedge rst_n)
 begin

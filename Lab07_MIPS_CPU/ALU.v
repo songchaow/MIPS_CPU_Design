@@ -72,6 +72,8 @@ begin
 	 begin
 	     alu_out <= ~(alu_a | alu_b);
 	 end
+	 default:
+	 	alu_out <= alu_a;
 	 endcase
 end
 endmodule

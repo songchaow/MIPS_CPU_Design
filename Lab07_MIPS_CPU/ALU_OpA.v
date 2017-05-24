@@ -36,6 +36,6 @@ module ForwardMux(
     input           Select,
     output  [31:0]  Forward
 );
-assign ForwardA = ASelect? alu_out:M_doutb;
+assign Forward = Select? alu_out:M_doutb;
 
 endmodule
