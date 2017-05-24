@@ -1,0 +1,25 @@
+ISim log file
+Running: D:\ISE Project\COD-Labs\Lab07_MIPS_CPU\simu_isim_beh.exe -gui -tclbatch isim.cmd -wdb D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/simu_isim_beh.wdb 
+ISim M.70d (signature 0x16fbe694)
+----------------------------------------------------------------------
+WARNING:Security:42 - Your software subscription period has lapsed. Your current version of Xilinx tools will continue to function, but you no longer qualify for Xilinx software updates or new releases.
+
+
+----------------------------------------------------------------------
+This is a Full version of ISim.
+WARNING:  For instance uut/myMemory/, width 7 of formal port addra is not equal to width 32 of actual constant.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 344.  For instance CONTROL/FSM1/, width 2 of formal port PC_Src is not equal to width 1 of actual signal PC_Src1.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 391.  For instance CONTROL/FSM2/, width 2 of formal port PC_Src is not equal to width 1 of actual signal PC_Src2.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 438.  For instance CONTROL/FSM3/, width 2 of formal port PC_Src is not equal to width 1 of actual signal PC_Src3.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 485.  For instance CONTROL/FSM4/, width 2 of formal port PC_Src is not equal to width 1 of actual signal PC_Src4.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 532.  For instance CONTROL/FSM5/, width 2 of formal port PC_Src is not equal to width 1 of actual signal PC_Src5.
+WARNING: File "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v" Line 333.  For instance uut/CONTROL/, width 5 of formal port rs_addr is not equal to width 1 of actual signal rs_addr.
+Time resolution is 1 ps
+# onerror resume
+# wave add /
+# run 1000 ns
+Simulator is doing circuit initialization process.
+ Block Memory Generator CORE Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator CORE Generator module simu.uut.myMemory.inst.blk_mem_gen_v4_3_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Finished circuit initialization process.

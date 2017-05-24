@@ -70,6 +70,23 @@ output          IR_Write,
 output  [6:0]   state,
 output  [6:0]   next_state,
 //FSM Information:
+output  [31:0]  ForwardA,
+output  [31:0]  ForwardB,
+output          SelectA,
+output          SelectB,
+output          fromWB,
+output  [31:0]  WB_value,
+output  [31:0]  reg_realdatain,
+output  [2:0]   stage1,
+    output  [2:0]   stage2,
+    output  [2:0]   stage3,
+    output  [2:0]   stage4,
+    output  [2:0]   stage5,
+    output  [6:0]   state1,
+    output  [6:0]   state2,
+    output  [6:0]   state3,
+    output  [6:0]   state4,
+    output  [6:0]   state5,
 output          en0,
 output          DMemVisit,
 output          BranchSig,
@@ -90,12 +107,12 @@ assign opcode = instruction[31:26];
 assign Immed = instruction[15:0];
 wire [4:0]  rt_addr,  rd_addr;
 
-wire    [31:0]  ForwardA;
+/*wire    [31:0]  ForwardA;
 wire    [31:0]  ForwardB;
 wire            SelectA,SelectB;
 wire            fromWB;
-wire            WB_value;
-wire            reg_realdatain;
+wire    [31:0]  WB_value;
+wire    [31:0]  reg_realdatain;*/
 //Instruction Memory
 //wire [8:0] I_addra;
 //wire I_wea;
@@ -294,6 +311,7 @@ ALU_RESULT_REG ALURESULT(
     .state(state),
     .next_state(next_state)
 );*/
+//wire [6:0]  state1,state2,state3,state4,state5;
 
 global_FSM CONTROL(
     .clk(clk),
@@ -323,7 +341,17 @@ global_FSM CONTROL(
     .SelectA(SelectA),
     .SelectB(SelectB),
     .IR_Write(IR_Write),
-    
+    //FSM information:
+    .stage1(stage1),
+    .stage2(stage2),
+    .stage3(stage3),
+    .stage4(stage4),
+    .stage5(stage5),
+    .state1(state1),
+    .state2(state2),
+    .state3(state3),
+    .state4(state4),
+    .state5(state5),
     .en0(en0),
     .DMemVisit(DMemVisit),
     .BranchSig(BranchSig),

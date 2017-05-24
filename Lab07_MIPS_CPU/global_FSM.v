@@ -60,8 +60,14 @@ module global_FSM(
     output  [2:0]   stage3,
     output  [2:0]   stage4,
     output  [2:0]   stage5,
+    output  [6:0]   state1,
+    output  [6:0]   state2,
+    output  [6:0]   state3,
+    output  [6:0]   state4,
+    output  [6:0]   state5,
+
     
-    output  reg     en0,
+    output          en0,
     output          DMemVisit,
     output  reg     BranchSig,
     output  reg [1:0]   BrSigEn,
@@ -103,7 +109,6 @@ wire en324;
 //ack: acknowledgement for fetch requests
 wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最�
 wire fetch_req1,fetch_req2,fetch_req3,fetch_req4,fetch_req5;
-wire [6:0]  state1,state2,state3,state4,state5;
 wire [6:0]  next_state1,next_state2,next_state3,next_state4,next_state5;
 wire Branch1,Branch2,Branch3,Branch4,Branch5;
 wire Branch_gz1,Branch_gz2,Branch_gz3,Branch_gz4,Branch_gz5;
@@ -111,14 +116,25 @@ wire Branch_ne1,Branch_ne2,Branch_ne3,Branch_ne4,Branch_ne5;
 wire RegWrite1,RegWrite2,RegWrite3,RegWrite4,RegWrite5;
 wire MemtoReg1,MemtoReg2,MemtoReg3,MemtoReg4,MemtoReg5;
 wire RegDst1,RegDst2,RegDst3,RegDst4,RegDst5;
-wire IRWrite1,IRWrite2,IRWrite3,IRWrite4,IRWrite5;
-wire [1:0] ALU_SrcB1,ALU_SrcB2,ALU_SrcB3,ALU_SrcB4,ALU_SrcB5;
+wire IR_Write1,IR_Write2,IR_Write3,IR_Write4,IR_Write5;
+wire [1:0] ALU_SrcB0,ALU_SrcB1,ALU_SrcB2,ALU_SrcB3,ALU_SrcB4,ALU_SrcB5;
 wire [1:0] ALUOp1,ALUOp2,ALUOp3,ALUOp4,ALUOp5;
 wire [4:0]  rt_addr1,  rt_addr2,  rt_addr3,  rt_addr4,  rt_addr5;
 wire [4:0]  rd_addr1,  rd_addr2,  rd_addr3,  rd_addr4,  rd_addr5;
 wire [4:0]  rs_addr1,  rs_addr2,  rs_addr3,  rs_addr4,  rs_addr5;
 wire        fromWB1,fromWB2,fromWB3,fromWB4,fromWB5;
 wire [31:0] WB_value1,WB_value2,WB_value3,WB_value4,WB_value5;
+
+wire    [6:0]   stateofALU;
+wire    [4:0]   rsofALU;
+wire    [4:0]   rtofALU;
+wire    [6:0]   stateofTHREE;
+wire    [4:0]   rdofTHREE;
+wire    [4:0]   rtofTHREE;
+
+wire    [6:0]   stateofFOUR;
+wire    [4:0]   rtofFOUR;
+
 assign ack1 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req1;
 assign ack2 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
 assign ack3 = (~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
@@ -243,20 +259,17 @@ assign Branch_gz =((PC_En_Conflict&&PC_En_Conflictstate==S8)?(Branch_gz1||Branch
 assign Branch_ne =((PC_En_Conflict&&PC_En_Conflictstate==S8)?(Branch_ne1||Branch_ne2||Branch_ne3||Branch_ne4||Branch_ne5):0);
 
 //state=0
-assign IRWrite = ((state1==S0)?IRWrite1:0)||((state2==S0)?IRWrite2:0)||((state3==S0)?IRWrite3:0)||((state3==S0)?IRWrite3:0)||((state4==S0)?IRWrite4:0)||((state5==S0)?IRWrite5:0);
+assign IR_Write = ((state1==S0)?IR_Write1:0)||((state2==S0)?IR_Write2:0)||((state3==S0)?IR_Write3:0)||((state3==S0)?IR_Write3:0)||((state4==S0)?IR_Write4:0)||((state5==S0)?IR_Write5:0);
 //state=2
     //PC_En
     //ALU
-assign ALU_SrcB0 = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0);
+assign ALU_SrcB0 = (state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0))));
+//= ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALU_SrcB1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALU_SrcB2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALU_SrcB3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALU_SrcB4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALU_SrcB5:0);
+//bug found at 21:13 fixed
 assign ALUOp = ((state1==S2||state1==S6||state1==S8||state1==S9||state1==S12)?ALUOp1:0)||((state2==S2||state2==S6||state2==S8||state2==S9||state2==S12)?ALUOp2:0)||((state3==S2||state3==S6||state3==S8||state3==S9||state3==S12)?ALUOp3:0)||((state4==S2||state4==S6||state4==S8||state4==S9||state4==S12)?ALUOp4:0)||((state5==S2||state5==S6||state5==S8||state5==S9||state5==S12)?ALUOp5:0);
 
 //global_control actions: 分步启动
-always@(posedge clk or negedge rst_n)
-begin
-    if(~rst_n)
-        en0 <= 0;
-    else en0 <= 1;
-end
+assign en0 = rst_n;
 //Forwarding
 /*检测第一类： 
 stage=2(进入时会跳至3) R: |rs| |rt| -> rd (运算类指令和JR)
@@ -266,15 +279,15 @@ stage=3 R: rs rt -> |rd|    (限制为运算类指令 因为其他R型如JR，�
 stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不在stage=3写回。它们的写回在第二类讨论)
 stage=4 LW M[]   ->  rt
 */
-wire    [6:0]   stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:0))));
-wire    [4:0]   rsofALU = (stage1==3)?rs_addr1:((stage2==3)?rs_addr2:((stage3==3)?rs_addr3:((stage4==3)?rs_addr4:((stage5==3)?rs_addr5:rs_addr1))));
-wire    [4:0]   rtofALU = (stage1==3)?rt_addr1:((stage2==3)?rt_addr2:((stage3==3)?rt_addr3:((stage4==3)?rt_addr4:((stage5==3)?rt_addr5:rt_addr1))));
-wire    [6:0]   stateofTHREE = (stage1==4)?state1:((stage2==4)?state2:((stage3==4)?state3:((stage4==4)?state4:((stage5==4)?state5:0))));
-wire    [4:0]   rdofTHREE = (stage1==4)?rd_addr1:((stage2==4)?rd_addr2:((stage3==4)?rd_addr3:((stage4==4)?rd_addr4:((stage5==4)?rd_addr5:rd_addr1))));//for R
-wire    [4:0]   rtofTHREE = (stage1==4)?rt_addr1:((stage2==4)?rt_addr2:((stage3==4)?rt_addr3:((stage4==4)?rt_addr4:((stage5==4)?rt_addr5:rt_addr1))));//for I
+assign stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:0))));
+assign rsofALU = (stage1==3)?rs_addr1:((stage2==3)?rs_addr2:((stage3==3)?rs_addr3:((stage4==3)?rs_addr4:((stage5==3)?rs_addr5:rs_addr1))));
+assign rtofALU = (stage1==3)?rt_addr1:((stage2==3)?rt_addr2:((stage3==3)?rt_addr3:((stage4==3)?rt_addr4:((stage5==3)?rt_addr5:rt_addr1))));
+assign stateofTHREE = (stage1==4)?state1:((stage2==4)?state2:((stage3==4)?state3:((stage4==4)?state4:((stage5==4)?state5:0))));
+assign rdofTHREE = (stage1==4)?rd_addr1:((stage2==4)?rd_addr2:((stage3==4)?rd_addr3:((stage4==4)?rd_addr4:((stage5==4)?rd_addr5:rd_addr1))));//for R
+assign rtofTHREE = (stage1==4)?rt_addr1:((stage2==4)?rt_addr2:((stage3==4)?rt_addr3:((stage4==4)?rt_addr4:((stage5==4)?rt_addr5:rt_addr1))));//for I
 
-wire    [6:0]   stateofFOUR = (stage1==5)?state1:((stage2==5)?state2:((stage3==5)?state3:((stage4==5)?state4:((stage5==5)?state5:0))));
-wire    [4:0]   rtofFOUR = (stage1==5)?rt_addr1:((stage2==5)?rt_addr2:((stage3==5)?rt_addr3:((stage4==5)?rt_addr4:((stage5==5)?rt_addr5:rt_addr1))));//for LW
+assign stateofFOUR = (stage1==5)?state1:((stage2==5)?state2:((stage3==5)?state3:((stage4==5)?state4:((stage5==5)?state5:0))));
+assign rtofFOUR = (stage1==5)?rt_addr1:((stage2==5)?rt_addr2:((stage3==5)?rt_addr3:((stage4==5)?rt_addr4:((stage5==5)?rt_addr5:rt_addr1))));//for LW
 
 //(stateofALU==S6||stateofALU==S12) //R prev
 //(stateofALU==S2||stateofALU==S8||stateofALU==S9) //I prev

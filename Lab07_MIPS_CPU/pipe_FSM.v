@@ -198,6 +198,8 @@ always@(posedge clk or negedge rst_n)
 begin
     if(~rst_n)
         stage <= 0;
+    else if(~en)
+        stage <= 0;
     else if(flush_en)
         stage <= 0;
     else if(state==SWAIT)
