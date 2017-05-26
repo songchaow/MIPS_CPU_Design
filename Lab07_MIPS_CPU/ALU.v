@@ -79,10 +79,19 @@ end
 endmodule
 
 module SEXT(
-	input	[15:0]      Immed,
-	output	[31:0]      sext_Immed
+	input					clk,
+	input					rst_n,
+	input		[15:0]      Immed,
+	output	reg	[31:0]      sext_Immed
 );
-assign sext_Immed = {{16{Immed[15]}},Immed};
+//bug2 fixed at 21:36
+//assign sext_Immed = {{16{Immed[15]}},Immed};
+always @(posedge clk or negedge rst_n)
+begin
+	if(~rst_n)
+		sext_Immed <= 0;
+	else sext_Immed <= {{16{Immed[15]}},Immed};
+end
 endmodule
 
 module ALU_RESULT_REG(

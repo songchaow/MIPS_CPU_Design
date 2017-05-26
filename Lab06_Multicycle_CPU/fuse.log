@@ -18,10 +18,11 @@ Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU_CONTRO
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/ALU.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/AddrMux.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v\" into library work
+WARNING:HDLCompiler:751 - "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v" Line 73: Redeclaration of ansi port instruction is not allowed
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu.v\" into library work
 Analyzing Verilog file \"e:/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
 Starting static elaboration
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v" Line 124: Size mismatch in connection of port <addra>. Formal port size is 8-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/top.v" Line 124: Size mismatch in connection of port <addra>. Formal port size is 7-bit while actual signal size is 32-bit.
 Completed static elaboration
 Compiling module PCModule
 Compiling module PC_Gen
@@ -48,8 +49,8 @@ Compiling module top
 Compiling module simu
 Compiling module glbl
 Time Resolution for simulation is 1ps.
-Waiting for 9 sub-compilation(s) to finish...
+Waiting for 1 sub-compilation(s) to finish...
 Compiled 24 Verilog Units
 Built simulation executable D:/ISE Project/COD-Labs/Lab06_Multicycle_CPU/simu_isim_beh.exe
-Fuse Memory Usage: 22548 KB
-Fuse CPU Usage: 358 ms
+Fuse Memory Usage: 23144 KB
+Fuse CPU Usage: 312 ms

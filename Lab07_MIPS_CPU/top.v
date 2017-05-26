@@ -99,7 +99,8 @@ output          PC_En_Conflict,
 output  [2:0]   bubblePri,
 output          bubble,
 output  [2:0]   flushPri,
-output          flush
+output          flush,
+output          existWAITandReg
     );
 
 assign Jump_addr = instruction[25:0];
@@ -201,8 +202,8 @@ Reg_Addr_Mux Reg_in_addr(
 */
 Reg_MUX RegMux(//regfile data in
     .RegDst(RegDst),
-    .rt_addr(instruction[20:16]),
-    .rd_addr(instruction[15:11]),
+    .rt_addr(rt_addr),//bug3 fixed at 22:15 it's not from immediate instruction reg
+    .rd_addr(rd_addr),
     .r3_addr_mux(r3_addr_mux)
 );
 REG_DIN_MUX RegDatainMux(
@@ -237,6 +238,8 @@ REG_OUT reg_out(
 );
 
 SEXT mySEXT(
+    .clk(clk),
+    .rst_n(rst_n),
     .Immed(Immed),
     .sext_Immed(sext_Immed)
 );
@@ -364,7 +367,8 @@ global_FSM CONTROL(
     .bubblePri(bubblePri),
     .bubble(bubble),
     .flushPri(flushPri),
-    .flush(flush)
+    .flush(flush),
+    .existWAITandReg(existWAITandReg)
 );
 
 PC_ENABLE   PC_Enable(

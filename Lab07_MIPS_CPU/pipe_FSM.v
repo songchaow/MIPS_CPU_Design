@@ -122,13 +122,16 @@ begin
     if(state == SWAIT)
     begin
         if(ack&&~flush_en) next_state <= S0;
-        else next_state <= SIDLE;
+        else next_state <= SWAIT;
     end
     else if(flush_en)
         next_state <= SWAIT;
     else if(state == SIDLE)
     begin
+        if(ack)
         next_state <= S0;
+        else
+        next_state <= SIDLE;
     end
     else if(state == S0)
         next_state <= S1;
@@ -202,13 +205,13 @@ begin
         stage <= 0;
     else if(flush_en)
         stage <= 0;
-    else if(state==SWAIT)
+    else if(next_state==SWAIT||next_state==SIDLE)
         stage <= 0;
     else 
     begin
         if(bubble_en)
             stage <= stage;
-        else if(ack)
+        else if(ack)//也可写为next_state == S0
             stage <= 1;
         else stage <= stage+1;
     end
@@ -232,7 +235,7 @@ end
 
 //fetch_req 执行新指令请�
 
-assign fetch_req = (state == S4)||(state == S5plus)||(state == S7)||(state == S8plus)||(state == S10)||(state == S11plus)||(state == SIDLE);
+assign fetch_req = (state == S4)||(state == S5plus)||(state == S7)||(state == S8plus)||(state == S10)||(state == S11plus)||(state == SIDLE)||(state ==SWAIT);
 //WB store signal:
 wire SaveWB;
 assign SaveWB = (state!=SWAIT)&&(next_state==SWAIT)&&RegWrite;

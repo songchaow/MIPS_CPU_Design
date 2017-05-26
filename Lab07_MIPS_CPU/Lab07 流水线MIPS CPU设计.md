@@ -100,7 +100,7 @@ S0:
 
 - state=4(S4, S5plus LW和SW)
 
-  RegWrite, MemtoReg, RegDst(S4, S5plus)
+  RegWrite, MemtoReg, RegDst(S4)
 
   有冲突的信号：
 
