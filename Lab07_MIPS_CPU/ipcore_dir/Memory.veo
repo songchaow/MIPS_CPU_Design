@@ -34,7 +34,7 @@
 Memory YourInstanceName (
 	.clka(clka),
 	.wea(wea), // Bus [0 : 0] 
-	.addra(addra), // Bus [6 : 0] 
+	.addra(addra), // Bus [7 : 0] 
 	.dina(dina), // Bus [31 : 0] 
 	.douta(douta)); // Bus [31 : 0] 
 

@@ -21,8 +21,10 @@
 module State_Reg(
     input               clk,
     input               rst_n,
+    input       [31:0]  r2_dout,
     input       [31:0]  mem_dout,
     input               IR_Write,
+    output  reg [31:0]  mem_din,
     output  reg [31:0]  instruction,//will refresh when enabled
     output  reg [31:0]  data//will refresh at every clock
     );
@@ -32,12 +34,14 @@ begin
     begin
         instruction <= 0;
         data <= 0;
+        mem_din <= 0;
     end
     else
     begin
     if(IR_Write)
         instruction <= mem_dout;
     data <= mem_dout;
+    mem_din <= r2_dout;
     end
 end
 endmodule

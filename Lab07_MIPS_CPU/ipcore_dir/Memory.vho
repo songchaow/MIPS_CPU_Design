@@ -33,7 +33,7 @@ component Memory
 	port (
 	clka: IN std_logic;
 	wea: IN std_logic_VECTOR(0 downto 0);
-	addra: IN std_logic_VECTOR(6 downto 0);
+	addra: IN std_logic_VECTOR(7 downto 0);
 	dina: IN std_logic_VECTOR(31 downto 0);
 	douta: OUT std_logic_VECTOR(31 downto 0));
 end component;

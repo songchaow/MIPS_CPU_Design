@@ -5,25 +5,25 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 164 </arg>Connection to input port &apos;<arg fmt="%s" index="2">addra</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 167 </arg>Connection to input port &apos;<arg fmt="%s" index="2">addra</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 333 </arg>Connection to output port &apos;<arg fmt="%s" index="2">rs_addr</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 340 </arg>Connection to output port &apos;<arg fmt="%s" index="2">rs_addr</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 344 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 379 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 391 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 427 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 438 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 475 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 485 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 523 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 532 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 571 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
 <msg type="warning" file="Xst" num="905" delta="new" >&quot;<arg fmt="%s" index="1">regfile.v</arg>&quot; line <arg fmt="%d" index="2">17</arg>: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
@@ -160,16 +160,13 @@
 <msg type="warning" file="Xst" num="1306" delta="new" >Output &lt;<arg fmt="%s" index="1">next_state</arg>&gt; is never assigned.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">rt_addr</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">rs_addr</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">rd_addr</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
 </msg>
 
-<msg type="info" file="Xst" num="1767" delta="new" >HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">sext_Immed_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mySEXT</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;sext_Immed_16&gt; &lt;sext_Immed_17&gt; &lt;sext_Immed_18&gt; &lt;sext_Immed_19&gt; &lt;sext_Immed_20&gt; &lt;sext_Immed_21&gt; &lt;sext_Immed_22&gt; &lt;sext_Immed_23&gt; &lt;sext_Immed_24&gt; &lt;sext_Immed_25&gt; &lt;sext_Immed_26&gt; &lt;sext_Immed_27&gt; &lt;sext_Immed_28&gt; &lt;sext_Immed_29&gt; &lt;sext_Immed_30&gt; &lt;sext_Immed_31&gt; </arg>
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">FSM5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -214,9 +211,6 @@
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">FSM2</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
@@ -247,7 +241,13 @@
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">pipe_FSM</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">sext_Immed_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">SEXT</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;sext_Immed_16&gt; &lt;sext_Immed_17&gt; &lt;sext_Immed_18&gt; &lt;sext_Immed_19&gt; &lt;sext_Immed_20&gt; &lt;sext_Immed_21&gt; &lt;sext_Immed_22&gt; &lt;sext_Immed_23&gt; &lt;sext_Immed_24&gt; &lt;sext_Immed_25&gt; &lt;sext_Immed_26&gt; &lt;sext_Immed_27&gt; &lt;sext_Immed_28&gt; &lt;sext_Immed_29&gt; &lt;sext_Immed_30&gt; &lt;sext_Immed_31&gt; </arg>
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">next_state_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">pipe_FSM</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;next_state_6&gt; </arg>

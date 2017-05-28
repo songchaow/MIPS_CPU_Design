@@ -30,6 +30,7 @@ module pipe_FSM(
     input               flush,
     input   [2:0]       flushPri,
     input               ack,        //permission to start the next instruction
+    input               wb_ack,     //permission to write back to regfile
     input               PC_En_Conflict,
     input   [31:0]      WB_data,
     output              fetch_req,  //取新指令请求
@@ -406,6 +407,11 @@ begin
         S12plus:
         begin
             
+        end
+        SWAIT:
+        begin
+            if(wb_ack)//下一个SWAIT就可以写回了，撤去RegWrite
+                RegWrite <= 0;
         end
         default:
         ; 

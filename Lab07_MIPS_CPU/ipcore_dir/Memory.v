@@ -47,15 +47,15 @@ module Memory(
 
 input clka;
 input [0 : 0] wea;
-input [6 : 0] addra;
+input [7 : 0] addra;
 input [31 : 0] dina;
 output [31 : 0] douta;
 
 // synthesis translate_off
 
       BLK_MEM_GEN_V4_3 #(
-		.C_ADDRA_WIDTH(7),
-		.C_ADDRB_WIDTH(7),
+		.C_ADDRA_WIDTH(8),
+		.C_ADDRB_WIDTH(8),
 		.C_ALGORITHM(1),
 		.C_BYTE_SIZE(9),
 		.C_COMMON_CLK(0),
@@ -83,8 +83,8 @@ output [31 : 0] douta;
 		.C_MEM_TYPE(0),
 		.C_MUX_PIPELINE_STAGES(0),
 		.C_PRIM_TYPE(1),
-		.C_READ_DEPTH_A(128),
-		.C_READ_DEPTH_B(128),
+		.C_READ_DEPTH_A(256),
+		.C_READ_DEPTH_B(256),
 		.C_READ_WIDTH_A(32),
 		.C_READ_WIDTH_B(32),
 		.C_RSTRAM_A(0),
@@ -100,8 +100,8 @@ output [31 : 0] douta;
 		.C_USE_SOFTECC(0),
 		.C_WEA_WIDTH(1),
 		.C_WEB_WIDTH(1),
-		.C_WRITE_DEPTH_A(128),
-		.C_WRITE_DEPTH_B(128),
+		.C_WRITE_DEPTH_A(256),
+		.C_WRITE_DEPTH_B(256),
 		.C_WRITE_MODE_A("WRITE_FIRST"),
 		.C_WRITE_MODE_B("WRITE_FIRST"),
 		.C_WRITE_WIDTH_A(32),

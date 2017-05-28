@@ -26,13 +26,11 @@ static unsigned int ng1[] = {0U, 0U};
 static unsigned int ng2[] = {1U, 0U};
 static unsigned int ng3[] = {2U, 0U};
 static unsigned int ng4[] = {3U, 0U};
-static int ng5[] = {2, 0};
 
 
 
 static void Always_28_0(char *t0)
 {
-    char t9[8];
     char *t1;
     char *t2;
     char *t3;
@@ -117,11 +115,8 @@ LAB11:    xsi_set_current_line(36, ng0);
 LAB13:    xsi_set_current_line(38, ng0);
     t3 = (t0 + 1208U);
     t4 = *((char **)t3);
-    t3 = ((char*)((ng5)));
-    memset(t9, 0, 8);
-    xsi_vlog_unsigned_lshift(t9, 32, t4, 32, t3, 32);
-    t7 = (t0 + 1928);
-    xsi_vlogvar_assign_value(t7, t9, 0, 0, 32);
+    t3 = (t0 + 1928);
+    xsi_vlogvar_assign_value(t3, t4, 0, 0, 32);
     goto LAB17;
 
 }

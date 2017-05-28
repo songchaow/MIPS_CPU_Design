@@ -30,12 +30,12 @@ begin
     case (ALU_SrcB)
         2'b00:
             alu_opb = r2_dout;
-        2'b01://not used currently
+        2'b01://ForwardB : 2 cases
             alu_opb = ForwardB;
         2'b10:
             alu_opb = sext_Immed;
-        2'b11://not used currently
-            alu_opb = sext_Immed<<2;
+        2'b11://not used
+            alu_opb = sext_Immed;
         default: 
             alu_opb = r2_dout;
     endcase

@@ -33,9 +33,10 @@ endmodule
 module ForwardMux(
     input   [31:0]  alu_out,//reg
     input   [31:0]  M_doutb,
-    input           Select,
+    input   [31:0]  WB_value,
+    input   [1:0]   Select,
     output  [31:0]  Forward
 );
-assign Forward = Select? alu_out:M_doutb;
+assign Forward = (Select==2'b01)? alu_out:((Select==2'b10)?WB_value:M_doutb);
 
 endmodule
