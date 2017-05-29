@@ -25,7 +25,7 @@ static const char *ng0 = "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/pipe_FSM.v";
 
 
 
-static void Cont_434_0(char *t0)
+static void Cont_436_0(char *t0)
 {
     char t4[8];
     char t18[8];
@@ -368,7 +368,7 @@ LAB0:    t1 = (t0 + 3168U);
 
 LAB3:    goto *t2;
 
-LAB2:    xsi_set_current_line(434, ng0);
+LAB2:    xsi_set_current_line(436, ng0);
     t2 = (t0 + 1848U);
     t3 = *((char **)t2);
     memset(t4, 0, 8);
@@ -998,7 +998,7 @@ LAB89:    t304 = *((unsigned int *)t292);
 
 extern void work_m_00000000000804054183_0518260074_init()
 {
-	static char *pe[] = {(void *)Cont_434_0};
+	static char *pe[] = {(void *)Cont_436_0};
 	xsi_register_didat("work_m_00000000000804054183_0518260074", "isim/simu_isim_beh.exe.sim/work/m_00000000000804054183_0518260074.didat");
 	xsi_register_executes(pe);
 }

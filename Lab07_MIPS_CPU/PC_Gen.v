@@ -46,7 +46,7 @@ module PC_Gen(
         //多周期：上一步，alu算出了PC自增的值
         //流水线：PC自增的值由独立的模块算出
         2'b01://Branch
-        next_PC = PC+sext_Immed;//last output
+        next_PC = (PC+(sext_Immed<<2))-8;//last output 减8是因为流水线多走了两步
         2'b10://Jump 
         next_PC = {PC[31:28],Jump_addr,2'b00};
         2'b11://JR

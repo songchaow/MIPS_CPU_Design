@@ -60,7 +60,7 @@ output Branch_gz,
 output RegDst,
 output RegWrite,
 output [1:0] ALUOp,
-output  [25:0]  Jump_addr,
+output [25:0]  Jump_addrreg,
 // new signals:
 output          PCWrite,
 output  [1:0]   PC_Src,
@@ -81,8 +81,9 @@ output  [31:0]  WB_value,
 output  [31:0]  ForwardValueA,
 output  [31:0]  ForwardValueB,
 output          SWfromWB,
-output  [31:0]  SW_ForwardValueB,
+output  [31:0]  SW_value,
 output          SelectA_WB2_en,
+output          SelectA_WB2,
 output          SelectB_WB2_en,
 output  [31:0]  SelectA_WB2_value,
 output  [31:0]  SelectB_WB2_value,
@@ -117,11 +118,11 @@ output  [2:0]   flushPri,
 output          flush,
 output          existWAITandReg
     );
-
+wire    [25:0]    Jump_addr;
 assign Jump_addr = instruction[25:0];
 assign opcode = instruction[31:26];
 assign Immed = instruction[15:0];
-wire [4:0]  rt_addr,  rd_addr;
+wire [4:0]  rt_addr,  rd_addr,rs_addr;
 
 /*wire    [31:0]  ForwardA;
 wire    [31:0]  ForwardB;
@@ -160,7 +161,7 @@ PC_Gen PC_Generator(
     .alu_out(alu_result),//immediate output
     .alu_out_reg(alu_out),
     .PC_Src(PC_Src),
-    .Jump_addr(instruction[25:0]),
+    .Jump_addr(Jump_addrreg),
     .sext_Immed(sext_Immed),
     .PC(PC),
     .next_PC(next_PC)
@@ -175,7 +176,7 @@ AddrMux MemAddr(
 Memory myMemory(
 .clka(clk),
 .wea(MemWrite),
-.dina(fromLW?M_doutb:mem_din),
+.dina(SWfromWB?SW_value:mem_din),
 .douta(M_doutb),
 .addra(Mem_addr>>2)// original address(8 bit per unit) divided by 4 = new address (32 bit per unit)
 );
@@ -183,8 +184,13 @@ Memory myMemory(
 State_Reg InstrData(
     .clk(clk),
     .rst_n(rst_n),
+    .bubble(bubble),
+    .Jump_addr(Jump_addr),
     .mem_dout(M_doutb),
     .r2_dout(r2_dout),//save memory data-in value
+    .funct(funct),
+    .functreg(functreg),
+    .Jump_addrreg(Jump_addrreg),
     .mem_din(mem_din),
     .IR_Write(IR_Write),
     .instruction(instruction),
@@ -289,10 +295,10 @@ ALU_OpB ALU_OPB_MUX(
     .alu_opb(alu_b),
     .ForwardB(ForwardB)
 );
-
+wire [5:0] functreg;
 ALU_CONTROL AluControl(
     .ALUOp(ALUOp),
-    .funct(funct),
+    .funct(functreg),
     .post_ALUOp(alu_op)
 );
 ALU myALU(
@@ -355,7 +361,7 @@ global_FSM CONTROL(
     .IorD(IorD),
     .fromLW(fromLW),
     .SWfromWB(SWfromWB),
-    .SW_ForwardValueB(SW_ForwardValueB),
+    .SW_value(SW_value),
     .rt_addr(rt_addr),
     .rd_addr(rd_addr),
     .rs_addr(rs_addr),//this output is not of real use
@@ -370,6 +376,7 @@ global_FSM CONTROL(
     .ALU_SrcB(ALU_SrcB),
     .SelectA(SelectA),
     .SelectB(SelectB),
+    .SelectA_WB2(SelectA_WB2),
     .SelectA_WB2_en(SelectA_WB2_en),
     .SelectB_WB2_en(SelectA_WB2_en),
     .SelectA_WB2_value(SelectA_WB2_value),

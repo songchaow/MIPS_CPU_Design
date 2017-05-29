@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-05-26T23:05:12</DateModified>
+  <DateModified>2017-05-28T19:30:43</DateModified>
   <ModuleName>top</ModuleName>
-  <SummaryTimeStamp>Unknown</SummaryTimeStamp>
+  <SummaryTimeStamp>2017-05-26T23:07:44</SummaryTimeStamp>
   <SavedFilePath>D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/iseconfig/top.xreport</SavedFilePath>
   <ImplementationReportsDirectory>D:/ISE Project/COD-Labs/Lab07_MIPS_CPU\</ImplementationReportsDirectory>
   <DateInitialized>2017-05-24T18:57:21</DateInitialized>

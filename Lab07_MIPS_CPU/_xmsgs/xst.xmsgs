@@ -5,25 +5,25 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 167 </arg>Connection to input port &apos;<arg fmt="%s" index="2">addra</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="259" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 180 </arg>Connection to input port &apos;<arg fmt="%s" index="2">addra</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 340 </arg>Connection to output port &apos;<arg fmt="%s" index="2">rs_addr</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;top.v&quot; line 361 </arg>Connection to output port &apos;<arg fmt="%s" index="2">rs_addr</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 379 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 516 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 427 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 564 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 475 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 612 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 523 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 660 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
-<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 571 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
+<msg type="warning" file="HDLCompilers" num="261" delta="new" ><arg fmt="%s" index="1">&quot;global_FSM.v&quot; line 708 </arg>Connection to output port &apos;<arg fmt="%s" index="2">PC_Src</arg>&apos; does not match port size
 </msg>
 
 <msg type="warning" file="Xst" num="905" delta="new" >&quot;<arg fmt="%s" index="1">regfile.v</arg>&quot; line <arg fmt="%d" index="2">17</arg>: One or more signals are missing in the sensitivity list of always block. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
@@ -58,7 +58,16 @@
 <msg type="info" file="Xst" num="2371" delta="new" >HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">opcode</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1305" delta="new" >Output &lt;<arg fmt="%s" index="1">fromLW</arg>&gt; is never assigned. Tied to value <arg fmt="%s" index="2">0</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">nstateofD</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">existRegWrite</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">SelectB_WB2</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">PC_Src5</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -136,9 +145,6 @@
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">IR_in_Write1</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">DMemVisitState</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">ALU_SrcA5</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
@@ -157,6 +163,9 @@
 <msg type="warning" file="Xst" num="1306" delta="new" >Output &lt;<arg fmt="%s" index="1">state</arg>&gt; is never assigned.
 </msg>
 
+<msg type="warning" file="Xst" num="1306" delta="new" >Output &lt;<arg fmt="%s" index="1">SelectB_WB2_en</arg>&gt; is never assigned.
+</msg>
+
 <msg type="warning" file="Xst" num="1306" delta="new" >Output &lt;<arg fmt="%s" index="1">next_state</arg>&gt; is never assigned.
 </msg>
 
@@ -167,6 +176,15 @@
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">sext_Immed_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">mySEXT</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;sext_Immed_16&gt; &lt;sext_Immed_17&gt; &lt;sext_Immed_18&gt; &lt;sext_Immed_19&gt; &lt;sext_Immed_20&gt; &lt;sext_Immed_21&gt; &lt;sext_Immed_22&gt; &lt;sext_Immed_23&gt; &lt;sext_Immed_24&gt; &lt;sext_Immed_25&gt; &lt;sext_Immed_26&gt; &lt;sext_Immed_27&gt; &lt;sext_Immed_28&gt; &lt;sext_Immed_29&gt; &lt;sext_Immed_30&gt; &lt;sext_Immed_31&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">SelectA_WB2_value_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">CONTROL</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">31 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;SelectA_WB2_value_1&gt; &lt;SelectA_WB2_value_2&gt; &lt;SelectA_WB2_value_3&gt; &lt;SelectA_WB2_value_4&gt; &lt;SelectA_WB2_value_5&gt; &lt;SelectA_WB2_value_6&gt; &lt;SelectA_WB2_value_7&gt; &lt;SelectA_WB2_value_8&gt; &lt;SelectA_WB2_value_9&gt; &lt;SelectA_WB2_value_10&gt; &lt;SelectA_WB2_value_11&gt; &lt;SelectA_WB2_value_12&gt; &lt;SelectA_WB2_value_13&gt; &lt;SelectA_WB2_value_14&gt; &lt;SelectA_WB2_value_15&gt; &lt;SelectA_WB2_value_16&gt; &lt;SelectA_WB2_value_17&gt; &lt;SelectA_WB2_value_18&gt; &lt;SelectA_WB2_value_19&gt; &lt;SelectA_WB2_value_20&gt; &lt;SelectA_WB2_value_21&gt; &lt;SelectA_WB2_value_22&gt; &lt;SelectA_WB2_value_23&gt; &lt;SelectA_WB2_value_24&gt; &lt;SelectA_WB2_value_25&gt; &lt;SelectA_WB2_value_26&gt; &lt;SelectA_WB2_value_27&gt; &lt;SelectA_WB2_value_28&gt; &lt;SelectA_WB2_value_29&gt; &lt;SelectA_WB2_value_30&gt; &lt;SelectA_WB2_value_31&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">SelectA_WB2_en</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">CONTROL</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">SelectA_WB2_value_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">CONTROL</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">FSM5</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -181,9 +199,6 @@
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">FSM4</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
@@ -194,9 +209,6 @@
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">FSM3</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
@@ -244,7 +256,19 @@
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">state</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="2404" delta="new" > FFs/Latches &lt;<arg fmt="%s" index="1">SelectA_WB2_value</arg>&lt;<arg fmt="%d" index="2">31</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">global_FSM</arg>&gt;.
+</msg>
+
 <msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">ALU_SrcB_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">pipe_FSM</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">SelectA_WB2_en</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">global_FSM</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">sext_Immed_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">SEXT</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">16 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;sext_Immed_16&gt; &lt;sext_Immed_17&gt; &lt;sext_Immed_18&gt; &lt;sext_Immed_19&gt; &lt;sext_Immed_20&gt; &lt;sext_Immed_21&gt; &lt;sext_Immed_22&gt; &lt;sext_Immed_23&gt; &lt;sext_Immed_24&gt; &lt;sext_Immed_25&gt; &lt;sext_Immed_26&gt; &lt;sext_Immed_27&gt; &lt;sext_Immed_28&gt; &lt;sext_Immed_29&gt; &lt;sext_Immed_30&gt; &lt;sext_Immed_31&gt; </arg>

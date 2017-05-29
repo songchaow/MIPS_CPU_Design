@@ -41,7 +41,7 @@ module global_FSM(
     output          IorD,
     output          fromLW,
     output          SWfromWB,
-    output  [31:0]  SW_ForwardValueB,
+    output  [31:0]  SW_value,
     //RegFile
     output  [4:0]   rt_addr,//used for write back
     output  [4:0]   rd_addr,//used for write back
@@ -58,10 +58,11 @@ module global_FSM(
     output  [1:0]   ALU_SrcB,
     output  [1:0]   SelectA,
     output  [1:0]   SelectB,
-    output  reg     SelectA_WB2_en;
-    output  reg [31:0]  SelectA_WB2_value;
-    output  reg         SelectB_WB2_en;
-    output  reg [31:0]  SelectB_WB2_value;
+    output  reg     SelectA_WB2_en,
+    output          SelectA_WB2,
+    output  reg [31:0]  SelectA_WB2_value,
+    output  reg         SelectB_WB2_en,
+    output  reg [31:0]  SelectB_WB2_value,
     //Instruction Reg
     output          IR_Write,
     //FSM information:
@@ -122,14 +123,13 @@ wire en122;
 wire en223;
 wire en324;
 //ack: acknowledgement for fetch requests
-wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最高
+wire ack1,ack2,ack3,ack4,ack5;//ack1优先级最�
 wire wb_ack1,wb_ack2,wb_ack3,wb_ack4,wb_ack5;
 wire fetch_req1,fetch_req2,fetch_req3,fetch_req4,fetch_req5;
 wire [6:0]  next_state1,next_state2,next_state3,next_state4,next_state5;
 wire Branch1,Branch2,Branch3,Branch4,Branch5;
 wire Branch_gz1,Branch_gz2,Branch_gz3,Branch_gz4,Branch_gz5;
 wire Branch_ne1,Branch_ne2,Branch_ne3,Branch_ne4,Branch_ne5;
-wire RegWrite1,RegWrite2,RegWrite3,RegWrite4,RegWrite5;
 wire MemtoReg1,MemtoReg2,MemtoReg3,MemtoReg4,MemtoReg5;
 wire RegDst1,RegDst2,RegDst3,RegDst4,RegDst5;
 wire IR_Write1,IR_Write2,IR_Write3,IR_Write4,IR_Write5;
@@ -151,13 +151,13 @@ wire    [4:0]   rtofTHREE;
 wire    [6:0]   stateofFOUR;
 wire    [4:0]   rtofFOUR;
 
-assign ack1 = (~(existWAITandReg&&~(RegWrite1&&state1==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req1;
-assign ack2 = (~(existWAITandReg&&~(RegWrite2&&state2==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
-assign ack3 = (~(existWAITandReg&&~(RegWrite3&&state3==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
-assign ack4 = (~(existWAITandReg&&~(RegWrite4&&state4==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
-assign ack5 = (~(existWAITandReg&&~(RegWrite5&&state5==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
+assign ack1 = (~flush)&&(~(existWAITandReg&&~(RegWrite1&&state1==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req1;
+assign ack2 = (~flush)&&(~(existWAITandReg&&~(RegWrite2&&state2==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req2&&(~ack1);
+assign ack3 = (~flush)&&(~(existWAITandReg&&~(RegWrite3&&state3==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req3&&(~ack1)&&(~ack2);
+assign ack4 = (~flush)&&(~(existWAITandReg&&~(RegWrite4&&state4==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req4&&(~ack1)&&(~ack2)&&(~ack3);
+assign ack5 = (~flush)&&(~(existWAITandReg&&~(RegWrite5&&state5==SWAIT)))&&(~DMemVisit)&&(~BranchSig)&&(~JmpSig)&&fetch_req5&&(~ack1)&&(~ack2)&&(~ack3)&&(~ack4);
 
-//存在处于SWAIT(此时它一定有fetch_req)，并自己不是SWAITING。
+//存在处于SWAIT(此时它一定有fetch_req)，并自己不是SWAITING�
 assign existWAITandReg = (state1==SWAIT&&RegWrite1)||(state2==SWAIT&&RegWrite2)||(state3==SWAIT&&RegWrite3)||(state4==SWAIT&&RegWrite4)||(state5==SWAIT&&RegWrite5);
 assign existRegWrite = (RegWrite1)||(RegWrite2)||(RegWrite3)||(RegWrite4)||(RegWrite5);
 assign ackstate = ack1?state1:(ack2?state2:(ack3?state3:(ack4?state4:(ack5?state5:state1))));
@@ -232,7 +232,7 @@ assign IorD =DMemVisit?1:0;
 assign MemWrite = DMemVisit&&(DMemVisitState==S5);
 //写回信号
 //写回仍计划在单条指令的末尾，和新指令进入同时，故可以用新指令进入相同的判断逻辑�
-//bug4: 写回不应与新指令进入同步。否则会造成大量延迟，即使是前推也不能解决数据冲突问题
+//bug4: 写回不应与新指令进入同步。否则会造成大量延迟，即使是前推也不能解决数据冲突问�
 //但写回结果可在写回前传到下一条指令�
 //assign RegWrite = RegWrite1||RegWrite2||RegWrite3||RegWrite4||RegWrite5;
 //assign MemtoReg = RegWrite1?MemtoReg1:(RegWrite2?MemtoReg2:(RegWrite3?MemtoReg3:(RegWrite4?MemtoReg4:(RegWrite5?MemtoReg5:0))));
@@ -241,11 +241,12 @@ assign MemWrite = DMemVisit&&(DMemVisitState==S5);
 //assign rt_addr = RegWrite1?rt_addr1:(RegWrite2?rt_addr2:(RegWrite3?rt_addr3:(RegWrite4?rt_addr4:(RegWrite5?rt_addr5:0))));
 //assign rd_addr = RegWrite1?rd_addr1:(RegWrite2?rd_addr2:(RegWrite3?rd_addr3:(RegWrite4?rd_addr4:(RegWrite5?rd_addr5:0))));
 
-assign wb_ack1 = (~(existWAITandReg&&~(RegWrite1&&state1==SWAIT)))&&RegWrite1;
-assign wb_ack2 = (~(existWAITandReg&&~(RegWrite2&&state2==SWAIT)))&&RegWrite2&&(~wb_ack1);
-assign wb_ack3 = (~(existWAITandReg&&~(RegWrite3&&state3==SWAIT)))&&RegWrite3&&(~wb_ack1)&&(~wb_ack2);
-assign wb_ack4 = (~(existWAITandReg&&~(RegWrite4&&state4==SWAIT)))&&RegWrite4&&(~wb_ack1)&&(~wb_ack2)&&(~wb_ack3);
-assign wb_ack5 = (~(existWAITandReg&&~(RegWrite5&&state5==SWAIT)))&&RegWrite5&&(~wb_ack1)&&(~wb_ack2)&&(~wb_ack3)&&(~wb_ack4);
+assign wb_ack1 = (~((stateofFOUR==S4)&&(rtofFOUR==(RegDst1?rd_addr1:rt_addr1))&&(state1!=SWAIT)&&(state1!=S4)))&&(~(existWAITandReg&&~(RegWrite1&&state1==SWAIT)))&&RegWrite1;
+assign wb_ack2 = (~((stateofFOUR==S4)&&(rtofFOUR==(RegDst2?rd_addr2:rt_addr2))&&(state2!=SWAIT)&&(state2!=S4)))&&(~(existWAITandReg&&~(RegWrite2&&state2==SWAIT)))&&RegWrite2&&(~wb_ack1);
+assign wb_ack3 = (~((stateofFOUR==S4)&&(rtofFOUR==(RegDst3?rd_addr3:rt_addr3))&&(state3!=SWAIT)&&(state3!=S4)))&&(~(existWAITandReg&&~(RegWrite3&&state3==SWAIT)))&&RegWrite3&&(~wb_ack1)&&(~wb_ack2);
+assign wb_ack4 = (~((stateofFOUR==S4)&&(rtofFOUR==(RegDst4?rd_addr4:rt_addr4))&&(state4!=SWAIT)&&(state4!=S4)))&&(~(existWAITandReg&&~(RegWrite4&&state4==SWAIT)))&&RegWrite4&&(~wb_ack1)&&(~wb_ack2)&&(~wb_ack3);
+assign wb_ack5 = (~((stateofFOUR==S4)&&(rtofFOUR==(RegDst5?rd_addr5:rt_addr5))&&(state5!=SWAIT)&&(state5!=S4)))&&(~(existWAITandReg&&~(RegWrite5&&state5==SWAIT)))&&RegWrite5&&(~wb_ack1)&&(~wb_ack2)&&(~wb_ack3)&&(~wb_ack4);
+//注意：LW与R/ADDI同时请求写同一个寄存器时，要让LW先写
 
 
 assign RegWrite = wb_ack1?RegWrite1:(wb_ack2?RegWrite2:(wb_ack3?RegWrite3:(wb_ack4?RegWrite4:(wb_ack5?RegWrite5:0))));
@@ -267,11 +268,11 @@ assign PC_En_Conflict =PC_En_Conflict1||PC_En_Conflict2||PC_En_Conflict3||PC_En_
 wire [6:0] PC_En_Conflictstate = PC_En_Conflict1?state1:(PC_En_Conflict2?state2:(PC_En_Conflict3?state3:(PC_En_Conflict4?state4:(PC_En_Conflict5?state5:1))));
 //冒泡信号�
     //冒泡优先级。所有小于该优先级的状态机（后来进入的）都要停�一般冒泡也包括引起冒泡的指�
-    assign      bubblePri = PC_En_Conflict?2:0;
+    assign      bubblePri = 3;//PC_En_Conflict?2:0;
     //wire            bubble=PC_En_Conflict&&PC_En_Start;//examine!!
     assign      bubble=WaitForMem;
 
-//排空信号�
+//排空信号� flush在DECODE段就有了，此时stage=2
     //排空优先级。所有小于该优先级的状态机（后来进入的）都要排�一般排空不包括引起排空的指�
     //推论：若JmpOccur和BranchOccur同时发生，一定是Branch指令在前。故优先判断Branch
     assign      flushPri = (Branch1Occur||Branch2Occur||Branch3Occur||Branch4Occur||Branch5Occur)?3:(JmpOccur?2:0);
@@ -314,6 +315,7 @@ stage=3 R: rs rt -> |rd|    (限制为运算类指令 因为其他R型如JR，�
 stage=3 I: rs    ->  rt     (addi andi 不包括LW SW，因为它们不在stage=3写回。它们的写回在第二类讨论)
 stage=4 LW M[]   ->  rt
 */
+wire    [6:0] nstateofD;
 assign nstateofD = (stage1==2)?next_state1:((stage2==2)?next_state2:((stage3==2)?next_state3:((stage4==2)?next_state4:((stage5==2)?next_state5:0))));
 assign stateofALU = (stage1==3)?state1:((stage2==3)?state2:((stage3==3)?state3:((stage4==3)?state4:((stage5==3)?state5:0))));
 assign rsofALU = (stage1==3)?rs_addr1:((stage2==3)?rs_addr2:((stage3==3)?rs_addr3:((stage4==3)?rs_addr4:((stage5==3)?rs_addr5:rs_addr1))));
@@ -325,27 +327,27 @@ assign rtofTHREE = (stage1==4)?rt_addr1:((stage2==4)?rt_addr2:((stage3==4)?rt_ad
 assign stateofFOUR = (stage1==5)?state1:((stage2==5)?state2:((stage3==5)?state3:((stage4==5)?state4:((stage5==5)?state5:0))));
 assign rtofFOUR = (stage1==5)?rt_addr1:((stage2==5)?rt_addr2:((stage3==5)?rt_addr3:((stage4==5)?rt_addr4:((stage5==5)?rt_addr5:rt_addr1))));//for LW
 
-assign WBtoRS = (RegWrite1&&(rsofALU==(RegDst1?rd_addr1:rt_addr1)))||(RegWrite2&&(rsofALU==(RegDst2?rd_addr2:rt_addr2)))||(RegWrite3&&(rsofALU==(RegDst3?rd_addr3:rt_addr3)))||(RegWrite4&&(rsofALU==(RegDst4?rd_addr4:rt_addr4)))||(RegWrite5&&(rsofALU==(RegDst5?rd_addr5:rt_addr5)));
-assign WBtoRT = (RegWrite1&&(rtofALU==(RegDst1?rd_addr1:rt_addr1)))||(RegWrite2&&(rtofALU==(RegDst2?rd_addr2:rt_addr2)))||(RegWrite3&&(rtofALU==(RegDst3?rd_addr3:rt_addr3)))||(RegWrite4&&(rtofALU==(RegDst4?rd_addr4:rt_addr4)))||(RegWrite5&&(rtofALU==(RegDst5?rd_addr5:rt_addr5)));
-assign ForwardValueA = (rsofALU==(RegDst1?rd_addr1:rt_addr1))?WB_value1:((rsofALU==(RegDst2?rd_addr2:rt_addr2))?WB_value2:((rsofALU==(RegDst3?rd_addr3:rt_addr3))?WB_value3:((rsofALU==(RegDst4?rd_addr4:rt_addr4))?WB_value4:((rsofALU==(RegDst5?rd_addr5:rt_addr5))?WB_value5:WB_value1))));
-assign ForwardValueB = (rtofALU==(RegDst1?rd_addr1:rt_addr1))?WB_value1:((rtofALU==(RegDst2?rd_addr2:rt_addr2))?WB_value2:((rtofALU==(RegDst3?rd_addr3:rt_addr3))?WB_value3:((rtofALU==(RegDst4?rd_addr4:rt_addr4))?WB_value4:((rtofALU==(RegDst5?rd_addr5:rt_addr5))?WB_value5:WB_value1))));
+assign WBtoRS = ((state1==SWAIT)&&RegWrite1&&(rsofALU==(RegDst1?rd_addr1:rt_addr1)))||((state2==SWAIT)&&RegWrite2&&(rsofALU==(RegDst2?rd_addr2:rt_addr2)))||((state3==SWAIT)&&RegWrite3&&(rsofALU==(RegDst3?rd_addr3:rt_addr3)))||((state4==SWAIT)&&RegWrite4&&(rsofALU==(RegDst4?rd_addr4:rt_addr4)))||((state5==SWAIT)&&RegWrite5&&(rsofALU==(RegDst5?rd_addr5:rt_addr5)));
+assign WBtoRT = ((state1==SWAIT)&&RegWrite1&&(rtofALU==(RegDst1?rd_addr1:rt_addr1)))||((state2==SWAIT)&&RegWrite2&&(rtofALU==(RegDst2?rd_addr2:rt_addr2)))||((state3==SWAIT)&&RegWrite3&&(rtofALU==(RegDst3?rd_addr3:rt_addr3)))||((state4==SWAIT)&&RegWrite4&&(rtofALU==(RegDst4?rd_addr4:rt_addr4)))||((state5==SWAIT)&&RegWrite5&&(rtofALU==(RegDst5?rd_addr5:rt_addr5)));
+assign ForwardValueA = (((state1==SWAIT)&&RegWrite1)&&(rsofALU==(RegDst1?rd_addr1:rt_addr1)))?WB_value1:(((state2==SWAIT)&&RegWrite2&&(rsofALU==(RegDst2?rd_addr2:rt_addr2)))?WB_value2:(((state3==SWAIT)&&RegWrite3&&(rsofALU==(RegDst3?rd_addr3:rt_addr3)))?WB_value3:(((state4==SWAIT)&&RegWrite4&&(rsofALU==(RegDst4?rd_addr4:rt_addr4)))?WB_value4:(((state5==SWAIT)&&RegWrite5&&(rsofALU==(RegDst5?rd_addr5:rt_addr5)))?WB_value5:WB_value1))));
+assign ForwardValueB = (((state1==SWAIT)&&RegWrite1)&&(rtofALU==(RegDst1?rd_addr1:rt_addr1)))?WB_value1:(((state2==SWAIT)&&RegWrite2&&(rtofALU==(RegDst2?rd_addr2:rt_addr2)))?WB_value2:(((state3==SWAIT)&&RegWrite3&&(rtofALU==(RegDst3?rd_addr3:rt_addr3)))?WB_value3:(((state4==SWAIT)&&RegWrite4&&(rtofALU==(RegDst4?rd_addr4:rt_addr4)))?WB_value4:(((state5==SWAIT)&&RegWrite5&&(rtofALU==(RegDst5?rd_addr5:rt_addr5)))?WB_value5:WB_value1))));
 
 //(stateofALU==S6||stateofALU==S12) //R prev
 //(stateofALU==S2||stateofALU==S8||stateofALU==S9) //I prev
-//WB:从前两级写回被延迟的指令暂存的WB_value处获取操作数(ALU时）；WB2: 从前两级指令的alu_out/mem_dout获取操作数(DECODE时) 5:从mem_dout获取操作数(ALU时)
+//WB:从前两级写回被延迟的指令暂存的WB_value处获取操作数(ALU时）；WB2: 从前两级指令的alu_out/mem_dout获取操作�DECODE�:从mem_dout获取操作�ALU�
 //优先顺序：最近的肯定最优先 A1,A2,A3,A4>WB_2>=A5>WB
 assign SelectA1=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);//R(new) R(priv)
 assign SelectA2=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S10)&&(rsofALU==rtofTHREE);//R(new) I(priv)
 assign SelectA3=(stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S7)&&(rsofALU==rdofTHREE);//I(new) R(priv)
 assign SelectA4=(stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofTHREE==S10)&&(rsofALU==rtofTHREE);//I(new) I(priv)
 assign SelectA5=(stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&(stateofFOUR==S4)&&(rsofALU==rtofFOUR);// IorR(new) stage4 LW(priv)
-assign SelectA_WB  = (stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&existWAITandReg&&WBtoRS;//IorR(new)
-assign SelectA_WB2 = ((nstateofD==S6)||(nstateofD==S12)||(nstateofD==S2)||(nstateofD==S8)||(nstateofD==S9))&&(((stateofFOUR==S4)&&(instruction[25:21]==rtofFOUR))||((stateofTHREE==S7)&&(instruction[25:21]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[25:21]==rtofTHREE)))//LW
+assign SelectA_WB  = (stateofALU==S6||stateofALU==S12||stateofALU==S2||stateofALU==S8||stateofALU==S9)&&WBtoRS;//IorR(new)
+assign SelectA_WB2 = ((nstateofD==S6)||(nstateofD==S12)||(nstateofD==S2)||(nstateofD==S8)||(nstateofD==S9))&&(((stateofFOUR==S4)&&(instruction[25:21]==rtofFOUR))||((stateofTHREE==S7)&&(instruction[25:21]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[25:21]==rtofTHREE)));//LW
 wire [31:0] SelectA_WB_v;
 assign SelectA_WB_v = (((stateofTHREE==S7)&&(instruction[25:21]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[25:21]==rtofTHREE)))?alu_out:M_doutb;
 
-((stateofFOUR==S4)&&(instruction[25:21]==rtofFOUR))
-//需用寄存器产生控制！
+//((stateofFOUR==S4)&&(instruction[25:21]==rtofFOUR))
+//需用寄存器产生控制�
 
 //SelectA_WB2_en and SelectA_WB2_value
 always@(posedge clk or negedge rst_n)
@@ -365,14 +367,14 @@ end
 
 //assign SelectA=(SelectA1||SelectA2||SelectA3||SelectA4)?2'b01:(SelectA_WB?2'b10:2'b00);//SelectA5 for memory forwarding!
 assign SelectA=(SelectA1||SelectA2||SelectA3||SelectA4)?2'b01:(SelectA_WB2_en?2'b11:(SelectA5?2'b00:2'b10));
-assign ALU_SrcA=(SelectA1||SelectA2||SelectA3||SelectA4||SelectA5||SelectA_WB)?0:1;
+assign ALU_SrcA=(SelectA1||SelectA2||SelectA3||SelectA4||SelectA5||SelectA_WB||SelectA_WB2_en)?0:1;
 
 //(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE)
 assign SelectB1=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S7)&&(rtofALU==rdofTHREE);
 assign SelectB2=(stateofALU==S6||stateofALU==S12)&&(stateofTHREE==S10)&&(rtofALU==rtofTHREE);
 assign SelectB3=(stateofALU==S6||stateofALU==S12)&&(stateofFOUR==S4)&&(rtofALU==rtofFOUR);//R(new) stage4 LW(priv)
-assign SelectB_WB  = (stateofALU==S6||stateofALU==S12)&&existWAITandReg&&WBtoRT;
-assign SelectB_WB2 = ((nstateofD==S6)||(nstateofD==S12))&&(((stateofFOUR==S4)&&(instruction[20:16]==rtofFOUR))||((stateofTHREE==S7)&&(instruction[20:16]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[20:16]==rtofTHREE)))
+assign SelectB_WB  = (stateofALU==S6||stateofALU==S12)&&WBtoRT;
+assign SelectB_WB2 = ((nstateofD==S6)||(nstateofD==S12))&&(((stateofFOUR==S4)&&(instruction[20:16]==rtofFOUR))||((stateofTHREE==S7)&&(instruction[20:16]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[20:16]==rtofTHREE)));
 //assign SelectB=(SelectB1||SelectB2)?2'b01:(SelectB_WB?2'b10:2'b00);//SelectA3 for memory forwarding!
 assign SelectB=(SelectB1||SelectB2)?2'b01:(SelectB_WB2_en?2'b11:(SelectB3?2'b00:2'b10));
 wire [31:0] SelectB_WB_v;
@@ -399,7 +401,7 @@ assign ALU_SrcB=(SelectB1||SelectB2||SelectB3||SelectB_WB)?2'b01:ALU_SrcB0;
 
 
 //R->R==4
-/*检测第二类：因访存而要延后；因没有及时写回导致的延后
+/*检测第二类：因访存而要延后；因没有及时写回导致的延�
 stage=2 R: |rs| |rt| -> rd (运算类指令和JR)
 stage=2 I: |rs|      -> rt ()
 
@@ -418,18 +420,77 @@ assign reg_din4 = MemtoReg4?M_doutb:alu_out;
 assign reg_din5 = MemtoReg5?M_doutb:alu_out;
 
 //Save word forwarding:
+wire    [31:0]  WBtoSW_RT_value,SW_valueS2_net,SW_valueS1_net;
+//在S5检测的 信号立即在S5有效
+assign WBtoSW_RT = ((state1==SWAIT)&&RegWrite1&&(rtofTHREE==(RegDst1?rd_addr1:rt_addr1)))||((state2==SWAIT)&&RegWrite2&&(rtofTHREE==(RegDst2?rd_addr2:rt_addr2)))||((state3==SWAIT)&&RegWrite3&&(rtofTHREE==(RegDst3?rd_addr3:rt_addr3)))||((state4==SWAIT)&&RegWrite4&&(rtofTHREE==(RegDst4?rd_addr4:rt_addr4)))||((state5==SWAIT)&&RegWrite5&&(rtofTHREE==(RegDst5?rd_addr5:rt_addr5)));
+assign WBtoSW_RT_value = (((state1==SWAIT)&&RegWrite1)&&(rtofTHREE==(RegDst1?rd_addr1:rt_addr1)))?WB_value1:(((state2==SWAIT)&&RegWrite2&&(rtofTHREE==(RegDst2?rd_addr2:rt_addr2)))?WB_value2:(((state3==SWAIT)&&RegWrite3&&(rtofTHREE==(RegDst3?rd_addr3:rt_addr3)))?WB_value3:(((state4==SWAIT)&&RegWrite4&&(rtofTHREE==(RegDst4?rd_addr4:rt_addr4)))?WB_value4:(((state5==SWAIT)&&RegWrite5&&(rtofTHREE==(RegDst5?rd_addr5:rt_addr5)))?WB_value5:WB_value1))));
+assign SW_fromLW = (stateofTHREE==S5)&&(stateofFOUR==S4)&&(rtofTHREE==rtofFOUR);
+assign SW_fromWB = (stateofTHREE==S5)&&WBtoSW_RT;//被延迟的写回
+//在S2检测的 fromR比fromLW更优�可以只设一个值寄存器 信号延迟一个周期在S5有效
+assign SW_fromR = (stateofALU==S2)&&((next_state1==S5)||(next_state2==S5)||(next_state3==S5)||(next_state4==S5)||(next_state5==S5))&&(((stateofTHREE==S7)&&(rtofALU==rdofTHREE))||((stateofTHREE==S10)&&(rtofALU==rtofTHREE)));
+assign SW_fromLW2 = (stateofALU==S2)&&((next_state1==S5)||(next_state2==S5)||(next_state3==S5)||(next_state4==S5)||(next_state5==S5))&&((stateofFOUR==S4)&&(rtofALU==rtofFOUR));
+assign SW_valueS2_net = SW_fromR?alu_out:M_doutb;
+
+reg [31:0]  SW_valueS2,SW_valueS1;
+reg         SW_S2Sig,SW_S1en,SW_S1Sig;
+//在S1检测的 信号延迟两个周期，在S5有效
+assign SW_fromR2 = (opcode==43)&&(((stateofTHREE==S7)&&(instruction[20:16]==rdofTHREE))||((stateofTHREE==S10)&&(instruction[20:16]==rtofTHREE)));
+assign SW_fromLW3 = (opcode==43)&&((stateofFOUR==S4)&&(rtofALU==rtofFOUR));
+assign SW_valueS1_net = SW_fromR2?alu_out:M_doutb;
+always@(posedge clk or negedge rst_n)
+begin
+    if(~rst_n)
+    begin
+        SW_S1en <= 0;
+        SW_S1Sig <= 0;
+        SW_valueS1 <= 0;
+    end
+    else 
+    begin
+    if(SW_fromLW3||SW_fromR2)
+    begin
+        SW_S1en <= 1;
+        SW_valueS1 <= SW_valueS1_net;
+    end
+    else SW_S1en <= 0;
+    if(SW_S1en)
+        SW_S1Sig <= 1;
+    else SW_S1Sig <= 0;
+    end
+end
+
+always@(posedge clk or negedge rst_n)
+begin
+    if(~rst_n)
+    begin
+        SW_S2Sig <= 0;
+        SW_valueS2 <= 0;
+    end
+    else if(SW_fromR||SW_fromLW2)
+    begin
+        SW_S2Sig <= 1;
+        SW_valueS2 <= SW_valueS2_net;
+    end
+    else SW_S2Sig <= 0;
+end
+//SW_value 最终确定的写入存储器的�
+//优先级： SW_fromLW==SW_fromR > SW_fromR2 = SW_from LW2 > SW_from_LW3
+//assign SWfromWB =SW_WBtoRT&&existRegWrite&&(stateofFOUR==S4);
+assign SWfromWB = SW_fromLW||SW_fromWB||SW_S2Sig||SW_S1Sig;
+assign SW_value = SW_fromLW?M_doutb:(SW_S2Sig?SW_valueS2:(SW_S1Sig?SW_valueS1:WBtoSW_RT_value));
+
 //第一类：LW->SW
 //SW: R[rt]->MEM[...+rs] LW: ->rt
-assign fromLW = (stateofFOUR==S4)&&(stateofTHREE==S5)&&(rtofFOUR==rtofTHREE);//from mem_dout
-//第二类：写回被延迟
+    //assign fromLW = (stateofFOUR==S4)&&(stateofTHREE==S5)&&(rtofFOUR==rtofTHREE);//from mem_dout
+//第二类：写回被延�
 //assign SW_WBtoRT = (rtofFOUR==(RegDst1?rd_addr1:rt_addr1))||(rtofFOUR==(RegDst2?rd_addr2:rt_addr2))||(rtofFOUR==(RegDst3?rd_addr3:rt_addr3))||(rtofFOUR==(RegDst4?rd_addr4:rt_addr4))||(rtofFOUR==(RegDst5?rd_addr5:rt_addr5));
-assign SW_WBtoRT1 = (opcode==35)&&((instruction[20:16]==(RegDst1?rd_addr1:rt_addr1))||(instruction[20:16]==(RegDst2?rd_addr2:rt_addr2))||(instruction[20:16]==(RegDst3?rd_addr3:rt_addr3))||(instruction[20:16]==(RegDst4?rd_addr4:rt_addr4))||(instruction[20:16]==(RegDst5?rd_addr5:rt_addr5)));
-assign SW_WBtoRT2 = ((nextstate1==S5)||(next_state2==S5)||(next_state3==S5)||(next_state4==S5)||(next_state5==S5))&&((rtofALU==(RegDst1?rd_addr1:rt_addr1))||(rtofALU==(RegDst2?rd_addr2:rt_addr2))||(rtofALU==(RegDst3?rd_addr3:rt_addr3))||(rtofALU==(RegDst4?rd_addr4:rt_addr4))||(rtofALU==(RegDst5?rd_addr5:rt_addr5)));
-//2比1的优先级高 因为改动写入值的指令离它更近
-assign SWfromWB =SW_WBtoRT&&existRegWrite&&(stateofFOUR==S4);
+    //assign SW_WBtoRT1 = (opcode==35)&&((instruction[20:16]==(RegDst1?rd_addr1:rt_addr1))||(instruction[20:16]==(RegDst2?rd_addr2:rt_addr2))||(instruction[20:16]==(RegDst3?rd_addr3:rt_addr3))||(instruction[20:16]==(RegDst4?rd_addr4:rt_addr4))||(instruction[20:16]==(RegDst5?rd_addr5:rt_addr5)));
+    //assign SW_WBtoRT2 = ((nextstate1==S5)||(next_state2==S5)||(next_state3==S5)||(next_state4==S5)||(next_state5==S5))&&((rtofALU==(RegDst1?rd_addr1:rt_addr1))||(rtofALU==(RegDst2?rd_addr2:rt_addr2))||(rtofALU==(RegDst3?rd_addr3:rt_addr3))||(rtofALU==(RegDst4?rd_addr4:rt_addr4))||(rtofALU==(RegDst5?rd_addr5:rt_addr5)));
+//2�的优先级�因为改动写入值的指令离它更近
+
 //S1 S7|
-assign SW_ForwardValue_FOUR = (rtofFOUR==(RegDst1?rd_addr1:rt_addr1))?WB_value1:((rtofFOUR==(RegDst2?rd_addr2:rt_addr2))?WB_value2:((rtofFOUR==(RegDst3?rd_addr3:rt_addr3))?WB_value3:((rtofFOUR==(RegDst4?rd_addr4:rt_addr4))?WB_value4:((rtofFOUR==(RegDst5?rd_addr5:rt_addr5))?WB_value5:WB_value1))));
-assign SW_ForwardValue_THREE = 
+//assign SW_ForwardValue_FOUR = (rtofFOUR==(RegDst1?rd_addr1:rt_addr1))?WB_value1:((rtofFOUR==(RegDst2?rd_addr2:rt_addr2))?WB_value2:((rtofFOUR==(RegDst3?rd_addr3:rt_addr3))?WB_value3:((rtofFOUR==(RegDst4?rd_addr4:rt_addr4))?WB_value4:((rtofFOUR==(RegDst5?rd_addr5:rt_addr5))?WB_value5:WB_value1))));
+//assign SW_ForwardValue_THREE = 
 pipe_FSM FSM1(
     //input:
     .clk(clk),

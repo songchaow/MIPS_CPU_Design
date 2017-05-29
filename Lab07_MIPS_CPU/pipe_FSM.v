@@ -186,8 +186,10 @@ begin
     next_state <= S10;
     else if(state == S11)
     next_state <= S11plus;
+    else if(state == S12)
+    next_state <= S12plus;
     //reach end routine:
-    else if(state == S4||state==S5plus||state==S7||state==S8plus||state==S10||state==S11plus)
+    else if(state == S4||state==S5plus||state==S7||state==S8plus||state==S10||state==S11plus||state==S12plus)
     begin
         if(ack)
         begin

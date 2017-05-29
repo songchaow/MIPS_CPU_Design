@@ -41,6 +41,8 @@ begin
             post_ALUOp <= 4'b0010;//add            
             6'b100010:
             post_ALUOp <= 4'b0110;//subtract
+            6'b100011:
+            post_ALUOp <= 4'b0110;//subtract u
             6'b100100:
             post_ALUOp <= 4'b0000;//and
             6'b100101:
@@ -59,5 +61,4 @@ begin
         post_ALUOp <= 4'b1111;
     endcase
 end
-
 endmodule

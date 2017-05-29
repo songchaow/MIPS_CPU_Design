@@ -4,7 +4,7 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   09:46:02 05/27/2017
+// Create Date:   21:54:49 05/28/2017
 // Design Name:   top
 // Module Name:   D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/simu.v
 // Project Name:  Lab07_MIPS_CPU
@@ -64,7 +64,7 @@ module simu;
 	wire RegDst;
 	wire RegWrite;
 	wire [1:0] ALUOp;
-	wire [25:0] Jump_addr;
+	wire [25:0] Jump_addrreg;
 	wire PCWrite;
 	wire [1:0] PC_Src;
 	wire ALU_SrcA;
@@ -83,7 +83,12 @@ module simu;
 	wire [31:0] ForwardValueA;
 	wire [31:0] ForwardValueB;
 	wire SWfromWB;
-	wire [31:0] SW_ForwardValueB;
+	wire [31:0] SW_value;
+	wire SelectA_WB2_en;
+	wire SelectA_WB2;
+	wire SelectB_WB2_en;
+	wire [31:0] SelectA_WB2_value;
+	wire [31:0] SelectB_WB2_value;
 	wire [31:0] reg_realdatain;
 	wire [2:0] stage1;
 	wire [2:0] stage2;
@@ -154,7 +159,7 @@ module simu;
 		.RegDst(RegDst), 
 		.RegWrite(RegWrite), 
 		.ALUOp(ALUOp), 
-		.Jump_addr(Jump_addr), 
+		.Jump_addrreg(Jump_addrreg), 
 		.PCWrite(PCWrite), 
 		.PC_Src(PC_Src), 
 		.ALU_SrcA(ALU_SrcA), 
@@ -173,7 +178,12 @@ module simu;
 		.ForwardValueA(ForwardValueA), 
 		.ForwardValueB(ForwardValueB), 
 		.SWfromWB(SWfromWB), 
-		.SW_ForwardValueB(SW_ForwardValueB), 
+		.SW_value(SW_value), 
+		.SelectA_WB2_en(SelectA_WB2_en), 
+		.SelectA_WB2(SelectA_WB2), 
+		.SelectB_WB2_en(SelectB_WB2_en), 
+		.SelectA_WB2_value(SelectA_WB2_value), 
+		.SelectB_WB2_value(SelectB_WB2_value), 
 		.reg_realdatain(reg_realdatain), 
 		.stage1(stage1), 
 		.stage2(stage2), 

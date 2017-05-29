@@ -35,7 +35,7 @@ parameter A_SETIFLESS = 4'b0111; //小于则置位
 parameter A_XOR = 4'b0011; //异或 自定义
 parameter A_NOR = 4'b1100; //或非
 
-assign ALU_ZERO = & alu_out;
+assign ALU_ZERO = (alu_out==0);
 assign ALU_POSITIVE = (~alu_out[31]) && (| alu_out);
 always@(*)
 begin

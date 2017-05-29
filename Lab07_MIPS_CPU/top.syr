@@ -380,10 +380,11 @@ Unit <AddrMux> synthesized.
 
 Synthesizing Unit <State_Reg>.
     Related source file is "State_Reg.v".
+    Found 32-bit register for signal <mem_din>.
     Found 32-bit register for signal <instruction>.
     Found 32-bit register for signal <data>.
     Summary:
-	inferred  64 D-type flip-flop(s).
+	inferred  96 D-type flip-flop(s).
 Unit <State_Reg> synthesized.
 
 
@@ -521,7 +522,10 @@ Unit <pipe_FSM> synthesized.
 
 Synthesizing Unit <global_FSM>.
     Related source file is "global_FSM.v".
-WARNING:Xst:646 - Signal <opcode> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1305 - Output <fromLW> is never assigned. Tied to value 0.
+WARNING:Xst:646 - Signal <nstateofD> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <existRegWrite> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <SelectB_WB2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <PC_Src5> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <PC_Src4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <PC_Src3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -547,37 +551,60 @@ WARNING:Xst:646 - Signal <IR_in_Write4> is assigned but never used. This unconne
 WARNING:Xst:646 - Signal <IR_in_Write3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <IR_in_Write2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <IR_in_Write1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <DMemVisitState> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ALU_SrcA5> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ALU_SrcA4> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ALU_SrcA3> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ALU_SrcA2> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <ALU_SrcA1> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+    Register <SelectB_WB2_en> equivalent to <SelectA_WB2_en> has been removed
+    Register <SelectB_WB2_value> equivalent to <SelectA_WB2_value> has been removed
     Found 32-bit 1-of-6 priority encoder for signal <WB_value>.
     Found 2-bit down counter for signal <JmpSigEn>.
     Found 1-bit register for signal <JmpSig>.
+    Found 1-bit register for signal <SelectA_WB2_en>.
     Found 2-bit down counter for signal <BrSigEn>.
     Found 1-bit register for signal <BranchSig>.
-    Found 5-bit comparator equal for signal <SelectA1$cmp_eq0003> created at line 321.
-    Found 5-bit comparator equal for signal <SelectA2$cmp_eq0001> created at line 322.
-    Found 5-bit comparator equal for signal <SelectA5$cmp_eq0001> created at line 325.
-    Found 5-bit comparator equal for signal <SelectB1$cmp_eq0000> created at line 332.
-    Found 5-bit comparator equal for signal <SelectB2$cmp_eq0000> created at line 333.
-    Found 5-bit comparator equal for signal <SelectB3$cmp_eq0000> created at line 334.
-    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0000> created at line 314.
-    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0001> created at line 314.
-    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0002> created at line 314.
-    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0003> created at line 314.
-    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0004> created at line 314.
-    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0000> created at line 315.
-    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0001> created at line 315.
-    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0002> created at line 315.
-    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0003> created at line 315.
-    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0004> created at line 315.
+    Found 32-bit register for signal <SelectA_WB2_value>.
+    Found 5-bit comparator equal for signal <SelectA1$cmp_eq0003> created at line 337.
+    Found 5-bit comparator equal for signal <SelectA2$cmp_eq0001> created at line 338.
+    Found 5-bit comparator equal for signal <SelectA5$cmp_eq0000> created at line 341.
+    Found 5-bit comparator equal for signal <SelectA_WB_v$cmp_eq0000> created at line 345.
+    Found 5-bit comparator equal for signal <SelectA_WB_v$cmp_eq0001> created at line 345.
+    Found 5-bit comparator equal for signal <SelectB1$cmp_eq0000> created at line 371.
+    Found 5-bit comparator equal for signal <SelectB2$cmp_eq0000> created at line 372.
+    Found 5-bit comparator equal for signal <SelectB3$cmp_eq0000> created at line 373.
+    Found 5-bit comparator equal for signal <SW_fromLW$cmp_eq0001> created at line 425.
+    Found 5-bit comparator equal for signal <SW_fromR2$cmp_eq0001> created at line 435.
+    Found 5-bit comparator equal for signal <SW_fromR2$cmp_eq0002> created at line 435.
+    Found 1-bit register for signal <SW_S1en>.
+    Found 1-bit register for signal <SW_S1Sig>.
+    Found 1-bit register for signal <SW_S2Sig>.
+    Found 32-bit register for signal <SW_valueS1>.
+    Found 32-bit register for signal <SW_valueS2>.
+    Found 5-bit comparator equal for signal <wb_ack1$cmp_eq0001> created at line 243.
+    Found 5-bit comparator equal for signal <wb_ack2$cmp_eq0000> created at line 244.
+    Found 5-bit comparator equal for signal <wb_ack3$cmp_eq0000> created at line 245.
+    Found 5-bit comparator equal for signal <wb_ack4$cmp_eq0000> created at line 246.
+    Found 5-bit comparator equal for signal <wb_ack5$cmp_eq0000> created at line 247.
+    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0000> created at line 328.
+    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0001> created at line 328.
+    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0002> created at line 328.
+    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0003> created at line 328.
+    Found 5-bit comparator equal for signal <WBtoRS$cmp_eq0004> created at line 328.
+    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0000> created at line 329.
+    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0001> created at line 329.
+    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0002> created at line 329.
+    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0003> created at line 329.
+    Found 5-bit comparator equal for signal <WBtoRT$cmp_eq0004> created at line 329.
+    Found 5-bit comparator equal for signal <WBtoSW_RT$cmp_eq0000> created at line 423.
+    Found 5-bit comparator equal for signal <WBtoSW_RT$cmp_eq0001> created at line 423.
+    Found 5-bit comparator equal for signal <WBtoSW_RT$cmp_eq0002> created at line 423.
+    Found 5-bit comparator equal for signal <WBtoSW_RT$cmp_eq0003> created at line 423.
+    Found 5-bit comparator equal for signal <WBtoSW_RT$cmp_eq0004> created at line 423.
     Summary:
 	inferred   2 Counter(s).
-	inferred   2 D-type flip-flop(s).
-	inferred  16 Comparator(s).
+	inferred 102 D-type flip-flop(s).
+	inferred  31 Comparator(s).
 	inferred  32 Priority encoder(s).
 Unit <global_FSM> synthesized.
 
@@ -585,6 +612,7 @@ Unit <global_FSM> synthesized.
 Synthesizing Unit <top>.
     Related source file is "top.v".
 WARNING:Xst:1306 - Output <state> is never assigned.
+WARNING:Xst:1306 - Output <SelectB_WB2_en> is never assigned.
 WARNING:Xst:1306 - Output <next_state> is never assigned.
 WARNING:Xst:646 - Signal <rs_addr> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 Unit <top> synthesized.
@@ -603,20 +631,20 @@ Macro Statistics
  32-bit addsub                                         : 1
 # Counters                                             : 2
  2-bit down counter                                    : 2
-# Registers                                            : 151
- 1-bit register                                        : 67
+# Registers                                            : 159
+ 1-bit register                                        : 71
  2-bit register                                        : 15
  3-bit register                                        : 5
- 32-bit register                                       : 44
+ 32-bit register                                       : 48
  5-bit register                                        : 15
  7-bit register                                        : 5
 # Latches                                              : 5
  7-bit latch                                           : 5
-# Comparators                                          : 27
+# Comparators                                          : 40
  3-bit comparator greatequal                           : 5
  3-bit comparator greater                              : 5
  32-bit comparator less                                : 1
- 5-bit comparator equal                                : 16
+ 5-bit comparator equal                                : 29
 # Multiplexers                                         : 7
  32-bit 32-to-1 multiplexer                            : 2
  32-bit 4-to-1 multiplexer                             : 4
@@ -635,16 +663,17 @@ Macro Statistics
 Reading core <ipcore_dir/Memory.ngc>.
 Loading core <Memory> for timing and area information for instance <myMemory>.
 INFO:Xst:2261 - The FF/Latch <sext_Immed_15> in Unit <mySEXT> is equivalent to the following 16 FFs/Latches, which will be removed : <sext_Immed_16> <sext_Immed_17> <sext_Immed_18> <sext_Immed_19> <sext_Immed_20> <sext_Immed_21> <sext_Immed_22> <sext_Immed_23> <sext_Immed_24> <sext_Immed_25> <sext_Immed_26> <sext_Immed_27> <sext_Immed_28> <sext_Immed_29> <sext_Immed_30> <sext_Immed_31> 
+INFO:Xst:2261 - The FF/Latch <SelectA_WB2_value_0> in Unit <CONTROL> is equivalent to the following 31 FFs/Latches, which will be removed : <SelectA_WB2_value_1> <SelectA_WB2_value_2> <SelectA_WB2_value_3> <SelectA_WB2_value_4> <SelectA_WB2_value_5> <SelectA_WB2_value_6> <SelectA_WB2_value_7> <SelectA_WB2_value_8> <SelectA_WB2_value_9> <SelectA_WB2_value_10> <SelectA_WB2_value_11> <SelectA_WB2_value_12> <SelectA_WB2_value_13> <SelectA_WB2_value_14> <SelectA_WB2_value_15> <SelectA_WB2_value_16> <SelectA_WB2_value_17> <SelectA_WB2_value_18> <SelectA_WB2_value_19> <SelectA_WB2_value_20> <SelectA_WB2_value_21> <SelectA_WB2_value_22> <SelectA_WB2_value_23> <SelectA_WB2_value_24> <SelectA_WB2_value_25> <SelectA_WB2_value_26> <SelectA_WB2_value_27> <SelectA_WB2_value_28> <SelectA_WB2_value_29> <SelectA_WB2_value_30> <SelectA_WB2_value_31> 
+WARNING:Xst:1710 - FF/Latch <SelectA_WB2_en> (without init value) has a constant value of 0 in block <CONTROL>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <SelectA_WB2_value_0> (without init value) has a constant value of 0 in block <CONTROL>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ALU_SrcB_0> (without init value) has a constant value of 0 in block <FSM5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <5> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ALU_SrcB_0> (without init value) has a constant value of 0 in block <FSM4>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <5>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <5> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <ALU_SrcB_0> (without init value) has a constant value of 0 in block <FSM3>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <0> (without init value) has a constant value of 0 in block <5>. This FF/Latch will be trimmed during the optimization process.
@@ -660,6 +689,9 @@ WARNING:Xst:1710 - FF/Latch <5> (without init value) has a constant value of 0 i
 WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <6> (without init value) has a constant value of 0 in block <state>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2404 -  FFs/Latches <SelectA_WB2_value<31:0>> (without init value) have a constant value of 0 in block <global_FSM>.
 
 =========================================================================
 Advanced HDL Synthesis Report
@@ -673,15 +705,15 @@ Macro Statistics
  32-bit addsub                                         : 1
 # Counters                                             : 2
  2-bit down counter                                    : 2
-# Registers                                            : 1630
- Flip-Flops                                            : 1630
+# Registers                                            : 1730
+ Flip-Flops                                            : 1730
 # Latches                                              : 5
  7-bit latch                                           : 5
-# Comparators                                          : 27
+# Comparators                                          : 40
  3-bit comparator greatequal                           : 5
  3-bit comparator greater                              : 5
  32-bit comparator less                                : 1
- 5-bit comparator equal                                : 16
+ 5-bit comparator equal                                : 29
 # Multiplexers                                         : 69
  1-bit 32-to-1 multiplexer                             : 64
  32-bit 4-to-1 multiplexer                             : 4
@@ -697,6 +729,7 @@ Macro Statistics
 *                         Low Level Synthesis                           *
 =========================================================================
 WARNING:Xst:1710 - FF/Latch <ALU_SrcB_0> (without init value) has a constant value of 0 in block <pipe_FSM>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <SelectA_WB2_en> (without init value) has a constant value of 0 in block <global_FSM>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <sext_Immed_15> in Unit <SEXT> is equivalent to the following 16 FFs/Latches, which will be removed : <sext_Immed_16> <sext_Immed_17> <sext_Immed_18> <sext_Immed_19> <sext_Immed_20> <sext_Immed_21> <sext_Immed_22> <sext_Immed_23> <sext_Immed_24> <sext_Immed_25> <sext_Immed_26> <sext_Immed_27> <sext_Immed_28> <sext_Immed_29> <sext_Immed_30> <sext_Immed_31> 
 INFO:Xst:2261 - The FF/Latch <next_state_5> in Unit <pipe_FSM> is equivalent to the following FF/Latch, which will be removed : <next_state_6> 
 WARNING:Xst:1710 - FF/Latch <next_state_5> (without init value) has a constant value of 0 in block <pipe_FSM>. This FF/Latch will be trimmed during the optimization process.
@@ -758,10 +791,7 @@ WARNING:Xst:2677 - Node <CONTROL/FSM5/IR_in_Write> of sequential type is unconne
 
 Mapping all equations...
 Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 41.
-FlipFlop CONTROL/FSM5/stage_0 has been replicated 1 time(s)
-FlipFlop CONTROL/FSM5/stage_1 has been replicated 2 time(s)
-FlipFlop CONTROL/FSM5/stage_2 has been replicated 1 time(s)
+Found area constraint ratio of 100 (+ 5) on block top, actual ratio is 48.
 FlipFlop InstrData/instruction_16 has been replicated 1 time(s)
 FlipFlop InstrData/instruction_21 has been replicated 1 time(s)
 
@@ -771,8 +801,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 1578
- Flip-Flops                                            : 1578
+# Registers                                            : 1673
+ Flip-Flops                                            : 1673
 
 =========================================================================
 
@@ -798,40 +828,40 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 894
+# IOs                              : 1031
 
 Cell Usage :
-# BELS                             : 4251
+# BELS                             : 5213
 #      GND                         : 2
-#      INV                         : 4
-#      LUT2                        : 84
-#      LUT2_D                      : 1
-#      LUT2_L                      : 9
-#      LUT3                        : 1527
-#      LUT3_D                      : 27
-#      LUT3_L                      : 42
-#      LUT4                        : 1090
-#      LUT4_D                      : 121
-#      LUT4_L                      : 139
-#      MUXCY                       : 70
-#      MUXF5                       : 621
+#      INV                         : 5
+#      LUT2                        : 121
+#      LUT2_D                      : 3
+#      LUT2_L                      : 1
+#      LUT3                        : 1845
+#      LUT3_D                      : 32
+#      LUT3_L                      : 46
+#      LUT4                        : 1561
+#      LUT4_D                      : 112
+#      LUT4_L                      : 203
+#      MUXCY                       : 102
+#      MUXF5                       : 666
 #      MUXF6                       : 256
 #      MUXF7                       : 128
 #      MUXF8                       : 64
 #      VCC                         : 2
 #      XORCY                       : 64
-# FlipFlops/Latches                : 1603
-#      FDC                         : 148
-#      FDCE                        : 1399
+# FlipFlops/Latches                : 1698
+#      FDC                         : 183
+#      FDCE                        : 1459
 #      FDPE                        : 31
 #      LD                          : 25
 # RAMS                             : 1
 #      RAMB16_S36_S36              : 1
 # Clock Buffers                    : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 879
+# IO Buffers                       : 1015
 #      IBUF                        : 1
-#      OBUF                        : 878
+#      OBUF                        : 1014
 =========================================================================
 
 Device utilization summary:
@@ -839,11 +869,11 @@ Device utilization summary:
 
 Selected Device : 3s500efg320-5 
 
- Number of Slices:                     2051  out of   4656    44%  
- Number of Slice Flip Flops:           1603  out of   9312    17%  
- Number of 4 input LUTs:               3044  out of   9312    32%  
- Number of IOs:                         894
- Number of bonded IOBs:                 880  out of    232   379% (*) 
+ Number of Slices:                     2323  out of   4656    49%  
+ Number of Slice Flip Flops:           1698  out of   9312    18%  
+ Number of 4 input LUTs:               3929  out of   9312    42%  
+ Number of IOs:                        1031
+ Number of bonded IOBs:                1016  out of    232   437% (*) 
  Number of BRAMs:                         1  out of     20     5%  
  Number of GCLKs:                         1  out of     24     4%  
 
@@ -870,7 +900,7 @@ Clock Information:
 -----------------------------------------------------------------------+-----------------------------------+-------+
 Clock Signal                                                           | Clock buffer(FF name)             | Load  |
 -----------------------------------------------------------------------+-----------------------------------+-------+
-clk                                                                    | BUFGP                             | 1579  |
+clk                                                                    | BUFGP                             | 1674  |
 CONTROL/FSM1/next_state_not0001(CONTROL/FSM1/next_state_not000126_f5:O)| NONE(*)(CONTROL/FSM1/next_state_0)| 5     |
 CONTROL/FSM2/next_state_not0001(CONTROL/FSM2/next_state_not000126_f5:O)| NONE(*)(CONTROL/FSM2/next_state_0)| 5     |
 CONTROL/FSM3/next_state_not0001(CONTROL/FSM3/next_state_not000126_f5:O)| NONE(*)(CONTROL/FSM3/next_state_0)| 5     |
@@ -884,22 +914,22 @@ INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered
 
 Asynchronous Control Signals Information:
 ----------------------------------------
---------------------------------------------------------+--------------------------+-------+
-Control Signal                                          | Buffer(FF name)          | Load  |
---------------------------------------------------------+--------------------------+-------+
-ALURESULT/rst_n_inv(reg_out/rst_n_inv1_INV_0:O)         | NONE(ALURESULT/alu_out_0)| 395   |
-reg_out/rst_n_inv1_INV_0_3(reg_out/rst_n_inv1_INV_0_3:O)| NONE(InstrData/data_26)  | 395   |
-reg_out/rst_n_inv1_INV_0_1(reg_out/rst_n_inv1_INV_0_1:O)| NONE(RegFile/R_27_29)    | 394   |
-reg_out/rst_n_inv1_INV_0_2(reg_out/rst_n_inv1_INV_0_2:O)| NONE(RegFile/R_16_2)     | 394   |
---------------------------------------------------------+--------------------------+-------+
+--------------------------------------------------------+---------------------------+-------+
+Control Signal                                          | Buffer(FF name)           | Load  |
+--------------------------------------------------------+---------------------------+-------+
+ALURESULT/rst_n_inv(reg_out/rst_n_inv1_INV_0:O)         | NONE(ALURESULT/alu_out_0) | 419   |
+reg_out/rst_n_inv1_INV_0_1(reg_out/rst_n_inv1_INV_0_1:O)| NONE(RegFile/R_26_8)      | 418   |
+reg_out/rst_n_inv1_INV_0_2(reg_out/rst_n_inv1_INV_0_2:O)| NONE(RegFile/R_14_6)      | 418   |
+reg_out/rst_n_inv1_INV_0_3(reg_out/rst_n_inv1_INV_0_3:O)| NONE(CONTROL/SW_valueS2_2)| 418   |
+--------------------------------------------------------+---------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -5
 
-   Minimum period: 34.074ns (Maximum Frequency: 29.348MHz)
-   Minimum input arrival time before clock: 3.861ns
-   Maximum output required time after clock: 37.355ns
+   Minimum period: 33.697ns (Maximum Frequency: 29.676MHz)
+   Minimum input arrival time before clock: 3.900ns
+   Maximum output required time after clock: 36.978ns
    Maximum combinational path delay: 5.125ns
 
 Timing Detail:
@@ -908,35 +938,35 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 34.074ns (frequency: 29.348MHz)
-  Total number of paths / destination ports: 11269968361324 / 3042
+  Clock period: 33.697ns (frequency: 29.676MHz)
+  Total number of paths / destination ports: 6435598113132 / 3201
 -------------------------------------------------------------------------
-Delay:               34.074ns (Levels of Logic = 88)
-  Source:            CONTROL/FSM3/stage_2 (FF)
+Delay:               33.697ns (Levels of Logic = 79)
+  Source:            CONTROL/FSM4/stage_1 (FF)
   Destination:       PCReg/PC_31 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: CONTROL/FSM3/stage_2 to PCReg/PC_31
+  Data Path: CONTROL/FSM4/stage_1 to PCReg/PC_31
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            14   0.514   1.002  CONTROL/FSM3/stage_2 (CONTROL/FSM3/stage_2)
-     LUT3:I0->O            4   0.612   0.651  CONTROL/stateofALU_cmp_eq00021 (CONTROL/stateofALU_cmp_eq0002)
-     LUT3:I0->O           10   0.612   0.753  CONTROL/rtofALU<3>15_SW0 (N1068)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/rsofALU<1>15 (CONTROL/rsofALU<1>15)
-     LUT4:I1->O           13   0.612   0.866  CONTROL/rsofALU<1>17 (CONTROL/rsofALU<1>)
-     LUT4:I2->O            1   0.612   0.360  CONTROL/WBtoRS_cmp_eq0000540 (CONTROL/WBtoRS_cmp_eq0000540)
-     LUT4:I3->O            1   0.612   0.000  CONTROL/WBtoRS_cmp_eq00005151_G (N1240)
-     MUXF5:I1->O          38   0.278   1.226  CONTROL/WBtoRS_cmp_eq00005151 (CONTROL/WBtoRS_cmp_eq0000)
-     LUT3_D:I0->O         16   0.612   0.909  CONTROL/ForwardValueB<0>41_1 (CONTROL/ForwardValueB<0>41)
-     LUT4:I2->O            1   0.612   0.387  CONTROL/ForwardValueB<0>4 (CONTROL/ForwardValueB<0>4)
-     LUT4:I2->O            6   0.612   0.599  CONTROL/ForwardValueB<0>16 (ForwardValueA_0_OBUF)
-     LUT3:I2->O            2   0.612   0.410  ForwardBMux/Mmux_Forward3 (ForwardB_0_OBUF)
-     LUT3:I2->O            2   0.612   0.449  ALU_OPB_MUX/Mmux_alu_opb2 (alu_b_0_OBUF)
-     LUT3:I1->O            1   0.612   0.000  myALU/Maddsub_alu_out_addsub0000_lut<0> (myALU/Maddsub_alu_out_addsub0000_lut<0>)
-     MUXCY:S->O            1   0.404   0.000  myALU/Maddsub_alu_out_addsub0000_cy<0> (myALU/Maddsub_alu_out_addsub0000_cy<0>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<1> (myALU/Maddsub_alu_out_addsub0000_cy<1>)
+     FDCE:C->Q            11   0.514   0.862  CONTROL/FSM4/stage_1 (CONTROL/FSM4/stage_1)
+     LUT3_D:I1->LO         1   0.612   0.103  CONTROL/stateofALU_cmp_eq00031 (N1995)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/rsofALU<0>114 (CONTROL/rsofALU<0>114)
+     LUT4_D:I3->O          9   0.612   0.700  CONTROL/rsofALU<0>129 (CONTROL/N24)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/rsofALU<2>15 (CONTROL/rsofALU<2>15)
+     LUT4_D:I3->O         12   0.612   0.847  CONTROL/rsofALU<2>17 (CONTROL/rsofALU<2>)
+     LUT4_D:I2->O          1   0.612   0.360  CONTROL/WBtoRS_and000180 (CONTROL/WBtoRS_and000180)
+     LUT4:I3->O            6   0.612   0.599  CONTROL/WBtoRS_and0001113_1 (CONTROL/WBtoRS_and00011131)
+     LUT4:I2->O            4   0.612   0.502  CONTROL/ForwardValueA<0>1_SW1 (N1392)
+     LUT4:I3->O           14   0.612   0.880  CONTROL/ForwardValueA<0>1_2 (CONTROL/ForwardValueA<0>1_1)
+     LUT4:I2->O            1   0.612   0.360  CONTROL/ForwardValueA<1>18_SW0_SW0 (N578)
+     LUT4:I3->O            4   0.612   0.502  CONTROL/ForwardValueA<1>18 (ForwardValueA_1_OBUF)
+     LUT4:I3->O            1   0.612   0.360  ALU_OPA_MUX/alu_opa<1>1_SW0 (N935)
+     LUT4:I3->O            1   0.612   0.360  myALU/Maddsub_alu_out_addsub0000_lut<1>_SW0_SW0 (N1510)
+     LUT4:I3->O            1   0.612   0.000  myALU/Maddsub_alu_out_addsub0000_lut<1> (myALU/Maddsub_alu_out_addsub0000_lut<1>)
+     MUXCY:S->O            1   0.404   0.000  myALU/Maddsub_alu_out_addsub0000_cy<1> (myALU/Maddsub_alu_out_addsub0000_cy<1>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<2> (myALU/Maddsub_alu_out_addsub0000_cy<2>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<3> (myALU/Maddsub_alu_out_addsub0000_cy<3>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<4> (myALU/Maddsub_alu_out_addsub0000_cy<4>)
@@ -956,26 +986,17 @@ Delay:               34.074ns (Levels of Logic = 88)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<18> (myALU/Maddsub_alu_out_addsub0000_cy<18>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<19> (myALU/Maddsub_alu_out_addsub0000_cy<19>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<20> (myALU/Maddsub_alu_out_addsub0000_cy<20>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<21> (myALU/Maddsub_alu_out_addsub0000_cy<21>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<22> (myALU/Maddsub_alu_out_addsub0000_cy<22>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<23> (myALU/Maddsub_alu_out_addsub0000_cy<23>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<24> (myALU/Maddsub_alu_out_addsub0000_cy<24>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<25> (myALU/Maddsub_alu_out_addsub0000_cy<25>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<26> (myALU/Maddsub_alu_out_addsub0000_cy<26>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<27> (myALU/Maddsub_alu_out_addsub0000_cy<27>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<28> (myALU/Maddsub_alu_out_addsub0000_cy<28>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<29> (myALU/Maddsub_alu_out_addsub0000_cy<29>)
-     MUXCY:CI->O           0   0.051   0.000  myALU/Maddsub_alu_out_addsub0000_cy<30> (myALU/Maddsub_alu_out_addsub0000_cy<30>)
-     XORCY:CI->O           8   0.699   0.646  myALU/Maddsub_alu_out_addsub0000_xor<31> (alu_result_31_OBUF)
-     LUT4:I3->O            1   0.612   0.000  myALU/ALU_ZERO_wg_lut<7> (myALU/ALU_ZERO_wg_lut<7>)
-     MUXCY:S->O           10   0.752   0.819  myALU/ALU_ZERO_wg_cy<7> (ALU_ZERO_OBUF)
-     LUT2:I1->O            3   0.612   0.520  CONTROL/Branch5Occur34 (CONTROL/Branch5Occur34)
-     LUT4_D:I1->O          8   0.612   0.646  CONTROL/Branch5Occur50 (CONTROL/Branch5Occur)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/PC_En_Conflictstate<0>15 (CONTROL/PC_En_Conflictstate<0>15)
-     LUT4:I1->O            3   0.612   0.481  CONTROL/PC_En_Conflictstate<0>60 (CONTROL/PC_En_Conflictstate<0>60)
-     LUT3_L:I2->LO         1   0.612   0.103  CONTROL/PC_En_Conflictstate<0>91 (CONTROL/PC_En_Conflictstate<0>)
-     LUT4:I3->O            4   0.612   0.568  CONTROL/PCWrite11 (CONTROL/N33)
-     LUT2:I1->O           15   0.612   0.867  CONTROL/PC_Src<1>1_1 (CONTROL/PC_Src<1>1)
+     XORCY:CI->O           1   0.699   0.387  myALU/Maddsub_alu_out_addsub0000_xor<21> (myALU/alu_out_addsub0000<21>)
+     LUT3:I2->O            5   0.612   0.541  myALU/alu_out<21>48 (alu_result_21_OBUF)
+     LUT4:I3->O            2   0.612   0.410  myALU/ALU_POSITIVE43 (myALU/ALU_POSITIVE43)
+     LUT4:I2->O            5   0.612   0.541  myALU/ALU_POSITIVE86_SW0 (N1386)
+     LUT4_D:I3->LO         1   0.612   0.103  CONTROL/Branch2Occur0 (N2065)
+     LUT4:I3->O           10   0.612   0.819  CONTROL/PC_En_Conflict2 (CONTROL/PC_En_Conflict2)
+     LUT3:I1->O            2   0.612   0.383  CONTROL/PC_En_Conflictstate<2>21 (CONTROL/N260)
+     LUT4_L:I3->LO         1   0.612   0.103  CONTROL/PC_En_Conflictstate<4>35 (CONTROL/PC_En_Conflictstate<4>35)
+     LUT4:I3->O            4   0.612   0.502  CONTROL/PC_En_Conflictstate<4>53 (CONTROL/PC_En_Conflictstate<4>)
+     LUT4_D:I3->LO         1   0.612   0.103  CONTROL/PCWrite11_1 (N2072)
+     LUT4:I3->O           15   0.612   0.867  CONTROL/PC_Src<1>1_1 (CONTROL/PC_Src<1>1)
      LUT4:I3->O            1   0.612   0.000  PC_Generator/Madd_next_PC_addsub0000_lut<0> (PC_Generator/Madd_next_PC_addsub0000_lut<0>)
      MUXCY:S->O            1   0.404   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<0> (PC_Generator/Madd_next_PC_addsub0000_cy<0>)
      MUXCY:CI->O           1   0.052   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<1> (PC_Generator/Madd_next_PC_addsub0000_cy<1>)
@@ -1007,20 +1028,20 @@ Delay:               34.074ns (Levels of Logic = 88)
      MUXCY:CI->O           1   0.052   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<27> (PC_Generator/Madd_next_PC_addsub0000_cy<27>)
      MUXCY:CI->O           1   0.052   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<28> (PC_Generator/Madd_next_PC_addsub0000_cy<28>)
      MUXCY:CI->O           1   0.052   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<29> (PC_Generator/Madd_next_PC_addsub0000_cy<29>)
-     MUXCY:CI->O           0   0.052   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<30> (PC_Generator/Madd_next_PC_addsub0000_cy<30>)
-     XORCY:CI->O           1   0.699   0.387  PC_Generator/Madd_next_PC_addsub0000_xor<31> (PC_Generator/next_PC_addsub0000<31>)
-     LUT3:I2->O            2   0.612   0.000  PC_Generator/Mmux_next_PC48 (next_PC_31_OBUF)
+     MUXCY:CI->O           0   0.051   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<30> (PC_Generator/Madd_next_PC_addsub0000_cy<30>)
+     XORCY:CI->O           1   0.699   0.360  PC_Generator/Madd_next_PC_addsub0000_xor<31> (PC_Generator/next_PC_addsub0000<31>)
+     LUT4:I3->O            2   0.612   0.000  PC_Generator/Mmux_next_PC48 (next_PC_31_OBUF)
      FDCE:D                    0.268          PCReg/PC_31
     ----------------------------------------
-    Total                     34.074ns (20.572ns logic, 13.502ns route)
-                                       (60.4% logic, 39.6% route)
+    Total                     33.697ns (21.424ns logic, 12.274ns route)
+                                       (63.6% logic, 36.4% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CONTROL/FSM1/next_state_not0001'
-  Clock period: 10.287ns (frequency: 97.212MHz)
+  Clock period: 7.524ns (frequency: 132.911MHz)
   Total number of paths / destination ports: 25 / 5
 -------------------------------------------------------------------------
-Delay:               10.287ns (Levels of Logic = 8)
+Delay:               7.524ns (Levels of Logic = 6)
   Source:            CONTROL/FSM1/next_state_3 (LATCH)
   Destination:       CONTROL/FSM1/next_state_4 (LATCH)
   Source Clock:      CONTROL/FSM1/next_state_not0001 falling
@@ -1030,26 +1051,24 @@ Delay:               10.287ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM1/next_state_3 (CONTROL/FSM1/next_state_3)
-     LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur229 (CONTROL/JmpOccur229)
-     LUT4:I1->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
-     LUT4:I1->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.754  CONTROL/flush (flush_OBUF)
-     LUT4:I0->O            9   0.612   0.700  CONTROL/FSM1/flush_en (CONTROL/FSM1/flush_en)
-     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM1/next_state_mux0000<4>162_SW0 (N1381)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM1/next_state_3 (CONTROL/FSM1/next_state_3)
+     LUT4:I0->O            1   0.612   0.387  CONTROL/JmpOccur72 (CONTROL/JmpOccur72)
+     LUT4:I2->O           11   0.612   0.823  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT3:I2->O            1   0.612   0.000  CONTROL/FSM1/flush_en_F (N1790)
+     MUXF5:I0->O           9   0.278   0.700  CONTROL/FSM1/flush_en (CONTROL/FSM1/flush_en)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM1/next_state_mux0000<4>162_SW0 (N1638)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM1/next_state_mux0000<4>162 (CONTROL/FSM1/next_state_mux0000<4>)
      LD:D                      0.268          CONTROL/FSM1/next_state_4
     ----------------------------------------
-    Total                     10.287ns (5.752ns logic, 4.535ns route)
-                                       (55.9% logic, 44.1% route)
+    Total                      7.524ns (4.194ns logic, 3.330ns route)
+                                       (55.7% logic, 44.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CONTROL/FSM2/next_state_not0001'
-  Clock period: 10.221ns (frequency: 97.840MHz)
+  Clock period: 8.618ns (frequency: 116.038MHz)
   Total number of paths / destination ports: 25 / 5
 -------------------------------------------------------------------------
-Delay:               10.221ns (Levels of Logic = 8)
+Delay:               8.618ns (Levels of Logic = 7)
   Source:            CONTROL/FSM2/next_state_3 (LATCH)
   Destination:       CONTROL/FSM2/next_state_4 (LATCH)
   Source Clock:      CONTROL/FSM2/next_state_not0001 falling
@@ -1059,26 +1078,25 @@ Delay:               10.221ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM2/next_state_3 (CONTROL/FSM2/next_state_3)
-     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur186 (CONTROL/JmpOccur186)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
-     LUT4:I1->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.754  CONTROL/flush (flush_OBUF)
-     LUT4:I0->O            9   0.612   0.700  CONTROL/FSM2/flush_en (CONTROL/FSM2/flush_en)
-     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM2/next_state_mux0000<4>162_SW0 (N1379)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM2/next_state_3 (CONTROL/FSM2/next_state_3)
+     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur29 (CONTROL/JmpOccur29)
+     LUT4:I3->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1594)
+     LUT4:I0->O           11   0.612   0.823  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT3:I2->O            1   0.612   0.000  CONTROL/FSM2/flush_en_F (N1788)
+     MUXF5:I0->O           9   0.278   0.700  CONTROL/FSM2/flush_en (CONTROL/FSM2/flush_en)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM2/next_state_mux0000<4>162_SW0 (N1636)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM2/next_state_mux0000<4>162 (CONTROL/FSM2/next_state_mux0000<4>)
      LD:D                      0.268          CONTROL/FSM2/next_state_4
     ----------------------------------------
-    Total                     10.221ns (5.752ns logic, 4.469ns route)
-                                       (56.3% logic, 43.7% route)
+    Total                      8.618ns (4.806ns logic, 3.812ns route)
+                                       (55.8% logic, 44.2% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CONTROL/FSM3/next_state_not0001'
-  Clock period: 9.210ns (frequency: 108.580MHz)
+  Clock period: 8.601ns (frequency: 116.268MHz)
   Total number of paths / destination ports: 25 / 5
 -------------------------------------------------------------------------
-Delay:               9.210ns (Levels of Logic = 7)
+Delay:               8.601ns (Levels of Logic = 7)
   Source:            CONTROL/FSM3/next_state_3 (LATCH)
   Destination:       CONTROL/FSM3/next_state_4 (LATCH)
   Source Clock:      CONTROL/FSM3/next_state_not0001 falling
@@ -1088,25 +1106,25 @@ Delay:               9.210ns (Levels of Logic = 7)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM3/next_state_3 (CONTROL/FSM3/next_state_3)
-     LUT4:I0->O            1   0.612   0.387  CONTROL/JmpOccur72 (CONTROL/JmpOccur72)
-     LUT4:I2->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.754  CONTROL/flush (flush_OBUF)
-     LUT4:I0->O            9   0.612   0.700  CONTROL/FSM3/flush_en (CONTROL/FSM3/flush_en)
-     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM3/next_state_mux0000<4>162_SW0 (N1385)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM3/next_state_3 (CONTROL/FSM3/next_state_3)
+     LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur229 (CONTROL/JmpOccur229)
+     LUT4:I1->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
+     LUT4:I1->O           11   0.612   0.823  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT3:I2->O            1   0.612   0.000  CONTROL/FSM3/flush_en_F (N1786)
+     MUXF5:I0->O           9   0.278   0.700  CONTROL/FSM3/flush_en (CONTROL/FSM3/flush_en)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM3/next_state_mux0000<4>162_SW0 (N1634)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM3/next_state_mux0000<4>162 (CONTROL/FSM3/next_state_mux0000<4>)
      LD:D                      0.268          CONTROL/FSM3/next_state_4
     ----------------------------------------
-    Total                      9.210ns (5.140ns logic, 4.070ns route)
-                                       (55.8% logic, 44.2% route)
+    Total                      8.601ns (4.806ns logic, 3.795ns route)
+                                       (55.9% logic, 44.1% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CONTROL/FSM4/next_state_not0001'
-  Clock period: 10.304ns (frequency: 97.052MHz)
+  Clock period: 8.535ns (frequency: 117.167MHz)
   Total number of paths / destination ports: 25 / 5
 -------------------------------------------------------------------------
-Delay:               10.304ns (Levels of Logic = 8)
+Delay:               8.535ns (Levels of Logic = 7)
   Source:            CONTROL/FSM4/next_state_3 (LATCH)
   Destination:       CONTROL/FSM4/next_state_4 (LATCH)
   Source Clock:      CONTROL/FSM4/next_state_not0001 falling
@@ -1116,26 +1134,25 @@ Delay:               10.304ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM4/next_state_3 (CONTROL/FSM4/next_state_3)
-     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur29 (CONTROL/JmpOccur29)
-     LUT4:I3->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1329)
-     LUT4:I0->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.754  CONTROL/flush (flush_OBUF)
-     LUT4:I0->O            9   0.612   0.700  CONTROL/FSM4/flush_en (CONTROL/FSM4/flush_en)
-     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM4/next_state_mux0000<4>162_SW0 (N1383)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM4/next_state_3 (CONTROL/FSM4/next_state_3)
+     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur186 (CONTROL/JmpOccur186)
+     LUT4:I3->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
+     LUT4:I1->O           11   0.612   0.823  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT3:I2->O            1   0.612   0.000  CONTROL/FSM4/flush_en_F (N1784)
+     MUXF5:I0->O           9   0.278   0.700  CONTROL/FSM4/flush_en (CONTROL/FSM4/flush_en)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM4/next_state_mux0000<4>162_SW0 (N1632)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM4/next_state_mux0000<4>162 (CONTROL/FSM4/next_state_mux0000<4>)
      LD:D                      0.268          CONTROL/FSM4/next_state_4
     ----------------------------------------
-    Total                     10.304ns (5.752ns logic, 4.552ns route)
-                                       (55.8% logic, 44.2% route)
+    Total                      8.535ns (4.806ns logic, 3.729ns route)
+                                       (56.3% logic, 43.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'CONTROL/FSM5/next_state_not0001'
-  Clock period: 10.370ns (frequency: 96.434MHz)
+  Clock period: 8.684ns (frequency: 115.156MHz)
   Total number of paths / destination ports: 25 / 5
 -------------------------------------------------------------------------
-Delay:               10.370ns (Levels of Logic = 8)
+Delay:               8.684ns (Levels of Logic = 7)
   Source:            CONTROL/FSM5/next_state_3 (LATCH)
   Destination:       CONTROL/FSM5/next_state_4 (LATCH)
   Source Clock:      CONTROL/FSM5/next_state_not0001 falling
@@ -1145,25 +1162,24 @@ Delay:               10.370ns (Levels of Logic = 8)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM5/next_state_3 (CONTROL/FSM5/next_state_3)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM5/next_state_3 (CONTROL/FSM5/next_state_3)
      LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur129 (CONTROL/JmpOccur129)
-     LUT4:I1->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1329)
-     LUT4:I0->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.754  CONTROL/flush (flush_OBUF)
-     LUT4:I0->O            9   0.612   0.700  CONTROL/FSM5/flush_en (CONTROL/FSM5/flush_en)
-     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM5/next_state_mux0000<4>162_SW0 (N1377)
+     LUT4:I1->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1594)
+     LUT4:I0->O           11   0.612   0.823  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT3:I2->O            1   0.612   0.000  CONTROL/FSM5/flush_en_F (N1782)
+     MUXF5:I0->O           9   0.278   0.700  CONTROL/FSM5/flush_en (CONTROL/FSM5/flush_en)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/FSM5/next_state_mux0000<4>162_SW0 (N1630)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM5/next_state_mux0000<4>162 (CONTROL/FSM5/next_state_mux0000<4>)
      LD:D                      0.268          CONTROL/FSM5/next_state_4
     ----------------------------------------
-    Total                     10.370ns (5.752ns logic, 4.618ns route)
-                                       (55.5% logic, 44.5% route)
+    Total                      8.684ns (4.806ns logic, 3.878ns route)
+                                       (55.3% logic, 44.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
   Total number of paths / destination ports: 17 / 17
 -------------------------------------------------------------------------
-Offset:              3.861ns (Levels of Logic = 3)
+Offset:              3.900ns (Levels of Logic = 3)
   Source:            rst_n (PAD)
   Destination:       CONTROL/FSM1/stage_1 (FF)
   Destination Clock: clk rising
@@ -1172,43 +1188,43 @@ Offset:              3.861ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            14   1.106   0.880  rst_n_IBUF (rst_n_IBUF)
-     LUT4_D:I2->O          2   0.612   0.383  CONTROL/FSM1/stage_mux0000<0>11 (CONTROL/FSM1/N63)
+     IBUF:I->O            14   1.106   0.919  rst_n_IBUF (rst_n_IBUF)
+     LUT4_D:I1->O          2   0.612   0.383  CONTROL/FSM1/stage_mux0000<0>11 (CONTROL/FSM1/N63)
      LUT4:I3->O            1   0.612   0.000  CONTROL/FSM1/stage_mux0000<1>1 (CONTROL/FSM1/stage_mux0000<1>)
      FDCE:D                    0.268          CONTROL/FSM1/stage_1
     ----------------------------------------
-    Total                      3.861ns (2.598ns logic, 1.263ns route)
-                                       (67.3% logic, 32.7% route)
+    Total                      3.900ns (2.598ns logic, 1.302ns route)
+                                       (66.6% logic, 33.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 10439096448759 / 857
+  Total number of paths / destination ports: 5751939665656 / 932
 -------------------------------------------------------------------------
-Offset:              37.355ns (Levels of Logic = 89)
-  Source:            CONTROL/FSM3/stage_2 (FF)
+Offset:              36.978ns (Levels of Logic = 80)
+  Source:            CONTROL/FSM4/stage_1 (FF)
   Destination:       next_PC<31> (PAD)
   Source Clock:      clk rising
 
-  Data Path: CONTROL/FSM3/stage_2 to next_PC<31>
+  Data Path: CONTROL/FSM4/stage_1 to next_PC<31>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDCE:C->Q            14   0.514   1.002  CONTROL/FSM3/stage_2 (CONTROL/FSM3/stage_2)
-     LUT3:I0->O            4   0.612   0.651  CONTROL/stateofALU_cmp_eq00021 (CONTROL/stateofALU_cmp_eq0002)
-     LUT3:I0->O           10   0.612   0.753  CONTROL/rtofALU<3>15_SW0 (N1068)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/rsofALU<1>15 (CONTROL/rsofALU<1>15)
-     LUT4:I1->O           13   0.612   0.866  CONTROL/rsofALU<1>17 (CONTROL/rsofALU<1>)
-     LUT4:I2->O            1   0.612   0.360  CONTROL/WBtoRS_cmp_eq0000540 (CONTROL/WBtoRS_cmp_eq0000540)
-     LUT4:I3->O            1   0.612   0.000  CONTROL/WBtoRS_cmp_eq00005151_G (N1240)
-     MUXF5:I1->O          38   0.278   1.226  CONTROL/WBtoRS_cmp_eq00005151 (CONTROL/WBtoRS_cmp_eq0000)
-     LUT3_D:I0->O         16   0.612   0.909  CONTROL/ForwardValueB<0>41_1 (CONTROL/ForwardValueB<0>41)
-     LUT4:I2->O            1   0.612   0.387  CONTROL/ForwardValueB<0>4 (CONTROL/ForwardValueB<0>4)
-     LUT4:I2->O            6   0.612   0.599  CONTROL/ForwardValueB<0>16 (ForwardValueA_0_OBUF)
-     LUT3:I2->O            2   0.612   0.410  ForwardBMux/Mmux_Forward3 (ForwardB_0_OBUF)
-     LUT3:I2->O            2   0.612   0.449  ALU_OPB_MUX/Mmux_alu_opb2 (alu_b_0_OBUF)
-     LUT3:I1->O            1   0.612   0.000  myALU/Maddsub_alu_out_addsub0000_lut<0> (myALU/Maddsub_alu_out_addsub0000_lut<0>)
-     MUXCY:S->O            1   0.404   0.000  myALU/Maddsub_alu_out_addsub0000_cy<0> (myALU/Maddsub_alu_out_addsub0000_cy<0>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<1> (myALU/Maddsub_alu_out_addsub0000_cy<1>)
+     FDCE:C->Q            11   0.514   0.862  CONTROL/FSM4/stage_1 (CONTROL/FSM4/stage_1)
+     LUT3_D:I1->LO         1   0.612   0.103  CONTROL/stateofALU_cmp_eq00031 (N1995)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/rsofALU<0>114 (CONTROL/rsofALU<0>114)
+     LUT4_D:I3->O          9   0.612   0.700  CONTROL/rsofALU<0>129 (CONTROL/N24)
+     LUT4:I3->O            1   0.612   0.360  CONTROL/rsofALU<2>15 (CONTROL/rsofALU<2>15)
+     LUT4_D:I3->O         12   0.612   0.847  CONTROL/rsofALU<2>17 (CONTROL/rsofALU<2>)
+     LUT4_D:I2->O          1   0.612   0.360  CONTROL/WBtoRS_and000180 (CONTROL/WBtoRS_and000180)
+     LUT4:I3->O            6   0.612   0.599  CONTROL/WBtoRS_and0001113_1 (CONTROL/WBtoRS_and00011131)
+     LUT4:I2->O            4   0.612   0.502  CONTROL/ForwardValueA<0>1_SW1 (N1392)
+     LUT4:I3->O           14   0.612   0.880  CONTROL/ForwardValueA<0>1_2 (CONTROL/ForwardValueA<0>1_1)
+     LUT4:I2->O            1   0.612   0.360  CONTROL/ForwardValueA<1>18_SW0_SW0 (N578)
+     LUT4:I3->O            4   0.612   0.502  CONTROL/ForwardValueA<1>18 (ForwardValueA_1_OBUF)
+     LUT4:I3->O            1   0.612   0.360  ALU_OPA_MUX/alu_opa<1>1_SW0 (N935)
+     LUT4:I3->O            1   0.612   0.360  myALU/Maddsub_alu_out_addsub0000_lut<1>_SW0_SW0 (N1510)
+     LUT4:I3->O            1   0.612   0.000  myALU/Maddsub_alu_out_addsub0000_lut<1> (myALU/Maddsub_alu_out_addsub0000_lut<1>)
+     MUXCY:S->O            1   0.404   0.000  myALU/Maddsub_alu_out_addsub0000_cy<1> (myALU/Maddsub_alu_out_addsub0000_cy<1>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<2> (myALU/Maddsub_alu_out_addsub0000_cy<2>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<3> (myALU/Maddsub_alu_out_addsub0000_cy<3>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<4> (myALU/Maddsub_alu_out_addsub0000_cy<4>)
@@ -1228,26 +1244,17 @@ Offset:              37.355ns (Levels of Logic = 89)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<18> (myALU/Maddsub_alu_out_addsub0000_cy<18>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<19> (myALU/Maddsub_alu_out_addsub0000_cy<19>)
      MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<20> (myALU/Maddsub_alu_out_addsub0000_cy<20>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<21> (myALU/Maddsub_alu_out_addsub0000_cy<21>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<22> (myALU/Maddsub_alu_out_addsub0000_cy<22>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<23> (myALU/Maddsub_alu_out_addsub0000_cy<23>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<24> (myALU/Maddsub_alu_out_addsub0000_cy<24>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<25> (myALU/Maddsub_alu_out_addsub0000_cy<25>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<26> (myALU/Maddsub_alu_out_addsub0000_cy<26>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<27> (myALU/Maddsub_alu_out_addsub0000_cy<27>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<28> (myALU/Maddsub_alu_out_addsub0000_cy<28>)
-     MUXCY:CI->O           1   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<29> (myALU/Maddsub_alu_out_addsub0000_cy<29>)
-     MUXCY:CI->O           0   0.052   0.000  myALU/Maddsub_alu_out_addsub0000_cy<30> (myALU/Maddsub_alu_out_addsub0000_cy<30>)
-     XORCY:CI->O           8   0.699   0.646  myALU/Maddsub_alu_out_addsub0000_xor<31> (alu_result_31_OBUF)
-     LUT4:I3->O            1   0.612   0.000  myALU/ALU_ZERO_wg_lut<7> (myALU/ALU_ZERO_wg_lut<7>)
-     MUXCY:S->O           10   0.752   0.819  myALU/ALU_ZERO_wg_cy<7> (ALU_ZERO_OBUF)
-     LUT2:I1->O            3   0.612   0.520  CONTROL/Branch5Occur34 (CONTROL/Branch5Occur34)
-     LUT4_D:I1->O          8   0.612   0.646  CONTROL/Branch5Occur50 (CONTROL/Branch5Occur)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/PC_En_Conflictstate<0>15 (CONTROL/PC_En_Conflictstate<0>15)
-     LUT4:I1->O            3   0.612   0.481  CONTROL/PC_En_Conflictstate<0>60 (CONTROL/PC_En_Conflictstate<0>60)
-     LUT3_L:I2->LO         1   0.612   0.103  CONTROL/PC_En_Conflictstate<0>91 (CONTROL/PC_En_Conflictstate<0>)
-     LUT4:I3->O            4   0.612   0.568  CONTROL/PCWrite11 (CONTROL/N33)
-     LUT2:I1->O           15   0.612   0.867  CONTROL/PC_Src<1>1_1 (CONTROL/PC_Src<1>1)
+     XORCY:CI->O           1   0.699   0.387  myALU/Maddsub_alu_out_addsub0000_xor<21> (myALU/alu_out_addsub0000<21>)
+     LUT3:I2->O            5   0.612   0.541  myALU/alu_out<21>48 (alu_result_21_OBUF)
+     LUT4:I3->O            2   0.612   0.410  myALU/ALU_POSITIVE43 (myALU/ALU_POSITIVE43)
+     LUT4:I2->O            5   0.612   0.541  myALU/ALU_POSITIVE86_SW0 (N1386)
+     LUT4_D:I3->LO         1   0.612   0.103  CONTROL/Branch2Occur0 (N2065)
+     LUT4:I3->O           10   0.612   0.819  CONTROL/PC_En_Conflict2 (CONTROL/PC_En_Conflict2)
+     LUT3:I1->O            2   0.612   0.383  CONTROL/PC_En_Conflictstate<2>21 (CONTROL/N260)
+     LUT4_L:I3->LO         1   0.612   0.103  CONTROL/PC_En_Conflictstate<4>35 (CONTROL/PC_En_Conflictstate<4>35)
+     LUT4:I3->O            4   0.612   0.502  CONTROL/PC_En_Conflictstate<4>53 (CONTROL/PC_En_Conflictstate<4>)
+     LUT4_D:I3->LO         1   0.612   0.103  CONTROL/PCWrite11_1 (N2072)
+     LUT4:I3->O           15   0.612   0.867  CONTROL/PC_Src<1>1_1 (CONTROL/PC_Src<1>1)
      LUT4:I3->O            1   0.612   0.000  PC_Generator/Madd_next_PC_addsub0000_lut<0> (PC_Generator/Madd_next_PC_addsub0000_lut<0>)
      MUXCY:S->O            1   0.404   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<0> (PC_Generator/Madd_next_PC_addsub0000_cy<0>)
      MUXCY:CI->O           1   0.051   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<1> (PC_Generator/Madd_next_PC_addsub0000_cy<1>)
@@ -1280,18 +1287,18 @@ Offset:              37.355ns (Levels of Logic = 89)
      MUXCY:CI->O           1   0.051   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<28> (PC_Generator/Madd_next_PC_addsub0000_cy<28>)
      MUXCY:CI->O           1   0.051   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<29> (PC_Generator/Madd_next_PC_addsub0000_cy<29>)
      MUXCY:CI->O           0   0.051   0.000  PC_Generator/Madd_next_PC_addsub0000_cy<30> (PC_Generator/Madd_next_PC_addsub0000_cy<30>)
-     XORCY:CI->O           1   0.699   0.387  PC_Generator/Madd_next_PC_addsub0000_xor<31> (PC_Generator/next_PC_addsub0000<31>)
-     LUT3:I2->O            2   0.612   0.380  PC_Generator/Mmux_next_PC48 (next_PC_31_OBUF)
+     XORCY:CI->O           1   0.699   0.360  PC_Generator/Madd_next_PC_addsub0000_xor<31> (PC_Generator/next_PC_addsub0000<31>)
+     LUT4:I3->O            2   0.612   0.380  PC_Generator/Mmux_next_PC48 (next_PC_31_OBUF)
      OBUF:I->O                 3.169          next_PC_31_OBUF (next_PC<31>)
     ----------------------------------------
-    Total                     37.355ns (23.473ns logic, 13.882ns route)
-                                       (62.8% logic, 37.2% route)
+    Total                     36.978ns (24.325ns logic, 12.653ns route)
+                                       (65.8% logic, 34.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM5/next_state_not0001'
   Total number of paths / destination ports: 10 / 2
 -------------------------------------------------------------------------
-Offset:              10.223ns (Levels of Logic = 6)
+Offset:              9.442ns (Levels of Logic = 5)
   Source:            CONTROL/FSM5/next_state_3 (LATCH)
   Destination:       flush (PAD)
   Source Clock:      CONTROL/FSM5/next_state_not0001 falling
@@ -1300,70 +1307,21 @@ Offset:              10.223ns (Levels of Logic = 6)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM5/next_state_3 (CONTROL/FSM5/next_state_3)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM5/next_state_3 (CONTROL/FSM5/next_state_3)
      LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur129 (CONTROL/JmpOccur129)
-     LUT4:I1->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1329)
-     LUT4:I0->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.602  CONTROL/flush (flush_OBUF)
+     LUT4:I1->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1594)
+     LUT4:I0->O           11   0.612   0.862  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT2:I1->O            2   0.612   0.380  CONTROL/flushPri<1>1 (flush_OBUF)
      OBUF:I->O                 3.169          flush_OBUF (flush)
     ----------------------------------------
-    Total                     10.223ns (6.817ns logic, 3.406ns route)
-                                       (66.7% logic, 33.3% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM4/next_state_not0001'
-  Total number of paths / destination ports: 10 / 2
--------------------------------------------------------------------------
-Offset:              10.157ns (Levels of Logic = 6)
-  Source:            CONTROL/FSM4/next_state_3 (LATCH)
-  Destination:       flush (PAD)
-  Source Clock:      CONTROL/FSM4/next_state_not0001 falling
-
-  Data Path: CONTROL/FSM4/next_state_3 to flush
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM4/next_state_3 (CONTROL/FSM4/next_state_3)
-     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur29 (CONTROL/JmpOccur29)
-     LUT4:I3->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1329)
-     LUT4:I0->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.602  CONTROL/flush (flush_OBUF)
-     OBUF:I->O                 3.169          flush_OBUF (flush)
-    ----------------------------------------
-    Total                     10.157ns (6.817ns logic, 3.340ns route)
-                                       (67.1% logic, 32.9% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM1/next_state_not0001'
-  Total number of paths / destination ports: 10 / 2
--------------------------------------------------------------------------
-Offset:              10.140ns (Levels of Logic = 6)
-  Source:            CONTROL/FSM1/next_state_3 (LATCH)
-  Destination:       flush (PAD)
-  Source Clock:      CONTROL/FSM1/next_state_not0001 falling
-
-  Data Path: CONTROL/FSM1/next_state_3 to flush
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM1/next_state_3 (CONTROL/FSM1/next_state_3)
-     LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur229 (CONTROL/JmpOccur229)
-     LUT4:I1->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
-     LUT4:I1->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.602  CONTROL/flush (flush_OBUF)
-     OBUF:I->O                 3.169          flush_OBUF (flush)
-    ----------------------------------------
-    Total                     10.140ns (6.817ns logic, 3.323ns route)
-                                       (67.2% logic, 32.8% route)
+    Total                      9.442ns (6.205ns logic, 3.237ns route)
+                                       (65.7% logic, 34.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM2/next_state_not0001'
   Total number of paths / destination ports: 10 / 2
 -------------------------------------------------------------------------
-Offset:              10.074ns (Levels of Logic = 6)
+Offset:              9.376ns (Levels of Logic = 5)
   Source:            CONTROL/FSM2/next_state_3 (LATCH)
   Destination:       flush (PAD)
   Source Clock:      CONTROL/FSM2/next_state_not0001 falling
@@ -1372,22 +1330,21 @@ Offset:              10.074ns (Levels of Logic = 6)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM2/next_state_3 (CONTROL/FSM2/next_state_3)
-     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur186 (CONTROL/JmpOccur186)
-     LUT4:I3->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
-     LUT4:I1->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.602  CONTROL/flush (flush_OBUF)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM2/next_state_3 (CONTROL/FSM2/next_state_3)
+     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur29 (CONTROL/JmpOccur29)
+     LUT4:I3->O            1   0.612   0.509  CONTROL/JmpOccur258_SW0 (N1594)
+     LUT4:I0->O           11   0.612   0.862  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT2:I1->O            2   0.612   0.380  CONTROL/flushPri<1>1 (flush_OBUF)
      OBUF:I->O                 3.169          flush_OBUF (flush)
     ----------------------------------------
-    Total                     10.074ns (6.817ns logic, 3.257ns route)
-                                       (67.7% logic, 32.3% route)
+    Total                      9.376ns (6.205ns logic, 3.171ns route)
+                                       (66.2% logic, 33.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM3/next_state_not0001'
   Total number of paths / destination ports: 10 / 2
 -------------------------------------------------------------------------
-Offset:              9.063ns (Levels of Logic = 5)
+Offset:              9.359ns (Levels of Logic = 5)
   Source:            CONTROL/FSM3/next_state_3 (LATCH)
   Destination:       flush (PAD)
   Source Clock:      CONTROL/FSM3/next_state_not0001 falling
@@ -1396,15 +1353,60 @@ Offset:              9.063ns (Levels of Logic = 5)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     LD:G->Q              17   0.588   1.045  CONTROL/FSM3/next_state_3 (CONTROL/FSM3/next_state_3)
-     LUT4:I0->O            1   0.612   0.387  CONTROL/JmpOccur72 (CONTROL/JmpOccur72)
-     LUT4:I2->O            6   0.612   0.721  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
-     LUT3_L:I0->LO         1   0.612   0.103  CONTROL/flush_SW0 (N157)
-     LUT4:I3->O            7   0.612   0.602  CONTROL/flush (flush_OBUF)
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM3/next_state_3 (CONTROL/FSM3/next_state_3)
+     LUT4:I0->O            1   0.612   0.426  CONTROL/JmpOccur229 (CONTROL/JmpOccur229)
+     LUT4:I1->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
+     LUT4:I1->O           11   0.612   0.862  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT2:I1->O            2   0.612   0.380  CONTROL/flushPri<1>1 (flush_OBUF)
      OBUF:I->O                 3.169          flush_OBUF (flush)
     ----------------------------------------
-    Total                      9.063ns (6.205ns logic, 2.858ns route)
-                                       (68.5% logic, 31.5% route)
+    Total                      9.359ns (6.205ns logic, 3.154ns route)
+                                       (66.3% logic, 33.7% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM4/next_state_not0001'
+  Total number of paths / destination ports: 10 / 2
+-------------------------------------------------------------------------
+Offset:              9.293ns (Levels of Logic = 5)
+  Source:            CONTROL/FSM4/next_state_3 (LATCH)
+  Destination:       flush (PAD)
+  Source Clock:      CONTROL/FSM4/next_state_not0001 falling
+
+  Data Path: CONTROL/FSM4/next_state_3 to flush
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM4/next_state_3 (CONTROL/FSM4/next_state_3)
+     LUT4:I0->O            1   0.612   0.360  CONTROL/JmpOccur186 (CONTROL/JmpOccur186)
+     LUT4:I3->O            1   0.612   0.426  CONTROL/JmpOccur247 (CONTROL/JmpOccur247)
+     LUT4:I1->O           11   0.612   0.862  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT2:I1->O            2   0.612   0.380  CONTROL/flushPri<1>1 (flush_OBUF)
+     OBUF:I->O                 3.169          flush_OBUF (flush)
+    ----------------------------------------
+    Total                      9.293ns (6.205ns logic, 3.088ns route)
+                                       (66.8% logic, 33.2% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CONTROL/FSM1/next_state_not0001'
+  Total number of paths / destination ports: 10 / 2
+-------------------------------------------------------------------------
+Offset:              8.282ns (Levels of Logic = 4)
+  Source:            CONTROL/FSM1/next_state_3 (LATCH)
+  Destination:       flush (PAD)
+  Source Clock:      CONTROL/FSM1/next_state_not0001 falling
+
+  Data Path: CONTROL/FSM1/next_state_3 to flush
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     LD:G->Q              18   0.588   1.060  CONTROL/FSM1/next_state_3 (CONTROL/FSM1/next_state_3)
+     LUT4:I0->O            1   0.612   0.387  CONTROL/JmpOccur72 (CONTROL/JmpOccur72)
+     LUT4:I2->O           11   0.612   0.862  CONTROL/JmpOccur258 (CONTROL/JmpOccur)
+     LUT2:I1->O            2   0.612   0.380  CONTROL/flushPri<1>1 (flush_OBUF)
+     OBUF:I->O                 3.169          flush_OBUF (flush)
+    ----------------------------------------
+    Total                      8.282ns (5.593ns logic, 2.689ns route)
+                                       (67.5% logic, 32.5% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -1427,14 +1429,14 @@ Delay:               5.125ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 26.00 secs
-Total CPU time to Xst completion: 26.58 secs
+Total REAL time to Xst completion: 35.00 secs
+Total CPU time to Xst completion: 34.78 secs
  
 --> 
 
-Total memory usage is 366596 kilobytes
+Total memory usage is 415160 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  109 (   0 filtered)
-Number of infos    :    9 (   0 filtered)
+Number of warnings :  116 (   0 filtered)
+Number of infos    :   10 (   0 filtered)
 

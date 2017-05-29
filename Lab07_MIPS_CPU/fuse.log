@@ -13,24 +13,23 @@ Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/regfile.v\" into
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/PC_Module.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/PC_Gen.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v\" into library work
-WARNING:HDLCompiler:751 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 128: Redeclaration of ansi port RegWrite1 is not allowed
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/ALU_OpB.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/ALU_OpA.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/ALU_CONTROL.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/ALU.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/AddrMux.v\" into library work
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v\" into library work
+WARNING:HDLCompiler:35 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v" Line 298: <functreg> is already implicitly declared earlier.
 Analyzing Verilog file \"D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/simu.v\" into library work
 Analyzing Verilog file \"e:/Xilinx/12.3/ISE_DS/ISE//verilog/src/glbl.v\" into library work
 Starting static elaboration
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v" Line 176: Size mismatch in connection of port <addra>. Formal port size is 8-bit while actual signal size is 32-bit.
-WARNING:HDLCompiler:1016 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 574: Port next_en is not connected to this instance
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v" Line 355: Size mismatch in connection of port <rs_addr>. Formal port size is 5-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 406: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 454: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 502: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 550: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
-WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 598: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/top.v" Line 181: Size mismatch in connection of port <addra>. Formal port size is 8-bit while actual signal size is 32-bit.
+WARNING:HDLCompiler:1016 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 686: Port next_en is not connected to this instance
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 518: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 566: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 614: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 662: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
+WARNING:HDLCompiler:189 - "D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/global_FSM.v" Line 710: Size mismatch in connection of port <PC_Src>. Formal port size is 2-bit while actual signal size is 1-bit.
 Completed static elaboration
 Compiling module PCModule
 Compiling module PC_Gen
@@ -62,5 +61,5 @@ Time Resolution for simulation is 1ps.
 Waiting for 1 sub-compilation(s) to finish...
 Compiled 26 Verilog Units
 Built simulation executable D:/ISE Project/COD-Labs/Lab07_MIPS_CPU/simu_isim_beh.exe
-Fuse Memory Usage: 32696 KB
-Fuse CPU Usage: 359 ms
+Fuse Memory Usage: 36656 KB
+Fuse CPU Usage: 500 ms
