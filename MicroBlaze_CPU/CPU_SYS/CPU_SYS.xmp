@@ -1,0 +1,24 @@
+#Please do not modify this file by hand
+XmpVersion: 12.3
+VerMgmt: 
+IntStyle: ise
+MHS File: CPU_SYS.mhs
+MSS File: CPU_SYS.mss
+Architecture: spartan3e
+Device: xc3s500e
+Package: fg320
+SpeedGrade: -5
+UserCmd1: 
+UserCmd1Type: 0
+UserCmd2: 
+UserCmd2Type: 0
+GenSimTB: 0
+SdkExportBmmBit: 1
+SdkExportDir: SDK/SDK_Export
+InsertNoPads: 1
+WarnForEAArch: 1
+HdlLang: verilog
+SimModel: BEHAVIORAL
+UcfFile: data/CPU_SYS.ucf
+EnableParTimingError: 1
+ShowLicenseDialog: 1

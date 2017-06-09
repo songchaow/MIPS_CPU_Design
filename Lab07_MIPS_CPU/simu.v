@@ -11,7 +11,7 @@
 // Target Device:  
 // Tool versions:  
 // Description: 
-//
+// execution time: 2110.00 ns
 // Verilog Test Fixture created by ISE for module: top
 //
 // Dependencies:
